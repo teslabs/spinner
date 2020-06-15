@@ -1,0 +1,17 @@
+# Copyright (c) 2021 Teslabs Engineering S.L.
+# SPDX-License-Identifier: Apache-2.0
+
+menuconfig SPINNER_FEEDBACK
+	bool "Feedback Drivers"
+	help
+	  Enable options for feedback drivers.
+
+if SPINNER_FEEDBACK
+
+module = SPINNER_FEEDBACK
+module-str = SPINNER_FEEDBACK
+source "subsys/logging/Kconfig.template.log_config"
+
+rsource "Kconfig.stm32"
+
+endif # SPINNER_FEEDBACK

@@ -1,0 +1,23 @@
+# Copyright (c) 2021 Teslabs Engineering S.L.
+# SPDX-License-Identifier: Apache-2.0
+
+menuconfig SPINNER_SVPWM
+	bool "SV-PWM Drivers"
+	help
+	  Enable options for SV-PWM drivers.
+
+if SPINNER_SVPWM
+
+module = SPINNER_SVPWM
+module-str = SPINNER_SVPWM
+source "subsys/logging/Kconfig.template.log_config"
+
+config SPINNER_SVPWM_INIT_PRIORITY
+	int "SV-PWM init priority"
+	default 90
+	help
+	  SV-PWM initialization priority.
+
+rsource "Kconfig.stm32"
+
+endif # SPINNER_SVPWM

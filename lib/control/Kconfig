@@ -1,0 +1,46 @@
+# Copyright (c) 2021 Teslabs Engineering S.L.
+# SPDX-License-Identifier: Apache-2.0
+
+menuconfig SPINNER_CLOOP
+	bool "Current Loop"
+	select SPINNER_SVM
+	select CMSIS_DSP
+	select CMSIS_DSP_CONTROLLER
+	select CMSIS_DSP_TABLES_ARM_SIN_COS_F32
+	depends on SPINNER_CURRSMP && SPINNER_FEEDBACK && SPINNER_SVPWM
+
+if SPINNER_CLOOP
+
+config SPINNER_CLOOP_SHELL
+	bool "Control loop shell"
+	default y
+	depends on SHELL
+	help
+	  Utility shell to test current loop.
+
+config SPINNER_CLOOP_T_KP
+	int "Torque PID proportional constant"
+	default 1500
+	help
+	  Torque PID controller proportional (Kp) constant. Value is in thousands.
+
+config SPINNER_CLOOP_T_KI
+	int "Torque PID integral constant"
+	default 0
+	help
+	  Torque PID controller Integral (Ki) constant. Value is in thousands.
+
+config SPINNER_CLOOP_F_KP
+	int "Flux PID proportional constant"
+	default 1500
+	help
+	  Flux PID controller proportional (Kp) constant. Value is in thousands.
+
+config SPINNER_CLOOP_F_KI
+	int "Flux PID integral constant"
+	default 0
+	help
+	  Flux PID controller integral (Ki) constant. Value is in thousands.
+
+endif # SPINNER_CLOOP
+

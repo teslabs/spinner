@@ -1,0 +1,60 @@
+# Copyright (c) 2021, Teslabs Engineering S.L.
+# SPDX-License-Identifier: Apache-2.0
+
+description: |
+  STM32 SV-PWM device.
+
+  The SV-PWM device is expected to be a children of any STM32 advanced control
+  timer. Example usage:
+
+      &timers1 {
+          svpwm: svpwm {
+              compatible = "st,stm32-svpwm";
+              pinctrl-0 = <&tim1_ch1_pa8 &tim1_ch2_pa9 &tim1_ch3_pa10 &tim1_ocp_pa11>;
+              ...
+          };
+      };
+
+compatible: "st,stm32-svpwm"
+
+include: base.yaml
+
+properties:
+  pinctrl-0:
+    type: phandles
+    required: false
+    description: |
+      GPIO pin configuration for inverter signal/s. We expect that the phandles
+      will reference pinctrl nodes, e.g.
+          pinctrl-0 = <&tim1_ch1_pa8 &tim1_ch2_pa9 ...>;
+
+  enable-comp-outputs:
+    type: boolean
+    description: |
+      Enable complementary outputs, used to control the low side channels of
+      each inverter leg.
+
+  t-dead-ns:
+    type: int
+    required: false
+    description: |
+      Dead time in nanoseconds. If using an integrated controller, i.e. without
+      complementary PWM signals, it still needs to be provided to configure
+      accurate current measurements.
+
+  t-rise-ns:
+    type: int
+    required: false
+    description: |
+      Rise time in nanoseconds.
+
+  currsmp:
+    type: phandle
+    required: true
+    description: |
+      Current sampling device.
+
+  enable-gpios:
+    type: phandle-array
+    description: |
+      Channel enable GPIOS (a, b, c).

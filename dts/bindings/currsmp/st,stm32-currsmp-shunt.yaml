@@ -1,0 +1,47 @@
+# Copyright (c) 2021, Teslabs Engineering S.L.
+# SPDX-License-Identifier: Apache-2.0
+
+description: |
+  STM32 shunt current sampling driver.
+
+  The shunt current sampling device is expected to be a children of any STM32
+  ADC supporting injected conversions. Example usage:
+
+    &adc1 {
+      currsmp: currsmp {
+        compatible = "st,stm32-currsmp-shunt";
+        pinctrl-0 = <&adc1_in1_pa0 &adc1_in7_pc1 &adc1_in6_pc0>;
+
+        adc-channels = <1 7 6>;
+        adc-trigger = <STM32_ADC_INJ_TRIG_TIM1_TRGO>;
+      };
+    };
+
+compatible: "st,stm32-currsmp-shunt"
+
+include: base.yaml
+
+properties:
+  pinctrl-0:
+    type: phandles
+    required: false
+    description: |
+      Pin configuration for ADC signal/s. We expect that the phandles will
+      reference pinctrl nodes, e.g.
+
+        pinctrl-0 = <&adc1_in1_pa0 &adc1_in7_pc1 ...>;
+
+  adc-channels:
+    type: array
+    required: true
+    description: |
+      ADC channels (a, b, c).
+
+  adc-trigger:
+    type: int
+    required: true
+    description: |
+      External trigger for the injected ADC conversions. The external trigger
+      must be an output of the timer used for SV-PWM.
+
+      Definitions available at dts-bindings/adc/stm32fxxx.h files.

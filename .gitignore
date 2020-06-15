@@ -1,0 +1,10 @@
+# zephyr
+/build*
+
+# python
+.venv
+
+# editors
+*.swp
+.vscode
+.~lock*

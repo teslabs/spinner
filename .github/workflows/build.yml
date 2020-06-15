@@ -1,0 +1,42 @@
+# Copyright (c) 2021, Teslabs Engineering S.L.
+# SPDX-License-Identifier: Apache-2.0
+
+name: Build
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: teslabs/spinner:latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          path: spinner
+
+      - name: Cache Zephyr
+        uses: actions/cache@v2
+        with:
+          path: |
+            modules
+            zephyr
+          key: ${{ hashFiles('spinner/west.yml') }}
+
+      - name: Initialize
+        working-directory: spinner
+        run: |
+          pip3 install -U west
+          west init -l .
+          west update
+          pip3 install -r ../zephyr/scripts/requirements-base.txt
+          pip3 install -r docs/requirements.txt
+
+      - name: Lint code
+        run: |
+          git diff --name-only ${{ github.base_ref}} ${{ github.sha }} -- '*.[ch]' | xargs zephyr/scripts/checkpatch.pl
+
+      - name: Build
+        working-directory: spinner
+        run: |
+          west build -b p_nucleo_ihm002 -s spinner

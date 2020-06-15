@@ -1,0 +1,94 @@
+/*
+ * Copyright (c) 2021 Teslabs Engineering S.L.
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/dts-v1/;
+#include <st/f3/stm32f302X8.dtsi>
+#include <st/f3/stm32f302r(6-8)tx-pinctrl.dtsi>
+#include <dts-bindings/adc/stm32f3xx.h>
+
+/ {
+	model = "P-NUCLEO-IHM002";
+
+	chosen {
+		zephyr,console = &usart2;
+		zephyr,shell-uart = &usart2;
+		zephyr,sram = &sram0;
+		zephyr,flash = &flash0;
+	};
+};
+
+&clk_hse {
+	hse-bypass;
+	clock-frequency = <DT_FREQ_M(8)>; /* STLink 8MHz clock */
+	status = "okay";
+};
+
+&pll {
+	prediv = <1>;
+	mul = <9>;
+	clocks = <&clk_hse>;
+	status = "okay";
+};
+
+&rcc {
+	clocks = <&pll>;
+	clock-frequency = <DT_FREQ_M(72)>;
+	ahb-prescaler = <1>;
+	apb1-prescaler = <2>;
+	apb2-prescaler = <1>;
+};
+
+&timers1 {
+	svpwm: svpwm {
+		compatible = "st,stm32-svpwm";
+		pinctrl-0 = <&tim1_ch1_pa8 &tim1_ch2_pa9 &tim1_ch3_pa10 &tim1_ocp_pa11>;
+
+		/* L6230 dead time (Table 6) */
+		t-dead-ns = <1000>;
+		/* L6230 rise time: tD(ON) + tRISE (Fig. 4) */
+		t-rise-ns = <1050>;
+		currsmp = <&currsmp>;
+		enable-gpios = <&gpioc 10 GPIO_ACTIVE_HIGH>,
+					   <&gpioc 11 GPIO_ACTIVE_HIGH>,
+					   <&gpioc 12 GPIO_ACTIVE_HIGH>;
+	};
+};
+
+&adc1 {
+	currsmp: currsmp {
+		compatible = "st,stm32-currsmp-shunt";
+		pinctrl-0 = <&adc1_in1_pa0 &adc1_in7_pc1 &adc1_in6_pc0>;
+
+		adc-channels = <1 7 6>;
+		adc-trigger = <STM32_ADC_INJ_TRIG_TIM1_TRGO>;
+	};
+};
+
+&timers2 {
+	feedback: feedback {
+		compatible = "st,stm32-halls";
+
+		pinctrl-0 = <&tim2_ch1_pa15 &tim2_ch2_pb3 &tim2_ch3_pb10>;
+
+		h1-gpios = <&gpioa 15 0>;
+		h2-gpios = <&gpiob 3 0>;
+		h3-gpios = <&gpiob 10 0>;
+		phase-shift = <60>;
+	};
+};
+
+&usart2 {
+	status = "okay";
+	pinctrl-0 = <&usart2_tx_pa2 &usart2_rx_pa3>;
+	current-speed = <115200>;
+};
+
+/* FIXME: missing upstream */
+&pinctrl {
+	tim1_ocp_pa11: tim1_ocp_pa11 {
+		pinmux = <STM32_PINMUX('A', 11, AF12)>;
+	};
+};

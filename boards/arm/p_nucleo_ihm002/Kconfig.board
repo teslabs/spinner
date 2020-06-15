@@ -1,0 +1,6 @@
+# Copyright (c) 2021 Teslabs Engineering S.L.
+# SPDX-License-Identifier: Apache-2.0
+
+config BOARD_P_NUCLEO_IHM002
+	bool "P-NUCLEO-IHM002"
+	depends on SOC_STM32F302X8

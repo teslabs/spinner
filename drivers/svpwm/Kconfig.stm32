@@ -1,0 +1,19 @@
+# Copyright (c) 2021 Teslabs Engineering S.L.
+# SPDX-License-Identifier: Apache-2.0
+
+config SPINNER_SVPWM_STM32
+	bool "STM32 SV-PWM driver"
+	default y if SOC_FAMILY_STM32
+	select USE_STM32_LL_TIM
+	select SPINNER_SVM
+	select SPINNER_UTILS_STM32
+	help
+	  Enable SV-PWM driver for STM32 SoCs
+
+config SPINNER_SVPWM_STM32_PWM_FREQ
+	int "PWM frequency"
+	default 30000
+	depends on SPINNER_SVPWM_STM32
+	help
+	  PWM frequency (Hz)
+

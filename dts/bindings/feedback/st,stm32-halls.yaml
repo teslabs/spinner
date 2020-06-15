@@ -1,0 +1,61 @@
+# Copyright (c) 2021, Teslabs Engineering S.L.
+# SPDX-License-Identifier: Apache-2.0
+
+description: |
+  Halls sensor driver for STM32 microcontrollers.
+
+  The halls device is expected to be a children of any STM32 timer supporting
+  the HALLS interface. Example usage:
+
+      &timers2 {
+        status = "okay";
+
+        feedback: feedback {
+            compatible = "st,stm32-halls";
+
+            pinctrl-0 = <&tim2_ch1_pa15 &tim2_ch2_pb3 &tim2_ch3_pb10>;
+
+            h1-gpios = <&gpioa 15 0>;
+            h2-gpios = <&gpiob 3 0>;
+            h3-gpios = <&gpiob 10 0>;
+            phase-shift = <60>;
+        };
+      };
+
+compatible: "st,stm32-halls"
+
+include: base.yaml
+
+properties:
+  pinctrl-0:
+    type: phandles
+    required: false
+    description: |
+      GPIO pin configuration for HALLS signal/s. We expect that the phandles
+      will reference pinctrl nodes, e.g.
+         pinctrl-0 = <&tim2_ch1_pa15 &tim2_ch2_pb3 &tim2_ch3_pb10>;
+
+  h1-gpios:
+    type: phandle-array
+    required: true
+    description: |
+      H1 GPIO
+
+  h2-gpios:
+    type: phandle-array
+    required: true
+    description: |
+      H2 GPIO
+
+  h3-gpios:
+    type: phandle-array
+    required: true
+    description: |
+      H3 GPIO
+
+  phase-shift:
+    type: int
+    default: 0
+    description: |
+      Phase shift between the low to high transition of signal H1 and the
+      maximum of the Bemf induced on phase A.

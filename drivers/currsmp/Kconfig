@@ -1,0 +1,23 @@
+# Copyright (c) 2021 Teslabs Engineering S.L.
+# SPDX-License-Identifier: Apache-2.0
+
+menuconfig SPINNER_CURRSMP
+	bool "Current Sample Drivers"
+	help
+	  Enable options for current sample drivers.
+
+if SPINNER_CURRSMP
+
+module = SPINNER_CURRSMP
+module-str = SPINNER_CURRSMP
+source "subsys/logging/Kconfig.template.log_config"
+
+config SPINNER_CURRSMP_INIT_PRIORITY
+	int "Current sampling init priority"
+	default 80
+	help
+	  Current sampling initialization priority.
+
+rsource "Kconfig.stm32"
+
+endif # SPINNER_CURRSMP

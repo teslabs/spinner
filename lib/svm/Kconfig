@@ -1,0 +1,10 @@
+# Copyright (c) 2021 Teslabs Engineering S.L.
+# SPDX-License-Identifier: Apache-2.0
+
+config SPINNER_SVM
+	bool "Space Vector Modulator"
+	select CMSIS_DSP
+	select CMSIS_DSP_FASTMATH
+	help
+	  Space Vector Modulator.
+

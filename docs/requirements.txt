@@ -1,0 +1,7 @@
+Sphinx<4
+sphinx_rtd_theme
+breathe
+sphinxcontrib-mermaid
+sphinxcontrib-bibtex
+matplotlib
+numpy
