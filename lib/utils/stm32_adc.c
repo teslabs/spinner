@@ -10,7 +10,7 @@
 int stm32_adc_res_get(uint8_t res_bits, uint32_t *res)
 {
 	switch (res_bits) {
-#ifdef CONFIG_SOC_SERIES_STM32F3X
+#if defined(CONFIG_SOC_SERIES_STM32F3X) || defined(CONFIG_SOC_SERIES_STM32G4X)
 	case 6U:
 		*res = LL_ADC_RESOLUTION_6B;
 		break;
@@ -34,7 +34,7 @@ int stm32_adc_res_get(uint8_t res_bits, uint32_t *res)
 int stm32_adc_smp_get(uint32_t smp_time, uint32_t *smp)
 {
 	switch(smp_time) {
-#ifdef CONFIG_SOC_SERIES_STM32F3X
+#if defined(CONFIG_SOC_SERIES_STM32F3X)
 	case 2U:
 		*smp = LL_ADC_SAMPLINGTIME_1CYCLE_5;
 		break;
@@ -58,6 +58,31 @@ int stm32_adc_smp_get(uint32_t smp_time, uint32_t *smp)
 		break;
 	case 602U:
 		*smp = LL_ADC_SAMPLINGTIME_601CYCLES_5;
+		break;
+#elif defined(CONFIG_SOC_SERIES_STM32G4X)
+	case 3U:
+		*smp = LL_ADC_SAMPLINGTIME_2CYCLES_5;
+		break;
+	case 7U:
+		*smp = LL_ADC_SAMPLINGTIME_6CYCLES_5;
+		break;
+	case 13U:
+		*smp = LL_ADC_SAMPLINGTIME_12CYCLES_5;
+		break;
+	case 25U:
+		*smp = LL_ADC_SAMPLINGTIME_24CYCLES_5;
+		break;
+	case 48U:
+		*smp = LL_ADC_SAMPLINGTIME_47CYCLES_5;
+		break;
+	case 93U:
+		*smp = LL_ADC_SAMPLINGTIME_92CYCLES_5;
+		break;
+	case 248U:
+		*smp = LL_ADC_SAMPLINGTIME_247CYCLES_5;
+		break;
+	case 641U:
+		*smp = LL_ADC_SAMPLINGTIME_640CYCLES_5;
 		break;
 #endif
 	default:
@@ -104,7 +129,7 @@ int stm32_adc_t_sar_get(uint8_t res_bits, float *t_sar)
 {
 	/* obtain t_sar (in clock cycles) */
 	switch (res_bits) {
-#ifdef CONFIG_SOC_SERIES_STM32F3X
+#if defined(CONFIG_SOC_SERIES_STM32F3X) || defined(CONFIG_SOC_SERIES_STM32G4X)
 	case 6U:
 		*t_sar = 6.5f;
 		break;
