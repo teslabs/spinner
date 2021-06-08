@@ -71,8 +71,14 @@ static uint32_t adc_calc_jsqr(uint32_t trigger, uint32_t rank1_ch,
 {
 	uint32_t jsqr;
 
-	uint8_t ch1 = __LL_ADC_CHANNEL_TO_DECIMAL_NB(rank1_ch) - 1U;
-	uint8_t ch2 = __LL_ADC_CHANNEL_TO_DECIMAL_NB(rank2_ch) - 1U;
+	uint8_t ch1 = __LL_ADC_CHANNEL_TO_DECIMAL_NB(rank1_ch);
+	uint8_t ch2 = __LL_ADC_CHANNEL_TO_DECIMAL_NB(rank2_ch);
+
+#ifdef CONFIG_SOC_SERIES_STM32F3X
+	/* F3X ADC uses channels 1..18, indexed from 0..17 */
+	ch1--;
+	ch2--;
+#endif
 
 	jsqr = ((ch1 & ADC_INJ_RANK_ID_JSQR_MASK) << ADC_INJ_RANK_1_JSQR_BITOFFSET_POS) |
 	       ((ch2 & ADC_INJ_RANK_ID_JSQR_MASK) << ADC_INJ_RANK_2_JSQR_BITOFFSET_POS) |
@@ -165,6 +171,9 @@ static int adc_configure(const struct device *dev)
 	LL_ADC_SetChannelSamplingTime(config->adc, config->adc_ch_c, smp);
 
 	/* enable internal ADC regulator */
+#if defined(CONFIG_SOC_SERIES_STM32G4X)
+	LL_ADC_DisableDeepPowerDown(config->adc);
+#endif
 	LL_ADC_EnableInternalRegulator(config->adc);
 	k_busy_wait(LL_ADC_DELAY_INTERNAL_REGUL_STAB_US);
 	if (!LL_ADC_IsInternalRegulatorEnabled(config->adc)) {
