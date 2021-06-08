@@ -1,0 +1,12 @@
+# Copyright (c) 2021 Teslabs Engineering S.L.
+# SPDX-License-Identifier: Apache-2.0
+
+if BOARD_NUCLEOG431RB_IHM07M1
+
+config BOARD
+	default "nucleog431rb_ihm07m1"
+
+config FPU
+	default y
+
+endif # BOARD_NUCLEOG431RB_IHM07M1

@@ -1,0 +1,6 @@
+# Copyright (c) 2021 Teslabs Engineering S.L.
+# SPDX-License-Identifier: Apache-2.0
+
+config BOARD_NUCLEOG431RB_IHM07M1
+	bool "NUCLEOG431RB + IHM07M1"
+	depends on SOC_STM32G431XX
