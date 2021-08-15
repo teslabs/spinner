@@ -30,7 +30,7 @@ source and all Zephyr modules will be cloned. You can do that by running:
 
 ```shell
 # initialize spinner workspace
-west init -m git@github.com:teslabs/spinner --mr main spinner
+west init -m https://github.com/teslabs/spinner --mr main spinner
 # update modules
 cd spinner
 west update
