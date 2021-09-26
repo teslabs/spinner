@@ -39,4 +39,4 @@ jobs:
       - name: Build
         working-directory: spinner
         run: |
-          west build -b p_nucleo_ihm002 -s spinner
+          west build -b nucleof302r8_ihm07m1 -s spinner

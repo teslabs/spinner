@@ -10,7 +10,7 @@
 #include <dts-bindings/adc/stm32f3xx.h>
 
 / {
-	model = "P-NUCLEO-IHM002";
+	model = "NUCLEOF302R8 + IHM07M1";
 
 	chosen {
 		zephyr,console = &usart2;
