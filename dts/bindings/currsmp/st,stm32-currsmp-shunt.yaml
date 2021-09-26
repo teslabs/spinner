@@ -12,6 +12,8 @@ description: |
         compatible = "st,stm32-currsmp-shunt";
         pinctrl-0 = <&adc1_in1_pa0 &adc1_in7_pc1 &adc1_in6_pc0>;
 
+        adc-resolution = <12>;
+        adc-tsample-us = <2>;
         adc-channels = <1 7 6>;
         adc-trigger = <STM32_ADC_INJ_TRIG_TIM1_TRGO>;
       };
@@ -30,6 +32,21 @@ properties:
       reference pinctrl nodes, e.g.
 
         pinctrl-0 = <&adc1_in1_pa0 &adc1_in7_pc1 ...>;
+
+  adc-resolution:
+    type: int
+    required: true
+    description: |
+      ADC resolution in bits. Available resolutions can differ depending on
+      the selected SoC family.
+
+  adc-tsample:
+    type: int
+    required: true
+    description: |
+      ADC sampling time in cycles. Decimal sampling times must be rounded
+      up, e.g. 19.5 needs to be provided as 20. Available sample times can
+      differ depending on the SoC family.
 
   adc-channels:
     type: array

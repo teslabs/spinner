@@ -25,6 +25,8 @@ struct currsmp_shunt_stm32_config {
 	ADC_TypeDef *adc;
 	struct stm32_pclken pclken;
 	uint32_t adc_irq;
+	uint8_t adc_resolution;
+	uint16_t adc_tsample;
 	uint32_t adc_ch_a;
 	uint32_t adc_ch_b;
 	uint32_t adc_ch_c;
@@ -117,7 +119,7 @@ static int adc_configure(const struct device *dev)
 
 	/* configure common ADC instance */
 	LL_ADC_CommonStructInit(&adc_cinit);
-	if (CONFIG_SPINNER_CURRSMP_SHUNT_STM32_ADC_RES == 6U) {
+	if (config->adc_resolution == 6U) {
 		adc_cinit.CommonClock = LL_ADC_CLOCK_SYNC_PCLK_DIV2;
 	} else {
 		adc_cinit.CommonClock = LL_ADC_CLOCK_SYNC_PCLK_DIV4;
@@ -131,8 +133,7 @@ static int adc_configure(const struct device *dev)
 	/* configure ADC */
 	LL_ADC_StructInit(&adc_init);
 
-	ret = stm32_adc_res_get(CONFIG_SPINNER_CURRSMP_SHUNT_STM32_ADC_RES,
-				&adc_init.Resolution);
+	ret = stm32_adc_res_get(config->adc_resolution, &adc_init.Resolution);
 	if (ret < 0) {
 		LOG_ERR("Unsupported ADC resolution");
 		return ret;
@@ -160,7 +161,7 @@ static int adc_configure(const struct device *dev)
 	}
 
 	/* configure sampling time */
-	ret = stm32_adc_smp_get(CONFIG_SPINNER_CURRSMP_SHUNT_STM32_ADC_SMP_TIME, &smp);
+	ret = stm32_adc_smp_get(config->adc_tsample, &smp);
 	if (ret < 0) {
 		LOG_ERR("Unsupported ADC sampling time");
 		return ret;
@@ -302,9 +303,9 @@ static void currsmp_shunt_stm32_get_currents(const struct device *dev,
 		break;
 	}
 
-	curr->i_a = (float)i_a / (2 << (CONFIG_SPINNER_CURRSMP_SHUNT_STM32_ADC_RES - 1));
-	curr->i_b = (float)i_b / (2 << (CONFIG_SPINNER_CURRSMP_SHUNT_STM32_ADC_RES - 1));
-	curr->i_c = (float)i_c / (2 << (CONFIG_SPINNER_CURRSMP_SHUNT_STM32_ADC_RES - 1));
+	curr->i_a = (float)i_a / (2U << (config->adc_resolution - 1U));
+	curr->i_b = (float)i_b / (2U << (config->adc_resolution - 1U));
+	curr->i_c = (float)i_c / (2U << (config->adc_resolution - 1U));
 }
 
 static void currsmp_shunt_stm32_set_sector(const struct device *dev,
@@ -331,15 +332,14 @@ static uint32_t currsmp_shunt_stm32_get_smp_time(const struct device *dev)
 		return 0U;
 	}
 
-	ret = stm32_adc_t_sar_get(CONFIG_SPINNER_CURRSMP_SHUNT_STM32_ADC_RES,
-				  &t_sar);
+	ret = stm32_adc_t_sar_get(config->adc_resolution, &t_sar);
 	if (ret < 0) {
 		LOG_ERR("Could not obtain ADC SAR time");
 		return 0U;
 	}
 
 	return (uint32_t)((1.0e9 / (float)clk) *
-		(t_sar + 2.0f * CONFIG_SPINNER_CURRSMP_SHUNT_STM32_ADC_SMP_TIME));
+		(t_sar + 2.0f * (float)config->adc_tsample));
 }
 
 static void currsmp_shunt_stm32_start(const struct device *dev)
@@ -441,6 +441,8 @@ static const struct currsmp_shunt_stm32_config currsmp_shunt_stm32_config = {
 		.enr = DT_CLOCKS_CELL(DT_PARENT(DT_DRV_INST(0)), bits)
 	},
 	.adc_irq = DT_IRQ_BY_IDX(DT_PARENT(DT_DRV_INST(0)), 0, irq),
+	.adc_resolution = DT_INST_PROP(0, adc_resolution),
+	.adc_tsample = DT_INST_PROP(0, adc_tsample),
 	.adc_ch_a = __LL_ADC_DECIMAL_NB_TO_CHANNEL(
 		DT_INST_PROP_BY_IDX(0, adc_channels, 0)),
 	.adc_ch_b = __LL_ADC_DECIMAL_NB_TO_CHANNEL(

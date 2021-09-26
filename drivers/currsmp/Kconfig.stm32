@@ -9,20 +9,3 @@ config SPINNER_CURRSMP_SHUNT_STM32
 	select ZERO_LATENCY_IRQS
 	help
 	  Enable shunt current sampling driver for STM32 SoCs
-
-if SPINNER_CURRSMP_SHUNT_STM32
-
-config SPINNER_CURRSMP_SHUNT_STM32_ADC_RES
-	int "ADC resolution"
-	default 12
-	help
-	  ADC resolution in bits
-
-config SPINNER_CURRSMP_SHUNT_STM32_ADC_SMP_TIME
-	int "ADC sampling time"
-	default 2
-	help
-	  ADC sampling time in cycles. Decimal sampling times must be rounded
-	  up, e.g. 19.5 needs to be provided as 20.
-
-endif # SPINNER_CURRSMP_SHUNT_STM32
