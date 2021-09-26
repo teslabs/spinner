@@ -5,7 +5,6 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
-    cmake \
     ninja-build \
     gperf \
     ccache \
@@ -27,12 +26,15 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     doxygen \
  && rm -rf /var/lib/apt/lists/*
 
+# install recent CMake
+RUN pip3 install cmake
+
 # install SDK
 ARG ZSDK_TOOL=toolchain-arm
-ARG ZSDK_VERSION=0.12.4
-RUN wget -q "https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${ZSDK_VERSION}/zephyr-${ZSDK_TOOL}-${ZSDK_VERSION}-x86_64-linux-setup.run" && \
-    sh "zephyr-${ZSDK_TOOL}-${ZSDK_VERSION}-x86_64-linux-setup.run" --quiet -- -d /opt/toolchains/zephyr-${ZSDK_TOOL}-${ZSDK_VERSION} && \
-    rm "zephyr-${ZSDK_TOOL}-${ZSDK_VERSION}-x86_64-linux-setup.run"
+ARG ZSDK_VERSION=0.13.1
+RUN wget -q "https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${ZSDK_VERSION}/zephyr-${ZSDK_TOOL}-${ZSDK_VERSION}-linux-x86_64-setup.run" && \
+    sh "zephyr-${ZSDK_TOOL}-${ZSDK_VERSION}-linux-x86_64-setup.run" --quiet -- -d /opt/toolchains/zephyr-${ZSDK_TOOL}-${ZSDK_VERSION} && \
+    rm "zephyr-${ZSDK_TOOL}-${ZSDK_VERSION}-linux-x86_64-setup.run"
 
 ENV ZEPHYR_TOOLCHAIN_VARIANT=zephyr
 ENV ZEPHYR_SDK_INSTALL_DIR=/opt/toolchains/zephyr-${ZSDK_TOOL}-${ZSDK_VERSION}
