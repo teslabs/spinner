@@ -15,7 +15,7 @@ manifest:
       repo-path: zephyr
       revision: v2.6.0
       import:
-        path-whitelist:
-          - modules/hal/cmsis
-          - modules/hal/stm32
+        name-allowlist:
+          - cmsis
+          - hal_stm32
 
