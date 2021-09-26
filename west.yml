@@ -13,7 +13,7 @@ manifest:
     - name: zephyr
       remote: zephyr
       repo-path: zephyr
-      revision: v2.6.0
+      revision: v2.7.0-rc2
       import:
         name-allowlist:
           - cmsis
