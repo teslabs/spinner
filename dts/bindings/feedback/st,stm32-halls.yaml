@@ -14,6 +14,7 @@ description: |
             compatible = "st,stm32-halls";
 
             pinctrl-0 = <&tim2_ch1_pa15 &tim2_ch2_pb3 &tim2_ch3_pb10>;
+            pinctrl-names = "default";
 
             h1-gpios = <&gpioa 15 0>;
             h2-gpios = <&gpiob 3 0>;
@@ -24,16 +25,14 @@ description: |
 
 compatible: "st,stm32-halls"
 
-include: base.yaml
+include: [base.yaml, pinctrl-device.yaml]
 
 properties:
   pinctrl-0:
-    type: phandles
-    required: false
-    description: |
-      GPIO pin configuration for HALLS signal/s. We expect that the phandles
-      will reference pinctrl nodes, e.g.
-         pinctrl-0 = <&tim2_ch1_pa15 &tim2_ch2_pb3 &tim2_ch3_pb10>;
+    required: true
+
+  pinctrl-names:
+    required: true
 
   h1-gpios:
     type: phandle-array

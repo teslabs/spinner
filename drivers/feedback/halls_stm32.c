@@ -8,7 +8,7 @@
 #include <soc.h>
 #include <drivers/gpio.h>
 #include <drivers/clock_control/stm32_clock_control.h>
-#include <pinmux/pinmux_stm32.h>
+#include <drivers/pinctrl.h>
 
 #include <stm32_ll_tim.h>
 
@@ -30,8 +30,7 @@ struct halls_stm32_config {
 	struct gpio_dt_spec h3;
 	uint32_t irq;
 	uint32_t phase_shift;
-	const struct soc_gpio_pinctrl *pinctrl;
-	size_t pinctrl_len;
+	const struct pinctrl_dev_config *pcfg;
 };
 
 struct halls_stm32_data {
@@ -171,8 +170,7 @@ static int halls_stm32_init(const struct device *dev)
 	uint8_t curr_state;
 
 	/* configure pinmux */
-	ret = stm32_dt_pinctrl_configure(config->pinctrl, config->pinctrl_len,
-					 (uint32_t)config->timer);
+	ret = pinctrl_apply_state(config->pcfg, PINCTRL_STATE_DEFAULT);
 	if (ret < 0) {
 		LOG_ERR("pinctrl setup failed (%d)", ret);
 		return ret;
@@ -263,7 +261,7 @@ static int halls_stm32_init(const struct device *dev)
 	return 0;
 }
 
-static const struct soc_gpio_pinctrl halls_pins[] = ST_STM32_DT_INST_PINCTRL(0, 0);
+PINCTRL_DT_INST_DEFINE(0);
 
 static const struct halls_stm32_config halls_stm32_config = {
 	.timer = (TIM_TypeDef *)DT_REG_ADDR(DT_PARENT(DT_DRV_INST(0))),
@@ -276,8 +274,7 @@ static const struct halls_stm32_config halls_stm32_config = {
 	.h3 = GPIO_DT_SPEC_INST_GET(0, h3_gpios),
 	.irq = DT_IRQ_BY_NAME(DT_PARENT(DT_DRV_INST(0)), global, irq),
 	.phase_shift = DT_INST_PROP(0, phase_shift),
-	.pinctrl = halls_pins,
-	.pinctrl_len = ARRAY_SIZE(halls_pins),
+	.pcfg = PINCTRL_DT_INST_DEV_CONFIG_GET(0),
 };
 
 static struct halls_stm32_data halls_stm32_data;

@@ -51,6 +51,7 @@
 	svpwm: svpwm {
 		compatible = "st,stm32-svpwm";
 		pinctrl-0 = <&tim1_ch1_pa8 &tim1_ch2_pa9 &tim1_ch3_pa10 &tim1_ocp_pa11>;
+		pinctrl-names = "default";
 
 		/* L6230 dead time (Table 6) */
 		t-dead-ns = <1000>;
@@ -67,6 +68,7 @@
 	currsmp: currsmp {
 		compatible = "st,stm32-currsmp-shunt";
 		pinctrl-0 = <&adc1_in1_pa0 &adc1_in7_pc1 &adc1_in6_pc0>;
+		pinctrl-names = "default";
 
 		adc-resolution = <12>;
 		adc-tsample = <3>;
@@ -80,6 +82,7 @@
 		compatible = "st,stm32-halls";
 
 		pinctrl-0 = <&tim2_ch1_pa15 &tim2_ch2_pb3 &tim2_ch3_pb10>;
+		pinctrl-names = "default";
 
 		h1-gpios = <&gpioa 15 0>;
 		h2-gpios = <&gpiob 3 0>;
@@ -90,6 +93,7 @@
 
 &lpuart1 {
 	pinctrl-0 = <&lpuart1_tx_pa2 &lpuart1_rx_pa3>;
+	pinctrl-names = "default";
 	current-speed = <115200>;
 	status = "okay";
 };

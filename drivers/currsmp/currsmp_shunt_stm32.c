@@ -7,7 +7,7 @@
 
 #include <soc.h>
 #include <drivers/clock_control/stm32_clock_control.h>
-#include <pinmux/pinmux_stm32.h>
+#include <drivers/pinctrl.h>
 
 #include <stm32_ll_adc.h>
 
@@ -31,8 +31,7 @@ struct currsmp_shunt_stm32_config {
 	uint32_t adc_ch_b;
 	uint32_t adc_ch_c;
 	uint32_t adc_trigger;
-	const struct soc_gpio_pinctrl *pinctrl;
-	size_t pinctrl_len;
+	const struct pinctrl_dev_config *pcfg;
 };
 
 struct currsmp_shunt_stm32_data {
@@ -408,8 +407,7 @@ static int currsmp_shunt_stm32_init(const struct device *dev)
 	int ret;
 
 	/* configure pinmux */
-	ret = stm32_dt_pinctrl_configure(config->pinctrl, config->pinctrl_len,
-					 (uint32_t)config->adc);
+	ret = pinctrl_apply_state(config->pcfg, PINCTRL_STATE_DEFAULT);
 	if (ret < 0) {
 		LOG_ERR("pinctrl setup failed (%d)", ret);
 		return ret;
@@ -432,7 +430,7 @@ static int currsmp_shunt_stm32_init(const struct device *dev)
 	return 0;
 }
 
-static const struct soc_gpio_pinctrl adc_pins[] = ST_STM32_DT_INST_PINCTRL(0, 0);
+PINCTRL_DT_INST_DEFINE(0);
 
 static const struct currsmp_shunt_stm32_config currsmp_shunt_stm32_config = {
 	.adc = (ADC_TypeDef *)DT_REG_ADDR(DT_PARENT(DT_DRV_INST(0))),
@@ -450,8 +448,7 @@ static const struct currsmp_shunt_stm32_config currsmp_shunt_stm32_config = {
 	.adc_ch_c = __LL_ADC_DECIMAL_NB_TO_CHANNEL(
 		DT_INST_PROP_BY_IDX(0, adc_channels, 2)),
 	.adc_trigger = DT_INST_PROP(0, adc_trigger),
-	.pinctrl = adc_pins,
-	.pinctrl_len = ARRAY_SIZE(adc_pins),
+	.pcfg = PINCTRL_DT_INST_DEV_CONFIG_GET(0),
 };
 
 static struct currsmp_shunt_stm32_data currsmp_shunt_stm32_data;

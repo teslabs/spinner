@@ -8,7 +8,7 @@
 #include <soc.h>
 #include <drivers/gpio.h>
 #include <drivers/clock_control/stm32_clock_control.h>
-#include <pinmux/pinmux_stm32.h>
+#include <drivers/pinctrl.h>
 
 #include <stm32_ll_tim.h>
 
@@ -33,8 +33,7 @@ struct svpwm_stm32_config {
 	const struct device *currsmp;
 	const struct gpio_dt_spec *enable;
 	size_t enable_len;
-	const struct soc_gpio_pinctrl *pinctrl;
-	size_t pinctrl_len;
+	const struct pinctrl_dev_config *pcfg;
 };
 
 struct svpwm_stm32_data {
@@ -161,8 +160,7 @@ static int svpwm_stm32_init(const struct device *dev)
 	}
 
 	/* configure pinmux */
-	ret = stm32_dt_pinctrl_configure(config->pinctrl, config->pinctrl_len,
-					 (uint32_t)config->timer);
+	ret = pinctrl_apply_state(config->pcfg, PINCTRL_STATE_DEFAULT);
 	if (ret < 0) {
 		LOG_ERR("pinctrl setup failed (%d)", ret);
 		return ret;
@@ -275,7 +273,7 @@ static int svpwm_stm32_init(const struct device *dev)
 	return 0;
 }
 
-static const struct soc_gpio_pinctrl svpwm_pins[] = ST_STM32_DT_INST_PINCTRL(0, 0);
+PINCTRL_DT_INST_DEFINE(0);
 
 #define ENABLE_GPIOS_ELEM(idx, _) \
 	GPIO_DT_SPEC_INST_GET_BY_IDX(0, enable_gpios, idx),
@@ -300,8 +298,7 @@ static const struct svpwm_stm32_config svpwm_stm32_config = {
 	.currsmp = DEVICE_DT_GET(DT_INST_PHANDLE(0, currsmp)),
 	.enable = enable_pins,
 	.enable_len = ARRAY_SIZE(enable_pins),
-	.pinctrl = svpwm_pins,
-	.pinctrl_len = ARRAY_SIZE(svpwm_pins),
+	.pcfg = PINCTRL_DT_INST_DEV_CONFIG_GET(0),
 };
 
 static struct svpwm_stm32_data svpwm_stm32_data;
