@@ -15,12 +15,6 @@
 #include <stm32_ll_adc.h>
 
 /**
- * @defgroup spinner_lib_utils Utility APIs
- * @{
- * @}
- */
-
-/**
  * @defgroup spinner_utils_stm32_adc STM32 ADC Utilities
  * @ingroup spinner_lib_utils
  * @{

@@ -11,12 +11,6 @@
 #define _SPINNER_LIB_CONTROL_CLOOP_H_
 
 /**
- * @defgroup spinner_lib_control Control APIs
- * @{
- * @}
- */
-
-/**
  * @defgroup spinner_lib_control_cloop Current Loop API
  * @ingroup spinner_lib_control
  * @{

@@ -14,12 +14,6 @@
 #include <zephyr/types.h>
 
 /**
- * @defgroup spinner_drivers Driver APIs
- * @{
- * @}
- */
-
-/**
  * @defgroup spinner_drivers_currsmp Current Sampling API
  * @ingroup spinner_drivers
  * @{

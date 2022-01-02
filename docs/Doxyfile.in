@@ -1,7 +1,7 @@
 PROJECT_NAME = "Spinner"
 PROJECT_BRIEF = "FOC Motor Control Firmware"
 PROJECT_LOGO = @SPINNER_BASE@/docs/_static/images/logo.png
-INPUT = @SPINNER_BASE@/docs/doxygen.md @SPINNER_BASE@/include
+INPUT = @SPINNER_BASE@/docs/_doxygen/groups.dox @SPINNER_BASE@/docs/doxygen.md @SPINNER_BASE@/include
 EXCLUDE = @SPINNER_BASE@/include/dts-bindings
 OUTPUT_DIRECTORY = @DOXYGEN_OUTPUT_DIRECTORY@
 STRIP_FROM_PATH = @SPINNER_BASE@/include

@@ -1,0 +1,19 @@
+/**
+ * @defgroup spinner_drivers Driver APIs
+ * @{
+ * @}
+ */
+
+/**
+ * @defgroup spinner_lib_control Control APIs
+ * @{
+ * @}
+ */
+
+/**
+ * @defgroup spinner_lib_utils Utility APIs
+ * @{
+ * @}
+ */
+
+
