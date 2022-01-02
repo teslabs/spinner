@@ -40,4 +40,4 @@ jobs:
         working-directory: spinner
         run: |
           west build -b nucleof302r8_ihm07m1 -p -s spinner
-          west build -b nucleog431rb_ihm07m1 -p -s spinner
+          west build -b nucleog431rb_ihm16m1 -p -s spinner

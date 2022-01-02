@@ -10,7 +10,7 @@
 #include <dts-bindings/adc/stm32g4xx.h>
 
 / {
-	model = "NUCLEOG431RB + IHM07M1";
+	model = "NUCLEOG431RB + IHM16M1";
 
 	chosen {
 		zephyr,console = &lpuart1;
@@ -53,26 +53,25 @@
 		pinctrl-0 = <&tim1_ch1_pa8 &tim1_ch2_pa9 &tim1_ch3_pa10 &tim1_ocp_pa11>;
 		pinctrl-names = "default";
 
-		/* L6230 dead time (Table 6) */
-		t-dead-ns = <1000>;
-		/* L6230 rise time: tD(ON) + tRISE (Fig. 4) */
-		t-rise-ns = <1050>;
+		t-dead-ns = <0>;
+		/* STSPIN830 rise time: tINd(ON) + tRISE (Table 5) */
+		t-rise-ns = <670>;
 		currsmp = <&currsmp>;
-		enable-gpios = <&gpioc 10 GPIO_ACTIVE_HIGH>,
-					   <&gpioc 11 GPIO_ACTIVE_HIGH>,
-					   <&gpioc 12 GPIO_ACTIVE_HIGH>;
+		enable-gpios = <&gpiob 13 GPIO_ACTIVE_HIGH>,
+					   <&gpiob 14 GPIO_ACTIVE_HIGH>,
+					   <&gpiob 15 GPIO_ACTIVE_HIGH>;
 	};
 };
 
 &adc1 {
 	currsmp: currsmp {
 		compatible = "st,stm32-currsmp-shunt";
-		pinctrl-0 = <&adc1_in1_pa0 &adc1_in7_pc1 &adc1_in6_pc0>;
+		pinctrl-0 = <&adc1_in2_pa1 &adc1_in12_pb1 &adc1_in15_pb0>;
 		pinctrl-names = "default";
 
 		adc-resolution = <12>;
 		adc-tsample = <3>;
-		adc-channels = <1 7 6>;
+		adc-channels = <2 12 15>;
 		adc-trigger = <STM32_ADC12_INJ_TRIG_TIM1_TRGO>;
 	};
 };
