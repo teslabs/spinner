@@ -30,6 +30,8 @@ jobs:
           west init -l .
           west update
           pip3 install -r ../zephyr/scripts/requirements-base.txt
+          pip3 install -r ../zephyr/scripts/requirements-build-test.txt
+          pip3 install -r ../zephyr/scripts/requirements-run-test.txt
           pip3 install -r docs/requirements.txt
 
       - name: Lint code
@@ -41,3 +43,8 @@ jobs:
         run: |
           west build -b nucleof302r8_ihm07m1 -p -s spinner
           west build -b nucleog431rb_ihm16m1 -p -s spinner
+
+      - name: Test
+        working-directory: spinner
+        run: |
+          ../zephyr/scripts/twister -T tests -p native_posix -v
