@@ -29,18 +29,18 @@ static uint8_t get_sector(float a, float b, float c)
 {
 	uint8_t sector = 0U;
 
-	if (c <= 0.0f) {
-		if (a <= 0.0f) {
+	if (c < 0.0f) {
+		if (a < 0.0f) {
 			sector = 2U;
 		} else {
-			if (b <= 0.0f) {
+			if (b < 0.0f) {
 				sector = 6U;
 			} else {
 				sector = 1U;
 			}
 		}
 	} else {
-		if (a <= 0.0f) {
+		if (a < 0.0f) {
 			if (b <= 0.0f) {
 				sector = 4U;
 			} else {
