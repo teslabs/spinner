@@ -203,8 +203,8 @@ static int adc_configure(const struct device *dev)
 	/* configure ADC IRQ */
 	LL_ADC_EnableIT_JEOS(config->adc);
 
-	IRQ_DIRECT_CONNECT(DT_IRQ_BY_IDX(DT_PARENT(DT_DRV_INST(0)), 0, irq),
-			   DT_IRQ_BY_IDX(DT_PARENT(DT_DRV_INST(0)), 0, priority),
+	IRQ_DIRECT_CONNECT(DT_IRQ_BY_IDX(DT_INST_PARENT(0), 0, irq),
+			   DT_IRQ_BY_IDX(DT_INST_PARENT(0), 0, priority),
 			   adc_irq, IRQ_ZERO_LATENCY);
 	irq_enable(config->adc_irq);
 
@@ -433,12 +433,12 @@ static int currsmp_shunt_stm32_init(const struct device *dev)
 PINCTRL_DT_INST_DEFINE(0);
 
 static const struct currsmp_shunt_stm32_config currsmp_shunt_stm32_config = {
-	.adc = (ADC_TypeDef *)DT_REG_ADDR(DT_PARENT(DT_DRV_INST(0))),
+	.adc = (ADC_TypeDef *)DT_REG_ADDR(DT_INST_PARENT(0)),
 	.pclken = {
-		.bus = DT_CLOCKS_CELL(DT_PARENT(DT_DRV_INST(0)), bus),
-		.enr = DT_CLOCKS_CELL(DT_PARENT(DT_DRV_INST(0)), bits)
+		.bus = DT_CLOCKS_CELL(DT_INST_PARENT(0), bus),
+		.enr = DT_CLOCKS_CELL(DT_INST_PARENT(0), bits)
 	},
-	.adc_irq = DT_IRQ_BY_IDX(DT_PARENT(DT_DRV_INST(0)), 0, irq),
+	.adc_irq = DT_IRQ_BY_IDX(DT_INST_PARENT(0), 0, irq),
 	.adc_resolution = DT_INST_PROP(0, adc_resolution),
 	.adc_tsample = DT_INST_PROP(0, adc_tsample),
 	.adc_ch_a = __LL_ADC_DECIMAL_NB_TO_CHANNEL(
