@@ -56,9 +56,20 @@ ForEachMacros:
   - 'Z_GENLIST_FOR_EACH_CONTAINER_SAFE'
   - 'Z_GENLIST_FOR_EACH_NODE'
   - 'Z_GENLIST_FOR_EACH_NODE_SAFE'
+IncludeBlocks: Regroup
 IncludeCategories:
-  - Regex: '.*'
+  - Regex: '^".*\.h"$'
+    Priority: 0
+  - Regex: '^<(assert|complex|ctype|errno|fenv|float|inttypes|limits|locale|math|setjmp|signal|stdarg|stdbool|stddef|stdint|stdio|stdlib|string|tgmath|time|wchar|wctype)\.h>$'
     Priority: 1
+  - Regex: '^\<stm32.*\>$'
+    Priority: 3
+  - Regex: '^\<arm_math.h>$'
+    Priority: 3
+  - Regex: '^\<spinner/.*\.h\>$'
+    Priority: 4
+  - Regex: '.*'
+    Priority: 2
 IndentCaseLabels: false
 IndentWidth: 8
 SpaceBeforeParens: ControlStatementsExceptControlMacros
