@@ -5,10 +5,10 @@
 
 #define DT_DRV_COMPAT st_stm32_svpwm
 
-#include <soc.h>
-#include <drivers/gpio.h>
 #include <drivers/clock_control/stm32_clock_control.h>
+#include <drivers/gpio.h>
 #include <drivers/pinctrl.h>
+#include <soc.h>
 
 #include <stm32_ll_tim.h>
 
@@ -205,17 +205,20 @@ static int svpwm_stm32_init(const struct device *dev)
 	tim_ocinit.OCMode = LL_TIM_OCMODE_PWM1;
 	tim_ocinit.CompareValue = data->period / 2U;
 
-	if (LL_TIM_OC_Init(config->timer, LL_TIM_CHANNEL_CH1, &tim_ocinit) != SUCCESS) {
+	if (LL_TIM_OC_Init(config->timer, LL_TIM_CHANNEL_CH1, &tim_ocinit) !=
+	    SUCCESS) {
 		LOG_ERR("Could not initialize timer OC for channel 1");
 		return -EIO;
 	}
 
-	if (LL_TIM_OC_Init(config->timer, LL_TIM_CHANNEL_CH2, &tim_ocinit) != SUCCESS) {
+	if (LL_TIM_OC_Init(config->timer, LL_TIM_CHANNEL_CH2, &tim_ocinit) !=
+	    SUCCESS) {
 		LOG_ERR("Could not initialize timer OC for channel 2");
 		return -EIO;
 	}
 
-	if (LL_TIM_OC_Init(config->timer, LL_TIM_CHANNEL_CH3, &tim_ocinit) != SUCCESS) {
+	if (LL_TIM_OC_Init(config->timer, LL_TIM_CHANNEL_CH3, &tim_ocinit) !=
+	    SUCCESS) {
 		LOG_ERR("Could not initialize timer OC for channel 3");
 		return -EIO;
 	}
@@ -223,7 +226,8 @@ static int svpwm_stm32_init(const struct device *dev)
 	/* initialize OC for ADC trigger channel */
 	tim_ocinit.OCMode = LL_TIM_OCMODE_PWM2;
 	tim_ocinit.CompareValue = data->period - 1U;
-	if (LL_TIM_OC_Init(config->timer, LL_TIM_CHANNEL_CH4, &tim_ocinit) != SUCCESS) {
+	if (LL_TIM_OC_Init(config->timer, LL_TIM_CHANNEL_CH4, &tim_ocinit) !=
+	    SUCCESS) {
 		LOG_ERR("Could not initialize timer OC for channel 4");
 		return -EIO;
 	}
@@ -275,23 +279,18 @@ static int svpwm_stm32_init(const struct device *dev)
 
 PINCTRL_DT_INST_DEFINE(0);
 
-#define ENABLE_GPIOS_ELEM(idx, _) \
+#define ENABLE_GPIOS_ELEM(idx, _)                                              \
 	GPIO_DT_SPEC_INST_GET_BY_IDX(0, enable_gpios, idx),
 
-static const struct gpio_dt_spec enable_pins[] = {
-	COND_CODE_1(
-		DT_INST_NODE_HAS_PROP(0, enable_gpios),
-		(UTIL_LISTIFY(DT_INST_PROP_LEN(0, enable_gpios), ENABLE_GPIOS_ELEM)),
-		()
-	)
-};
+static const struct gpio_dt_spec enable_pins[] = {COND_CODE_1(
+	DT_INST_NODE_HAS_PROP(0, enable_gpios),
+	(UTIL_LISTIFY(DT_INST_PROP_LEN(0, enable_gpios), ENABLE_GPIOS_ELEM)),
+	())};
 
 static const struct svpwm_stm32_config svpwm_stm32_config = {
 	.timer = (TIM_TypeDef *)DT_REG_ADDR(DT_INST_PARENT(0)),
-	.pclken = {
-		.bus = DT_CLOCKS_CELL(DT_INST_PARENT(0), bus),
-		.enr = DT_CLOCKS_CELL(DT_INST_PARENT(0), bits)
-	},
+	.pclken = {.bus = DT_CLOCKS_CELL(DT_INST_PARENT(0), bus),
+		   .enr = DT_CLOCKS_CELL(DT_INST_PARENT(0), bits)},
 	.enable_comp_outputs = DT_INST_PROP_OR(0, enable_comp_outputs, false),
 	.t_dead = DT_INST_PROP_OR(0, t_dead_ns, 0),
 	.t_rise = DT_INST_PROP_OR(0, t_rise_ns, 0),
@@ -303,7 +302,7 @@ static const struct svpwm_stm32_config svpwm_stm32_config = {
 
 static struct svpwm_stm32_data svpwm_stm32_data;
 
-DEVICE_DT_INST_DEFINE(0, &svpwm_stm32_init, NULL,
-		      &svpwm_stm32_data, &svpwm_stm32_config, POST_KERNEL,
+DEVICE_DT_INST_DEFINE(0, &svpwm_stm32_init, NULL, &svpwm_stm32_data,
+		      &svpwm_stm32_config, POST_KERNEL,
 		      CONFIG_SPINNER_SVPWM_INIT_PRIORITY,
 		      &svpwm_stm32_driver_api);

@@ -46,10 +46,11 @@ static int cmd_cloop_set(const struct shell *shell, size_t argc, char **argv)
 
 SHELL_STATIC_SUBCMD_SET_CREATE(
 	sub_cloop,
-	SHELL_CMD(start, NULL, "Start current regulation loop", cmd_cloop_start),
+	SHELL_CMD(start, NULL, "Start current regulation loop",
+		  cmd_cloop_start),
 	SHELL_CMD(stop, NULL, "Stop current regulation loop", cmd_cloop_stop),
-	SHELL_CMD(set, NULL, "Set current regulation loop target", cmd_cloop_set),
-	SHELL_SUBCMD_SET_END
-);
+	SHELL_CMD(set, NULL, "Set current regulation loop target",
+		  cmd_cloop_set),
+	SHELL_SUBCMD_SET_END);
 
 SHELL_CMD_REGISTER(cloop, &sub_cloop, "Current Loop Control", NULL);

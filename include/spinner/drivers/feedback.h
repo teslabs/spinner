@@ -10,8 +10,8 @@
 #ifndef _SPINNER_DRIVERS_FEEDBACK_H_
 #define _SPINNER_DRIVERS_FEEDBACK_H_
 
-#include <zephyr/types.h>
 #include <device.h>
+#include <zephyr/types.h>
 
 /**
  * @defgroup spinner_drivers_feedback Feedback API

@@ -10,8 +10,8 @@
 #ifndef _SPINNER_DRIVERS_SVPWM_H_
 #define _SPINNER_DRIVERS_SVPWM_H_
 
-#include <zephyr/types.h>
 #include <device.h>
+#include <zephyr/types.h>
 
 /**
  * @defgroup spinner_drivers_svpwm SV-PWM API
@@ -65,7 +65,7 @@ static inline void svpwm_stop(const struct device *dev)
  * @param[in] v_beta Beta voltage.
  */
 static inline void svpwm_set_phase_voltages(const struct device *dev,
-					       float v_alpha, float v_beta)
+					    float v_alpha, float v_beta)
 {
 	const struct svpwm_driver_api *api = dev->api;
 

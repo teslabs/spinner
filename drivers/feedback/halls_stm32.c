@@ -5,10 +5,10 @@
 
 #define DT_DRV_COMPAT st_stm32_halls
 
-#include <soc.h>
-#include <drivers/gpio.h>
 #include <drivers/clock_control/stm32_clock_control.h>
+#include <drivers/gpio.h>
 #include <drivers/pinctrl.h>
+#include <soc.h>
 
 #include <stm32_ll_tim.h>
 
@@ -44,8 +44,10 @@ static uint8_t halls_stm32_get_state(const struct device *dev)
 {
 	const struct halls_stm32_config *config = dev->config;
 
-	return (uint8_t)gpio_pin_get_raw(config->h3.port, config->h3.pin) << 2U |
-	       (uint8_t)gpio_pin_get_raw(config->h2.port, config->h2.pin) << 1U |
+	return (uint8_t)gpio_pin_get_raw(config->h3.port, config->h3.pin)
+		       << 2U |
+	       (uint8_t)gpio_pin_get_raw(config->h2.port, config->h2.pin)
+		       << 1U |
 	       (uint8_t)gpio_pin_get_raw(config->h1.port, config->h1.pin);
 }
 
@@ -126,7 +128,8 @@ ISR_DIRECT_DECLARE(timer_irq)
 
 	data->eangle = eangle;
 	data->last_state = curr_state;
-	data->raw_speed = direction * (int32_t)LL_TIM_IC_GetCaptureCH1(config->timer);
+	data->raw_speed =
+		direction * (int32_t)LL_TIM_IC_GetCaptureCH1(config->timer);
 
 	return 0;
 }
@@ -151,8 +154,7 @@ static float halls_stm32_get_speed(const struct device *dev)
 
 static const struct feedback_driver_api halls_stm32_driver_api = {
 	.get_eangle = halls_stm32_get_eangle,
-	.get_speed = halls_stm32_get_speed
-};
+	.get_speed = halls_stm32_get_speed};
 
 /*******************************************************************************
  * Init
@@ -252,10 +254,9 @@ static int halls_stm32_init(const struct device *dev)
 	data->last_state = curr_state;
 
 	/* connect and enable timer IRQ */
-	IRQ_DIRECT_CONNECT(
-		DT_IRQ_BY_NAME(DT_INST_PARENT(0), global, irq),
-		DT_IRQ_BY_NAME(DT_INST_PARENT(0), global, priority),
-		timer_irq, 0);
+	IRQ_DIRECT_CONNECT(DT_IRQ_BY_NAME(DT_INST_PARENT(0), global, irq),
+			   DT_IRQ_BY_NAME(DT_INST_PARENT(0), global, priority),
+			   timer_irq, 0);
 	irq_enable(config->irq);
 
 	return 0;
@@ -265,10 +266,8 @@ PINCTRL_DT_INST_DEFINE(0);
 
 static const struct halls_stm32_config halls_stm32_config = {
 	.timer = (TIM_TypeDef *)DT_REG_ADDR(DT_INST_PARENT(0)),
-	.pclken = {
-		.bus = DT_CLOCKS_CELL(DT_INST_PARENT(0), bus),
-		.enr = DT_CLOCKS_CELL(DT_INST_PARENT(0), bits)
-	},
+	.pclken = {.bus = DT_CLOCKS_CELL(DT_INST_PARENT(0), bus),
+		   .enr = DT_CLOCKS_CELL(DT_INST_PARENT(0), bits)},
 	.h1 = GPIO_DT_SPEC_INST_GET(0, h1_gpios),
 	.h2 = GPIO_DT_SPEC_INST_GET(0, h2_gpios),
 	.h3 = GPIO_DT_SPEC_INST_GET(0, h3_gpios),
@@ -279,7 +278,7 @@ static const struct halls_stm32_config halls_stm32_config = {
 
 static struct halls_stm32_data halls_stm32_data;
 
-DEVICE_DT_INST_DEFINE(0, &halls_stm32_init, NULL,
-		      &halls_stm32_data, &halls_stm32_config, POST_KERNEL,
+DEVICE_DT_INST_DEFINE(0, &halls_stm32_init, NULL, &halls_stm32_data,
+		      &halls_stm32_config, POST_KERNEL,
 		      CONFIG_KERNEL_INIT_PRIORITY_DEVICE,
 		      &halls_stm32_driver_api);

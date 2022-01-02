@@ -33,7 +33,7 @@ int stm32_adc_res_get(uint8_t res_bits, uint32_t *res)
 
 int stm32_adc_smp_get(uint32_t smp_time, uint32_t *smp)
 {
-	switch(smp_time) {
+	switch (smp_time) {
 #if defined(CONFIG_SOC_SERIES_STM32F3X)
 	case 2U:
 		*smp = LL_ADC_SAMPLINGTIME_1CYCLE_5;

@@ -23,8 +23,7 @@ int stm32_tim_clk_get(const struct stm32_pclken *pclken, uint32_t *tim_clk)
 
 	if (pclken->bus == STM32_CLOCK_BUS_APB1) {
 		apb_psc = STM32_APB1_PRESCALER;
-	}
-	else {
+	} else {
 		apb_psc = STM32_APB2_PRESCALER;
 	}
 

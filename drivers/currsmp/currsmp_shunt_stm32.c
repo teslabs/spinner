@@ -5,9 +5,9 @@
 
 #define DT_DRV_COMPAT st_stm32_currsmp_shunt
 
-#include <soc.h>
 #include <drivers/clock_control/stm32_clock_control.h>
 #include <drivers/pinctrl.h>
+#include <soc.h>
 
 #include <stm32_ll_adc.h>
 
@@ -81,8 +81,10 @@ static uint32_t adc_calc_jsqr(uint32_t trigger, uint32_t rank1_ch,
 	ch2--;
 #endif
 
-	jsqr = ((ch1 & ADC_INJ_RANK_ID_JSQR_MASK) << ADC_INJ_RANK_1_JSQR_BITOFFSET_POS) |
-	       ((ch2 & ADC_INJ_RANK_ID_JSQR_MASK) << ADC_INJ_RANK_2_JSQR_BITOFFSET_POS) |
+	jsqr = ((ch1 & ADC_INJ_RANK_ID_JSQR_MASK)
+		<< ADC_INJ_RANK_1_JSQR_BITOFFSET_POS) |
+	       ((ch2 & ADC_INJ_RANK_ID_JSQR_MASK)
+		<< ADC_INJ_RANK_2_JSQR_BITOFFSET_POS) |
 	       LL_ADC_INJ_TRIG_EXT_RISING | trigger | 1U;
 
 	return jsqr;
@@ -153,7 +155,8 @@ static int adc_configure(const struct device *dev)
 
 	/* configure ADC (injected) */
 	LL_ADC_INJ_StructInit(&adc_jinit);
-	adc_jinit.TriggerSource = config->adc_trigger | LL_ADC_INJ_TRIG_EXT_RISING;
+	adc_jinit.TriggerSource =
+		config->adc_trigger | LL_ADC_INJ_TRIG_EXT_RISING;
 	if (LL_ADC_INJ_Init(config->adc, &adc_jinit) != SUCCESS) {
 		LOG_ERR("Could not initialize ADC injected group");
 		return -EIO;
@@ -177,7 +180,8 @@ static int adc_configure(const struct device *dev)
 	LL_ADC_EnableInternalRegulator(config->adc);
 	k_busy_wait(LL_ADC_DELAY_INTERNAL_REGUL_STAB_US);
 	if (!LL_ADC_IsInternalRegulatorEnabled(config->adc)) {
-		LOG_ERR("ADC internal regulator not enabled within expected time");
+		LOG_ERR("ADC internal regulator not enabled within expected "
+			"time");
 		return -EIO;
 	}
 
@@ -338,7 +342,7 @@ static uint32_t currsmp_shunt_stm32_get_smp_time(const struct device *dev)
 	}
 
 	return (uint32_t)((1.0e9 / (float)clk) *
-		(t_sar + 2.0f * (float)config->adc_tsample));
+			  (t_sar + 2.0f * (float)config->adc_tsample));
 }
 
 static void currsmp_shunt_stm32_start(const struct device *dev)
@@ -434,10 +438,8 @@ PINCTRL_DT_INST_DEFINE(0);
 
 static const struct currsmp_shunt_stm32_config currsmp_shunt_stm32_config = {
 	.adc = (ADC_TypeDef *)DT_REG_ADDR(DT_INST_PARENT(0)),
-	.pclken = {
-		.bus = DT_CLOCKS_CELL(DT_INST_PARENT(0), bus),
-		.enr = DT_CLOCKS_CELL(DT_INST_PARENT(0), bits)
-	},
+	.pclken = {.bus = DT_CLOCKS_CELL(DT_INST_PARENT(0), bus),
+		   .enr = DT_CLOCKS_CELL(DT_INST_PARENT(0), bits)},
 	.adc_irq = DT_IRQ_BY_IDX(DT_INST_PARENT(0), 0, irq),
 	.adc_resolution = DT_INST_PROP(0, adc_resolution),
 	.adc_tsample = DT_INST_PROP(0, adc_tsample),
