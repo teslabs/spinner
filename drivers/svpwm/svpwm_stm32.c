@@ -287,10 +287,10 @@ static const struct gpio_dt_spec enable_pins[] = {
 };
 
 static const struct svpwm_stm32_config svpwm_stm32_config = {
-	.timer = (TIM_TypeDef *)DT_REG_ADDR(DT_PARENT(DT_DRV_INST(0))),
+	.timer = (TIM_TypeDef *)DT_REG_ADDR(DT_INST_PARENT(0)),
 	.pclken = {
-		.bus = DT_CLOCKS_CELL(DT_PARENT(DT_DRV_INST(0)), bus),
-		.enr = DT_CLOCKS_CELL(DT_PARENT(DT_DRV_INST(0)), bits)
+		.bus = DT_CLOCKS_CELL(DT_INST_PARENT(0), bus),
+		.enr = DT_CLOCKS_CELL(DT_INST_PARENT(0), bits)
 	},
 	.enable_comp_outputs = DT_INST_PROP_OR(0, enable_comp_outputs, false),
 	.t_dead = DT_INST_PROP_OR(0, t_dead_ns, 0),
