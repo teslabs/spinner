@@ -1,4 +1,4 @@
-# Spinner API Documentation   {#index}
+# Spinner API Documentation
 
 Welcome to the Spinner's API documentation! Spinner is a motor control firmware
 based on the Field Oriented Control (FOC) principles. The firmware is built on
