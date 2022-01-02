@@ -8,6 +8,7 @@
 #include <drivers/clock_control/stm32_clock_control.h>
 #include <drivers/gpio.h>
 #include <drivers/pinctrl.h>
+#include <logging/log.h>
 #include <soc.h>
 
 #include <stm32_ll_tim.h>
@@ -17,7 +18,6 @@
 #include <spinner/svm/svm.h>
 #include <spinner/utils/stm32_tim.h>
 
-#include <logging/log.h>
 LOG_MODULE_REGISTER(svpwm_stm32, CONFIG_SPINNER_SVPWM_LOG_LEVEL);
 
 /*******************************************************************************

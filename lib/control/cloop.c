@@ -3,8 +3,9 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-#include <arm_math.h>
 #include <device.h>
+
+#include <arm_math.h>
 
 #include <spinner/drivers/currsmp.h>
 #include <spinner/drivers/feedback.h>
