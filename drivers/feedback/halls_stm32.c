@@ -253,8 +253,8 @@ static int halls_stm32_init(const struct device *dev)
 
 	/* connect and enable timer IRQ */
 	IRQ_DIRECT_CONNECT(
-		DT_IRQ_BY_NAME(DT_PARENT(DT_DRV_INST(0)), global, irq),
-		DT_IRQ_BY_NAME(DT_PARENT(DT_DRV_INST(0)), global, priority),
+		DT_IRQ_BY_NAME(DT_INST_PARENT(0), global, irq),
+		DT_IRQ_BY_NAME(DT_INST_PARENT(0), global, priority),
 		timer_irq, 0);
 	irq_enable(config->irq);
 
@@ -264,15 +264,15 @@ static int halls_stm32_init(const struct device *dev)
 PINCTRL_DT_INST_DEFINE(0);
 
 static const struct halls_stm32_config halls_stm32_config = {
-	.timer = (TIM_TypeDef *)DT_REG_ADDR(DT_PARENT(DT_DRV_INST(0))),
+	.timer = (TIM_TypeDef *)DT_REG_ADDR(DT_INST_PARENT(0)),
 	.pclken = {
-		.bus = DT_CLOCKS_CELL(DT_PARENT(DT_DRV_INST(0)), bus),
-		.enr = DT_CLOCKS_CELL(DT_PARENT(DT_DRV_INST(0)), bits)
+		.bus = DT_CLOCKS_CELL(DT_INST_PARENT(0), bus),
+		.enr = DT_CLOCKS_CELL(DT_INST_PARENT(0), bits)
 	},
 	.h1 = GPIO_DT_SPEC_INST_GET(0, h1_gpios),
 	.h2 = GPIO_DT_SPEC_INST_GET(0, h2_gpios),
 	.h3 = GPIO_DT_SPEC_INST_GET(0, h3_gpios),
-	.irq = DT_IRQ_BY_NAME(DT_PARENT(DT_DRV_INST(0)), global, irq),
+	.irq = DT_IRQ_BY_NAME(DT_INST_PARENT(0), global, irq),
 	.phase_shift = DT_INST_PROP(0, phase_shift),
 	.pcfg = PINCTRL_DT_INST_DEV_CONFIG_GET(0),
 };
