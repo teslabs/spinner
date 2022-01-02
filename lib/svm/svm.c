@@ -3,6 +3,8 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+#include <sys/util.h>
+
 #include <arm_math.h>
 
 #include <spinner/svm/svm.h>
@@ -13,26 +15,6 @@
 
 /** Value sqrt(3). */
 #define SQRT_3 1.7320508075688773f
-
-/**
- * @brief Clip a value.
- *
- * @param[in] value Value to be clipped.
- * @param[in] min Minimum value.
- * @param[in] max Maximum value.
- *
- * @return Clipped value.
- */
-static inline float clip(float value, float min, float max)
-{
-	if (value < min)
-		return min;
-
-	if (value > max)
-		return max;
-
-	return value;
-}
 
 /**
  * @brief Obtain sector based on a, b, c vector values.
@@ -188,9 +170,9 @@ void svm_set(svm_t *svm, float va, float vb)
 		break;
 	}
 
-	svm->duties.a = clip(svm->duties.a, svm->d_min, svm->d_max);
-	svm->duties.b = clip(svm->duties.b, svm->d_min, svm->d_max);
-	svm->duties.c = clip(svm->duties.c, svm->d_min, svm->d_max);
+	svm->duties.a = CLAMP(svm->duties.a, svm->d_min, svm->d_max);
+	svm->duties.b = CLAMP(svm->duties.b, svm->d_min, svm->d_max);
+	svm->duties.c = CLAMP(svm->duties.c, svm->d_min, svm->d_max);
 
-	svm->duties.max = clip(svm->duties.max, svm->d_min, svm->d_max);
+	svm->duties.max = CLAMP(svm->duties.max, svm->d_min, svm->d_max);
 }
