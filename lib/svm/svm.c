@@ -27,27 +27,27 @@
  */
 static uint8_t get_sector(float a, float b, float c)
 {
-	uint8_t sector = 0u;
+	uint8_t sector = 0U;
 
-	if (c <= 0) {
-		if (a <= 0) {
-			sector = 2u;
+	if (c <= 0.0f) {
+		if (a <= 0.0f) {
+			sector = 2U;
 		} else {
-			if (b <= 0) {
-				sector = 6u;
+			if (b <= 0.0f) {
+				sector = 6U;
 			} else {
-				sector = 1u;
+				sector = 1U;
 			}
 		}
 	} else {
-		if (a <= 0) {
-			if (b <= 0) {
-				sector = 4u;
+		if (a <= 0.0f) {
+			if (b <= 0.0f) {
+				sector = 4U;
 			} else {
-				sector = 3u;
+				sector = 3U;
 			}
 		} else {
-			sector = 5u;
+			sector = 5U;
 		}
 	}
 
@@ -60,7 +60,7 @@ static uint8_t get_sector(float a, float b, float c)
 
 void svm_init(svm_t *svm)
 {
-	svm->sector = 0u;
+	svm->sector = 0U;
 
 	svm->duties.a = 0.0f;
 	svm->duties.b = 0.0f;
@@ -89,7 +89,7 @@ void svm_set(svm_t *svm, float va, float vb)
 	svm->sector = get_sector(a, b, c);
 
 	switch (svm->sector) {
-	case 1u:
+	case 1U:
 		x = a;
 		y = b;
 		z = 1.0f - (x + y);
@@ -99,7 +99,7 @@ void svm_set(svm_t *svm, float va, float vb)
 		svm->duties.c = z * 0.5f;
 
 		break;
-	case 2u:
+	case 2U:
 		x = -c;
 		y = -a;
 		z = 1.0f - (x + y);
@@ -109,7 +109,7 @@ void svm_set(svm_t *svm, float va, float vb)
 		svm->duties.c = z * 0.5f;
 
 		break;
-	case 3u:
+	case 3U:
 		x = b;
 		y = c;
 		z = 1.0f - (x + y);
@@ -119,7 +119,7 @@ void svm_set(svm_t *svm, float va, float vb)
 		svm->duties.c = y + z * 0.5f;
 
 		break;
-	case 4u:
+	case 4U:
 		x = -a;
 		y = -b;
 		z = 1.0f - (x + y);
@@ -129,7 +129,7 @@ void svm_set(svm_t *svm, float va, float vb)
 		svm->duties.c = x + y + z * 0.5f;
 
 		break;
-	case 5u:
+	case 5U:
 		x = c;
 		y = a;
 		z = 1.0f - (x + y);
@@ -139,7 +139,7 @@ void svm_set(svm_t *svm, float va, float vb)
 		svm->duties.c = x + y + z * 0.5f;
 
 		break;
-	case 6u:
+	case 6U:
 		x = -b;
 		y = -c;
 		z = 1.0f - (x + y);
