@@ -1,9 +1,11 @@
 # Copyright (c) 2021 Teslabs Engineering S.L.
 # SPDX-License-Identifier: Apache-2.0
 
+DT_COMPAT_ST_STM32_CURRSMP_SHUNT := st,stm32-currsmp-shunt
+
 config SPINNER_CURRSMP_SHUNT_STM32
 	bool "STM32 shunt current sampling driver"
-	default y if SOC_FAMILY_STM32
+	default $(dt_compat_enabled,$(DT_COMPAT_ST_STM32_CURRSMP_SHUNT))
 	select SPINNER_UTILS_STM32
 	select USE_STM32_LL_ADC
 	select ZERO_LATENCY_IRQS
