@@ -65,7 +65,6 @@ void svm_init(svm_t *svm)
 	svm->duties.a = 0.0f;
 	svm->duties.b = 0.0f;
 	svm->duties.c = 0.0f;
-	svm->duties.max = 0.0f;
 
 	svm->d_min = 0.0f;
 	svm->d_max = 1.0f;
@@ -99,9 +98,7 @@ void svm_set(svm_t *svm, float va, float vb)
 		svm->duties.b = y + z * 0.5f;
 		svm->duties.c = z * 0.5f;
 
-		svm->duties.max = svm->duties.a;
 		break;
-
 	case 2u:
 		x = -c;
 		y = -a;
@@ -111,9 +108,7 @@ void svm_set(svm_t *svm, float va, float vb)
 		svm->duties.b = x + y + z * 0.5f;
 		svm->duties.c = z * 0.5f;
 
-		svm->duties.max = svm->duties.b;
 		break;
-
 	case 3u:
 		x = b;
 		y = c;
@@ -123,10 +118,7 @@ void svm_set(svm_t *svm, float va, float vb)
 		svm->duties.b = x + y + z * 0.5f;
 		svm->duties.c = y + z * 0.5f;
 
-		svm->duties.max = svm->duties.b;
-
 		break;
-
 	case 4u:
 		x = -a;
 		y = -b;
@@ -136,10 +128,7 @@ void svm_set(svm_t *svm, float va, float vb)
 		svm->duties.b = x + z * 0.5f;
 		svm->duties.c = x + y + z * 0.5f;
 
-		svm->duties.max = svm->duties.c;
-
 		break;
-
 	case 5u:
 		x = c;
 		y = a;
@@ -149,10 +138,7 @@ void svm_set(svm_t *svm, float va, float vb)
 		svm->duties.b = z * 0.5f;
 		svm->duties.c = x + y + z * 0.5f;
 
-		svm->duties.max = svm->duties.c;
-
 		break;
-
 	case 6u:
 		x = -b;
 		y = -c;
@@ -162,10 +148,7 @@ void svm_set(svm_t *svm, float va, float vb)
 		svm->duties.b = z * 0.5f;
 		svm->duties.c = x + z * 0.5f;
 
-		svm->duties.max = svm->duties.a;
-
 		break;
-
 	default:
 		break;
 	}
@@ -173,6 +156,4 @@ void svm_set(svm_t *svm, float va, float vb)
 	svm->duties.a = CLAMP(svm->duties.a, svm->d_min, svm->d_max);
 	svm->duties.b = CLAMP(svm->duties.b, svm->d_min, svm->d_max);
 	svm->duties.c = CLAMP(svm->duties.c, svm->d_min, svm->d_max);
-
-	svm->duties.max = CLAMP(svm->duties.max, svm->d_min, svm->d_max);
 }

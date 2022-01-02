@@ -25,8 +25,6 @@ typedef struct {
 	float b;
 	/** C channel duty cycle. */
 	float c;
-	/** Maximum duty cycle of a, b, c. */
-	float max;
 } svm_duties_t;
 
 /** @brief SVM state. */
