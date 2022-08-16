@@ -9,6 +9,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container: teslabs/spinner:latest
+    env:
+      CMAKE_PREFIX_PATH: /opt/toolchains
     steps:
       - name: Checkout
         uses: actions/checkout@v2

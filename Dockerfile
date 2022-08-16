@@ -1,10 +1,11 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 # install dependencies
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     git \
+    cmake \
     ninja-build \
     gperf \
     ccache \
@@ -23,21 +24,16 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     gcc-multilib \
     g++-multilib \
     libsdl2-dev \
+    libmagic1 \
     doxygen \
  && rm -rf /var/lib/apt/lists/*
 
-# install recent CMake
-RUN pip3 install cmake
-
 # install SDK
-ARG ZSDK_TOOL=toolchain-arm
-ARG ZSDK_VERSION=0.13.1
-RUN wget -q "https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${ZSDK_VERSION}/zephyr-${ZSDK_TOOL}-${ZSDK_VERSION}-linux-x86_64-setup.run" && \
-    sh "zephyr-${ZSDK_TOOL}-${ZSDK_VERSION}-linux-x86_64-setup.run" --quiet -- -d /opt/toolchains/zephyr-${ZSDK_TOOL}-${ZSDK_VERSION} && \
-    rm "zephyr-${ZSDK_TOOL}-${ZSDK_VERSION}-linux-x86_64-setup.run"
-
-ENV ZEPHYR_TOOLCHAIN_VARIANT=zephyr
-ENV ZEPHYR_SDK_INSTALL_DIR=/opt/toolchains/zephyr-${ZSDK_TOOL}-${ZSDK_VERSION}
+ARG ZSDK_VERSION=0.14.2
+RUN mkdir /opt/toolchains && cd /opt/toolchains && \
+    wget -q "https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${ZSDK_VERSION}/zephyr-sdk-${ZSDK_VERSION}_linux-x86_64_minimal.tar.gz" && \
+    tar xf zephyr-sdk-${ZSDK_VERSION}_linux-x86_64_minimal.tar.gz -C . && \
+    ./zephyr-sdk-${ZSDK_VERSION}/setup.sh -t arm-zephyr-eabi -c
 
 # install West
 RUN pip3 install west
