@@ -280,11 +280,11 @@ static int svpwm_stm32_init(const struct device *dev)
 PINCTRL_DT_INST_DEFINE(0);
 
 #define ENABLE_GPIOS_ELEM(idx, _)                                              \
-	GPIO_DT_SPEC_INST_GET_BY_IDX(0, enable_gpios, idx),
+	GPIO_DT_SPEC_INST_GET_BY_IDX(0, enable_gpios, idx)
 
 static const struct gpio_dt_spec enable_pins[] = {COND_CODE_1(
 	DT_INST_NODE_HAS_PROP(0, enable_gpios),
-	(UTIL_LISTIFY(DT_INST_PROP_LEN(0, enable_gpios), ENABLE_GPIOS_ELEM)),
+	(LISTIFY(DT_INST_PROP_LEN(0, enable_gpios), ENABLE_GPIOS_ELEM, (,))),
 	())};
 
 static const struct svpwm_stm32_config svpwm_stm32_config = {
