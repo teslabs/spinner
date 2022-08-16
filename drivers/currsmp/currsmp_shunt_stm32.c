@@ -5,9 +5,9 @@
 
 #define DT_DRV_COMPAT st_stm32_currsmp_shunt
 
-#include <drivers/clock_control/stm32_clock_control.h>
-#include <drivers/pinctrl.h>
-#include <logging/log.h>
+#include <zephyr/drivers/clock_control/stm32_clock_control.h>
+#include <zephyr/drivers/pinctrl.h>
+#include <zephyr/logging/log.h>
 #include <soc.h>
 
 #include <stm32_ll_adc.h>

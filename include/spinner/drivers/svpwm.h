@@ -10,7 +10,7 @@
 #ifndef _SPINNER_DRIVERS_SVPWM_H_
 #define _SPINNER_DRIVERS_SVPWM_H_
 
-#include <device.h>
+#include <zephyr/device.h>
 #include <zephyr/types.h>
 
 /**

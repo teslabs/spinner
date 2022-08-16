@@ -10,7 +10,7 @@
 #ifndef _SPINNER_LIB_UTILS_STM32_TIM_H_
 #define _SPINNER_LIB_UTILS_STM32_TIM_H_
 
-#include <drivers/clock_control/stm32_clock_control.h>
+#include <zephyr/drivers/clock_control/stm32_clock_control.h>
 
 /**
  * @defgroup spinner_utils_stm32_tim STM32 Timer Utilities

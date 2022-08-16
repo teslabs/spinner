@@ -5,7 +5,7 @@
 
 #include <stdlib.h>
 
-#include <shell/shell.h>
+#include <zephyr/shell/shell.h>
 
 #include <spinner/control/cloop.h>
 

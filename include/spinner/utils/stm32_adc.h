@@ -10,7 +10,7 @@
 #ifndef _SPINNER_LIB_UTILS_STM32_ADC_H_
 #define _SPINNER_LIB_UTILS_STM32_ADC_H_
 
-#include <drivers/clock_control/stm32_clock_control.h>
+#include <zephyr/drivers/clock_control/stm32_clock_control.h>
 
 #include <stm32_ll_adc.h>
 
