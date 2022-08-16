@@ -5,7 +5,7 @@
 
 #include <math.h>
 
-#include <ztest.h>
+#include <zephyr/ztest.h>
 
 #include <spinner/svm/svm.h>
 
@@ -32,7 +32,7 @@
  * either of the adjacent sectors, since sector determination based on sign
  * threshold may carry floating point rounding errors.
  */
-static void test_svm(void)
+ZTEST(svm, test_api)
 {
 	svm_t svm;
 
@@ -137,8 +137,4 @@ static void test_svm(void)
 	zassert_true(ALMOST_EQUAL(svm.duties.c, 0.5f), NULL);
 }
 
-void test_main(void)
-{
-	ztest_test_suite(lib_svm, ztest_unit_test(test_svm));
-	ztest_run_test_suite(lib_svm);
-}
+ZTEST_SUITE(svm, NULL, NULL, NULL, NULL, NULL);
