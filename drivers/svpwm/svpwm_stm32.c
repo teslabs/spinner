@@ -5,7 +5,6 @@
 
 #define DT_DRV_COMPAT st_stm32_svpwm
 
-#include <soc.h>
 #include <zephyr/drivers/clock_control/stm32_clock_control.h>
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/drivers/pinctrl.h>
