@@ -287,8 +287,7 @@ static const struct gpio_dt_spec enable_pins[] = {
 
 static const struct svpwm_stm32_config svpwm_stm32_config = {
 	.timer = (TIM_TypeDef *)DT_REG_ADDR(DT_INST_PARENT(0)),
-	.pclken = {.bus = DT_CLOCKS_CELL(DT_INST_PARENT(0), bus),
-		   .enr = DT_CLOCKS_CELL(DT_INST_PARENT(0), bits)},
+	.pclken = STM32_CLOCK_INFO(0, DT_INST_PARENT(0)),
 	.enable_comp_outputs = DT_PROP_OR(DT_CHILD(DT_DRV_INST(0), driver),
 					  enable_comp_outputs, false),
 	.t_dead = DT_PROP_OR(DT_CHILD(DT_DRV_INST(0), driver), t_dead_ns, 0),
