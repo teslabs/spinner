@@ -437,8 +437,7 @@ PINCTRL_DT_INST_DEFINE(0);
 
 static const struct currsmp_shunt_stm32_config currsmp_shunt_stm32_config = {
 	.adc = (ADC_TypeDef *)DT_REG_ADDR(DT_INST_PARENT(0)),
-	.pclken = {.bus = DT_CLOCKS_CELL(DT_INST_PARENT(0), bus),
-		   .enr = DT_CLOCKS_CELL(DT_INST_PARENT(0), bits)},
+	.pclken = STM32_CLOCK_INFO(0, DT_INST_PARENT(0)),
 	.adc_irq = DT_IRQ_BY_IDX(DT_INST_PARENT(0), 0, irq),
 	.adc_resolution = DT_INST_PROP(0, adc_resolution),
 	.adc_tsample = DT_INST_PROP(0, adc_tsample),
