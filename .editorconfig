@@ -52,4 +52,4 @@ indent_style = tab
 # devicetree
 [*.{dts,dtsi,overlay}]
 indent_style = tab
-indent_size = 4
+indent_size = 8
