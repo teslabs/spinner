@@ -278,15 +278,12 @@ static int svpwm_stm32_init(const struct device *dev)
 
 PINCTRL_DT_INST_DEFINE(0);
 
-#define ENABLE_GPIOS_ELEM(idx, _)                                              \
-	GPIO_DT_SPEC_GET_BY_IDX(DT_CHILD(DT_DRV_INST(0), driver),              \
-				enable_gpios, idx)
+#define GPIO_DT_SPEC_GET_BY_IDX_AND_COMMA(node_id, prop, idx)                  \
+	GPIO_DT_SPEC_GET_BY_IDX(node_id, prop, idx),
 
-static const struct gpio_dt_spec enable_pins[] = {COND_CODE_1(
-	DT_NODE_HAS_PROP(DT_CHILD(DT_DRV_INST(0), driver), enable_gpios),
-	(LISTIFY(DT_PROP_LEN(DT_CHILD(DT_DRV_INST(0), driver), enable_gpios),
-		 ENABLE_GPIOS_ELEM, (, ))),
-	())};
+static const struct gpio_dt_spec enable_pins[] = {
+	DT_FOREACH_PROP_ELEM(DT_CHILD(DT_DRV_INST(0), driver), enable_gpios,
+			     GPIO_DT_SPEC_GET_BY_IDX_AND_COMMA)};
 
 static const struct svpwm_stm32_config svpwm_stm32_config = {
 	.timer = (TIM_TypeDef *)DT_REG_ADDR(DT_INST_PARENT(0)),
