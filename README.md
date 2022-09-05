@@ -41,7 +41,7 @@ west update
 The application can be built by running:
 
 ```shell
-west build -b $BOARD -s spinner
+west build -b $BOARD spinner
 ```
 
 where `$BOARD` is the target board (see `boards`). Some other build
@@ -53,7 +53,7 @@ configurations are also provided:
 They can be enabled by setting `OVERLAY_CONFIG`, e.g.
 
 ```shell
-west build -b $BOARD -s spinner -- -DOVERLAY_CONFIG=debug.conf
+west build -b $BOARD spinner -- -DOVERLAY_CONFIG=debug.conf
 ```
 
 Once you have built the application you can flash it by running:
