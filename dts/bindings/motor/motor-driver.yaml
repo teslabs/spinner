@@ -1,0 +1,32 @@
+# Copyright (c) 2022, Teslabs Engineering S.L.
+# SPDX-License-Identifier: Apache-2.0
+
+description: Bindings for motor driver ICs/circuits
+
+include: base.yaml
+
+properties:
+  enable-comp-outputs:
+    type: boolean
+    description: |
+      Enable complementary outputs, used to control the low side channels of
+      each inverter leg.
+
+  t-dead-ns:
+    type: int
+    required: false
+    description: |
+      Dead time in nanoseconds. If using an integrated controller, i.e. without
+      complementary PWM signals, it still needs to be provided to configure
+      accurate current measurements.
+
+  t-rise-ns:
+    type: int
+    required: false
+    description: |
+      Rise time in nanoseconds.
+
+  enable-gpios:
+    type: phandle-array
+    description: |
+      Channel enable GPIOS (a, b, c).

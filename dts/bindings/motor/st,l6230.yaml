@@ -1,0 +1,20 @@
+# Copyright (c) 2022, Teslabs Engineering S.L.
+# SPDX-License-Identifier: Apache-2.0
+
+description: STM32 L6230 DMOS driver for three-phase brushless DC motor
+
+compatible: "st,l6230"
+
+include: motor-driver.yaml
+
+properties:
+  t-dead-ns:
+    # L6230 dead time (Table 6)
+    default: 1000
+
+  t-rise-ns:
+    # L6230 rise time: tD(ON) + tRISE (Fig. 4)
+    default: 1050
+
+  enable-gpios:
+    required: true

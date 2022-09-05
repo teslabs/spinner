@@ -1,0 +1,18 @@
+# Copyright (c) 2022, Teslabs Engineering S.L.
+# SPDX-License-Identifier: Apache-2.0
+
+description: |
+  STM32 STSPIN830 Compact and versatile three-phase and three-sense motor
+  driver.
+
+compatible: "st,stspin830"
+
+include: motor-driver.yaml
+
+properties:
+  t-rise-ns:
+    # STSPIN830 rise time: tINd(ON) + tRISE (Table 5)
+    default: 670
+
+  enable-gpios:
+    required: true

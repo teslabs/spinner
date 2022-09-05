@@ -46,15 +46,13 @@
 		compatible = "st,stm32-svpwm";
 		pinctrl-0 = <&tim1_ch1_pa8 &tim1_ch2_pa9 &tim1_ch3_pa10 &tim1_ocp_pa11>;
 		pinctrl-names = "default";
-
-		/* L6230 dead time (Table 6) */
-		t-dead-ns = <1000>;
-		/* L6230 rise time: tD(ON) + tRISE (Fig. 4) */
-		t-rise-ns = <1050>;
 		currsmp = <&currsmp>;
-		enable-gpios = <&gpioc 10 GPIO_ACTIVE_HIGH>,
-					   <&gpioc 11 GPIO_ACTIVE_HIGH>,
-					   <&gpioc 12 GPIO_ACTIVE_HIGH>;
+		driver {
+			compatible = "st,l6230";
+			enable-gpios = <&gpioc 10 GPIO_ACTIVE_HIGH>,
+				       <&gpioc 11 GPIO_ACTIVE_HIGH>,
+				       <&gpioc 12 GPIO_ACTIVE_HIGH>;
+		};
 	};
 };
 

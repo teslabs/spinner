@@ -52,14 +52,13 @@
 		compatible = "st,stm32-svpwm";
 		pinctrl-0 = <&tim1_ch1_pa8 &tim1_ch2_pa9 &tim1_ch3_pa10 &tim1_ocp_pa11>;
 		pinctrl-names = "default";
-
-		t-dead-ns = <0>;
-		/* STSPIN830 rise time: tINd(ON) + tRISE (Table 5) */
-		t-rise-ns = <670>;
 		currsmp = <&currsmp>;
-		enable-gpios = <&gpiob 13 GPIO_ACTIVE_HIGH>,
-					   <&gpiob 14 GPIO_ACTIVE_HIGH>,
-					   <&gpiob 15 GPIO_ACTIVE_HIGH>;
+		driver {
+			compatible = "st,stspin830";
+			enable-gpios = <&gpiob 13 GPIO_ACTIVE_HIGH>,
+				       <&gpiob 14 GPIO_ACTIVE_HIGH>,
+				       <&gpiob 15 GPIO_ACTIVE_HIGH>;
+		};
 	};
 };
 

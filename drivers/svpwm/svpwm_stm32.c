@@ -5,11 +5,11 @@
 
 #define DT_DRV_COMPAT st_stm32_svpwm
 
+#include <soc.h>
 #include <zephyr/drivers/clock_control/stm32_clock_control.h>
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/drivers/pinctrl.h>
 #include <zephyr/logging/log.h>
-#include <soc.h>
 
 #include <stm32_ll_tim.h>
 
@@ -280,20 +280,23 @@ static int svpwm_stm32_init(const struct device *dev)
 PINCTRL_DT_INST_DEFINE(0);
 
 #define ENABLE_GPIOS_ELEM(idx, _)                                              \
-	GPIO_DT_SPEC_INST_GET_BY_IDX(0, enable_gpios, idx)
+	GPIO_DT_SPEC_GET_BY_IDX(DT_CHILD(DT_DRV_INST(0), driver),              \
+				enable_gpios, idx)
 
 static const struct gpio_dt_spec enable_pins[] = {COND_CODE_1(
-	DT_INST_NODE_HAS_PROP(0, enable_gpios),
-	(LISTIFY(DT_INST_PROP_LEN(0, enable_gpios), ENABLE_GPIOS_ELEM, (,))),
+	DT_NODE_HAS_PROP(DT_CHILD(DT_DRV_INST(0), driver), enable_gpios),
+	(LISTIFY(DT_PROP_LEN(DT_CHILD(DT_DRV_INST(0), driver), enable_gpios),
+		 ENABLE_GPIOS_ELEM, (, ))),
 	())};
 
 static const struct svpwm_stm32_config svpwm_stm32_config = {
 	.timer = (TIM_TypeDef *)DT_REG_ADDR(DT_INST_PARENT(0)),
 	.pclken = {.bus = DT_CLOCKS_CELL(DT_INST_PARENT(0), bus),
 		   .enr = DT_CLOCKS_CELL(DT_INST_PARENT(0), bits)},
-	.enable_comp_outputs = DT_INST_PROP_OR(0, enable_comp_outputs, false),
-	.t_dead = DT_INST_PROP_OR(0, t_dead_ns, 0),
-	.t_rise = DT_INST_PROP_OR(0, t_rise_ns, 0),
+	.enable_comp_outputs = DT_PROP_OR(DT_CHILD(DT_DRV_INST(0), driver),
+					  enable_comp_outputs, false),
+	.t_dead = DT_PROP_OR(DT_CHILD(DT_DRV_INST(0), driver), t_dead_ns, 0),
+	.t_rise = DT_PROP_OR(DT_CHILD(DT_DRV_INST(0), driver), t_rise_ns, 0),
 	.currsmp = DEVICE_DT_GET(DT_INST_PHANDLE(0, currsmp)),
 	.enable = enable_pins,
 	.enable_len = ARRAY_SIZE(enable_pins),
