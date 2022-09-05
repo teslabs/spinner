@@ -265,8 +265,7 @@ PINCTRL_DT_INST_DEFINE(0);
 
 static const struct halls_stm32_config halls_stm32_config = {
 	.timer = (TIM_TypeDef *)DT_REG_ADDR(DT_INST_PARENT(0)),
-	.pclken = {.bus = DT_CLOCKS_CELL(DT_INST_PARENT(0), bus),
-		   .enr = DT_CLOCKS_CELL(DT_INST_PARENT(0), bits)},
+	.pclken = STM32_CLOCK_INFO(0, DT_INST_PARENT(0)),
 	.h1 = GPIO_DT_SPEC_INST_GET(0, h1_gpios),
 	.h2 = GPIO_DT_SPEC_INST_GET(0, h2_gpios),
 	.h3 = GPIO_DT_SPEC_INST_GET(0, h3_gpios),
