@@ -1,4 +1,4 @@
-Sphinx<4
+Sphinx
 sphinx_rtd_theme
 breathe
 sphinxcontrib-mermaid
