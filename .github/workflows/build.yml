@@ -49,4 +49,4 @@ jobs:
       - name: Test
         working-directory: spinner
         run: |
-          ../zephyr/scripts/twister -T tests --integration -v
+          west twister -T tests --integration -v
