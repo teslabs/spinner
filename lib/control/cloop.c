@@ -4,6 +4,7 @@
  */
 
 #include <zephyr/device.h>
+#include <zephyr/init.h>
 
 #include <arm_math.h>
 
@@ -59,10 +60,8 @@ static void regulate(void *ctx)
 	svpwm_set_phase_voltages(cloop.svpwm, v_alpha, v_beta);
 }
 
-static int cloop_init(const struct device *dev)
+static int cloop_init(void)
 {
-	ARG_UNUSED(dev);
-
 	cloop.currsmp = DEVICE_DT_GET(DT_NODELABEL(currsmp));
 	cloop.svpwm = DEVICE_DT_GET(DT_NODELABEL(svpwm));
 	cloop.feedback = DEVICE_DT_GET(DT_NODELABEL(feedback));
