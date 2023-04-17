@@ -5,8 +5,10 @@
 
 #include <spinner/control/cloop.h>
 
-void main(void)
+int main(void)
 {
 	cloop_start();
 	cloop_set_ref(0.0f, 0.25f);
+
+	return 0;
 }
