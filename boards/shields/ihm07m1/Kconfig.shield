@@ -1,0 +1,2 @@
+config SHIELD_IHM07M1
+	def_bool $(shields_list_contains,ihm07m1)

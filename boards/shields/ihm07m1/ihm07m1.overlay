@@ -1,0 +1,20 @@
+/*
+ * Copyright (c) 2021 Teslabs Engineering S.L.
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+&svpwm {
+	driver {
+		compatible = "st,l6230";
+		enable-gpios = <&st_morpho_header ST_MORPHO_L_1 GPIO_ACTIVE_HIGH>,
+			       <&st_morpho_header ST_MORPHO_L_2 GPIO_ACTIVE_HIGH>,
+			       <&st_morpho_header ST_MORPHO_L_3 GPIO_ACTIVE_HIGH>;
+	};
+};
+
+&feedback {
+	h1-gpios = <&st_morpho_header ST_MORPHO_L_17 GPIO_ACTIVE_HIGH>;
+	h2-gpios = <&st_morpho_header ST_MORPHO_R_31 GPIO_ACTIVE_HIGH>;
+	h3-gpios = <&st_morpho_header ST_MORPHO_R_25 GPIO_ACTIVE_HIGH>;
+};

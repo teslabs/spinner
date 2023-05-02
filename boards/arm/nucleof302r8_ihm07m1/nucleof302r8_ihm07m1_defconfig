@@ -1,9 +1,0 @@
-# Copyright (c) 2021 Teslabs Engineering S.L.
-# SPDX-License-Identifier: Apache-2.0
-
-CONFIG_SOC_SERIES_STM32F3X=y
-CONFIG_SOC_STM32F302X8=y
-
-CONFIG_PINCTRL=y
-CONFIG_GPIO=y
-CONFIG_CLOCK_CONTROL=y

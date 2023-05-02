@@ -43,8 +43,10 @@ jobs:
       - name: Build
         working-directory: spinner
         run: |
-          west build -b nucleof302r8_ihm07m1 spinner -p
-          west build -b nucleog431rb_ihm16m1 spinner -p
+          west build -b nucleo_f302r8 spinner -p -- -DSHIELD=ihm07m1
+          west build -b nucleo_f302r8 spinner -p -- -DSHIELD=ihm16m1
+          west build -b nucleo_g431rb spinner -p -- -DSHIELD=ihm07m1
+          west build -b nucleo_g431rb spinner -p -- -DSHIELD=ihm16m1
 
       - name: Test
         working-directory: spinner

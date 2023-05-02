@@ -41,11 +41,11 @@ west update
 The application can be built by running:
 
 ```shell
-west build -b $BOARD spinner
+west build -b $BOARD spinner [-- -DSHIELD=$SHIELD]
 ```
 
-where `$BOARD` is the target board (see `boards`). Some other build
-configurations are also provided:
+where `$BOARD` is the target board (see `boards`) and `$SHIELD` an optional
+shield (see `boards/shields`). Some other build configurations are also provided:
 
 - `debug.conf`: Enable debug-friendly build
 - `shell.conf`: Enable shell facilities

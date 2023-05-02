@@ -1,0 +1,31 @@
+/*
+ * Copyright (c) 2021 Teslabs Engineering S.L.
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+#include <dts-bindings/adc/stm32g4xx.h>
+
+&timers1 {
+	svpwm: svpwm {
+		compatible = "st,stm32-svpwm";
+		currsmp = <&currsmp>;
+	};
+};
+
+&adc1 {
+	currsmp: currsmp {
+		compatible = "st,stm32-currsmp-shunt";
+
+		adc-resolution = <12>;
+		adc-tsample = <3>;
+		adc-trigger = <STM32_ADC12_INJ_TRIG_TIM1_TRGO>;
+	};
+};
+
+&timers2 {
+	feedback: feedback {
+		compatible = "st,stm32-halls";
+		phase-shift = <60>;
+	};
+};
