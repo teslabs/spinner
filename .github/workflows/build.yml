@@ -7,34 +7,23 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    container: teslabs/spinner:latest
-    env:
-      CMAKE_PREFIX_PATH: /opt/toolchains
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           path: spinner
 
-      - name: Cache Zephyr
-        uses: actions/cache@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
-          path: |
-            modules
-            zephyr
-          key: ${{ hashFiles('spinner/west.yml') }}
+          python-version: 3.11
 
-      - name: Initialize
-        working-directory: spinner
-        run: |
-          pip3 install -U west
-          west init -l .
-          west update
-          pip3 install -r ../zephyr/scripts/requirements-base.txt
-          pip3 install -r ../zephyr/scripts/requirements-build-test.txt
-          pip3 install -r ../zephyr/scripts/requirements-run-test.txt
-          pip3 install -r docs/requirements.txt
+      - name: Setup Zephyr project
+        uses: zephyrproject-rtos/action-zephyr-setup@v1
+        with:
+          app-path: spinner
+          toolchains: arm-zephyr-eabi
 
       - name: Lint code
         run: |
@@ -51,4 +40,4 @@ jobs:
       - name: Test
         working-directory: spinner
         run: |
-          west twister -T tests --integration -v
+          west twister -T tests -v --inline-logs --integration
