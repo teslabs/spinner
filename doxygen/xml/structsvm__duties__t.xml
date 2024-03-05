@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structsvm__duties__t" kind="struct" language="C++" prot="public">
+    <compoundname>svm_duties_t</compoundname>
+    <includes refid="svm_8h" local="no">svm.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structsvm__duties__t_1a5b6f80fce085281df90e259d4c2af330" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float svm_duties_t::a</definition>
+        <argsstring></argsstring>
+        <name>a</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>A channel duty cycle. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="spinner/svm/svm.h" line="23" column="7" bodyfile="spinner/svm/svm.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structsvm__duties__t_1aabfd83f71ad886d8329a4c7406e28ed4" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float svm_duties_t::b</definition>
+        <argsstring></argsstring>
+        <name>b</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>B channel duty cycle. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="spinner/svm/svm.h" line="25" column="7" bodyfile="spinner/svm/svm.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structsvm__duties__t_1a105eaded8f185094f3bd294265f8ad88" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float svm_duties_t::c</definition>
+        <argsstring></argsstring>
+        <name>c</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>C channel duty cycle. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="spinner/svm/svm.h" line="27" column="7" bodyfile="spinner/svm/svm.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>SVM duty cycles. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="spinner/svm/svm.h" line="21" column="1" bodyfile="spinner/svm/svm.h" bodystart="21" bodyend="28"/>
+    <listofallmembers>
+      <member refid="structsvm__duties__t_1a5b6f80fce085281df90e259d4c2af330" prot="public" virt="non-virtual"><scope>svm_duties_t</scope><name>a</name></member>
+      <member refid="structsvm__duties__t_1aabfd83f71ad886d8329a4c7406e28ed4" prot="public" virt="non-virtual"><scope>svm_duties_t</scope><name>b</name></member>
+      <member refid="structsvm__duties__t_1a105eaded8f185094f3bd294265f8ad88" prot="public" virt="non-virtual"><scope>svm_duties_t</scope><name>c</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

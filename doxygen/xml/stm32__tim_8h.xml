@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="stm32__tim_8h" kind="file" language="C++">
+    <compoundname>stm32_tim.h</compoundname>
+    <includes local="no">zephyr/drivers/clock_control/stm32_clock_control.h</includes>
+    <incdepgraph>
+      <node id="2">
+        <label>zephyr/drivers/clock_control/stm32_clock_control.h</label>
+      </node>
+      <node id="1">
+        <label>spinner/utils/stm32_tim.h</label>
+        <link refid="stm32__tim_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__spinner__utils__stm32__tim_1ga41cd7bc83910151988e42b2778306790" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int stm32_tim_clk_get</definition>
+        <argsstring>(const struct stm32_pclken *pclken, uint32_t *tim_clk)</argsstring>
+        <name>stm32_tim_clk_get</name>
+        <param>
+          <type>const struct stm32_pclken *</type>
+          <declname>pclken</declname>
+        </param>
+        <param>
+          <type>uint32_t *</type>
+          <declname>tim_clk</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Obtain timer clock speed.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">pclken</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timer clock control subsystem. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">tim_clk</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Where computed timer clock will be stored.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0 on success, error code otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="spinner/utils/stm32_tim.h" line="29" column="5" declfile="spinner/utils/stm32_tim.h" declline="29" declcolumn="5"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>STM32 Timer Utilities.</para>
+<para>Copyright (c) 2021 Teslabs Engineering S.L. SPDX-License-Identifier: Apache-2.0 </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>_SPINNER_LIB_UTILS_STM32_TIM_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>_SPINNER_LIB_UTILS_STM32_TIM_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;zephyr/drivers/clock_control/stm32_clock_control.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="group__spinner__utils__stm32__tim_1ga41cd7bc83910151988e42b2778306790" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="group__spinner__utils__stm32__tim_1ga41cd7bc83910151988e42b2778306790" kindref="member">stm32_tim_clk_get</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/>stm32_pclken<sp/>*pclken,<sp/>uint32_t<sp/>*tim_clk);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_SPINNER_LIB_UTILS_STM32_TIM_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="spinner/utils/stm32_tim.h"/>
+  </compounddef>
+</doxygen>

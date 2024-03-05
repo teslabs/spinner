@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Current Sampling &mdash; Spinner  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=86bd4ea3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/light.css?v=a0baf2e0" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="STM32" href="impl/stm32.html" />
+    <link rel="prev" title="Current Loop" href="../cloop/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Theory</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../theory/currsmp.html">Current sampling</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../theory/currsmp.html#shunt-resistors">Shunt resistors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../theory/currsmp.html#sv-pwm">SV-PWM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../theory/currsmp.html#sampling-strategy">Sampling strategy</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../theory/foc.html">Field Oriented Control</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../theory/foc.html#space-vector">Space Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../theory/foc.html#clarke-transform">Clarke transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../theory/foc.html#park-transform">Park transform</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../theory/svpwm.html">SV-PWM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../theory/svpwm.html#sector-determination">Sector determination</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../theory/svpwm.html#amplitude-limitation">Amplitude limitation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../theory/svpwm.html#duty-cycles-calculation">Duty cycles calculation</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Components</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../cloop/index.html">Current Loop</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cloop/index.html#api">API</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Current Sampling</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#api">API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#implementations">Implementations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="impl/stm32.html">STM32</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../feedback/index.html">Feedback</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../feedback/index.html#introduction">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../feedback/index.html#halls">Halls</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../feedback/index.html#api">API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../feedback/index.html#implementations">Implementations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../feedback/impl/stm32-halls.html">STM32 Halls</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../svpwm/index.html">SV-PWM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../svpwm/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../svpwm/index.html#api">API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../svpwm/index.html#implementations">Implementations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../svpwm/impl/stm32.html">STM32</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../svpwm/impl/stm32.html#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../svpwm/impl/stm32.html#pwm-generation">PWM generation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../svpwm/impl/stm32.html#adc-synchronization">ADC synchronization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../svpwm/impl/stm32.html#break-function">Break function</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://teslabs.github.io/spinner/doxygen/html/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zbibliography.html">Bibliography</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Spinner</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Current Sampling</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/components/currsmp/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="current-sampling">
+<h1>Current Sampling<a class="headerlink" href="#current-sampling" title="Link to this heading"></a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+</section>
+<section id="api">
+<h2>API<a class="headerlink" href="#api" title="Link to this heading"></a></h2>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group__spinner__drivers__currsmp"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">spinner_drivers_currsmp</span></span></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-typedefs">Typedefs</p>
+<dl class="c type">
+<dt class="sig sig-object c" id="c.currsmp_regulation_cb_t">
+<span class="target" id="group__spinner__drivers__currsmp_1gabe5c1c07679b93d4efbb88f30a7f20f4"></span><span class="k"><span class="pre">typedef</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">(</span></span><span class="p"><span class="pre">*</span></span><span class="sig-name descname"><span class="n"><span class="pre">currsmp_regulation_cb_t</span></span></span><span class="p"><span class="pre">)</span></span><span class="p"><span class="pre">(</span></span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="p"><span class="pre">)</span></span><a class="headerlink" href="#c.currsmp_regulation_cb_t" title="Link to this definition"></a><br /></dt>
+<dd><p>Current sampling regulation callback. </p>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.currsmp_configure">
+<span class="target" id="group__spinner__drivers__currsmp_1gaf2f85d962769a3ddb170cec20f1db99f"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">currsmp_configure</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference external" href="https://docs.zephyrproject.org/latest/kernel/drivers/index.html#c.device" title="(in Zephyr Project v3.6.99)"><span class="n"><span class="pre">device</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">dev</span></span>, <a class="reference internal" href="#c.currsmp_regulation_cb_t" title="currsmp_regulation_cb_t"><span class="n"><span class="pre">currsmp_regulation_cb_t</span></span></a><span class="w"> </span><span class="n"><span class="pre">regulation_cb</span></span>, <span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">ctx</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.currsmp_configure" title="Link to this definition"></a><br /></dt>
+<dd><p>Configure current sampling device. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This function needs to be called before calling <a class="reference internal" href="#group__spinner__drivers__currsmp_1ga6cbf8b1465a0876924ba505590f61a74"><span class="std std-ref">currsmp_start()</span></a>.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dev</strong> – <strong>[in]</strong> Current sampling device. </p></li>
+<li><p><strong>regulation_cb</strong> – <strong>[in]</strong> Callback called on each regulation cycle. </p></li>
+<li><p><strong>ctx</strong> – <strong>[in]</strong> Callback context. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.currsmp_get_currents">
+<span class="target" id="group__spinner__drivers__currsmp_1ga47e66494ce09fe36570899995b8b9ec1"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">currsmp_get_currents</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference external" href="https://docs.zephyrproject.org/latest/kernel/drivers/index.html#c.device" title="(in Zephyr Project v3.6.99)"><span class="n"><span class="pre">device</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">dev</span></span>, <span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference internal" href="#c.currsmp_curr" title="currsmp_curr"><span class="n"><span class="pre">currsmp_curr</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">curr</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.currsmp_get_currents" title="Link to this definition"></a><br /></dt>
+<dd><p>Get phase currents. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dev</strong> – <strong>[in]</strong> Current sampling device. </p></li>
+<li><p><strong>curr</strong> – <strong>[out]</strong> Pointer where phase currents will be stored. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.currsmp_set_sector">
+<span class="target" id="group__spinner__drivers__currsmp_1ga7229cb4cb5fd5cc8d427924a0dd50d81"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">currsmp_set_sector</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference external" href="https://docs.zephyrproject.org/latest/kernel/drivers/index.html#c.device" title="(in Zephyr Project v3.6.99)"><span class="n"><span class="pre">device</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">dev</span></span>, <span class="n"><span class="pre">uint8_t</span></span><span class="w"> </span><span class="n"><span class="pre">sector</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.currsmp_set_sector" title="Link to this definition"></a><br /></dt>
+<dd><p>Set SV-PWM sector. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dev</strong> – <strong>[in]</strong> Current sampling device. </p></li>
+<li><p><strong>sector</strong> – <strong>[in]</strong> SV-PWM sector. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.currsmp_get_smp_time">
+<span class="target" id="group__spinner__drivers__currsmp_1gadaf81f071fa59c5d707eee28a2e14a03"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="n"><span class="pre">uint32_t</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">currsmp_get_smp_time</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference external" href="https://docs.zephyrproject.org/latest/kernel/drivers/index.html#c.device" title="(in Zephyr Project v3.6.99)"><span class="n"><span class="pre">device</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">dev</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.currsmp_get_smp_time" title="Link to this definition"></a><br /></dt>
+<dd><p>Obtain currents sampling time in nanoseconds. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dev</strong> – <strong>[in]</strong> Current sampling device.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Sampling time in nanoseconds (zero indicates error). </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.currsmp_start">
+<span class="target" id="group__spinner__drivers__currsmp_1ga6cbf8b1465a0876924ba505590f61a74"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">currsmp_start</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference external" href="https://docs.zephyrproject.org/latest/kernel/drivers/index.html#c.device" title="(in Zephyr Project v3.6.99)"><span class="n"><span class="pre">device</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">dev</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.currsmp_start" title="Link to this definition"></a><br /></dt>
+<dd><p>Start sampling currents. </p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#group__spinner__drivers__currsmp_1ga52e2a7e19789e8d9b4733fc12246860b"><span class="std std-ref">currsmp_stop()</span></a></p>
+</div>
+</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dev</strong> – <strong>[in]</strong> Current sampling device.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.currsmp_stop">
+<span class="target" id="group__spinner__drivers__currsmp_1ga52e2a7e19789e8d9b4733fc12246860b"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">currsmp_stop</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference external" href="https://docs.zephyrproject.org/latest/kernel/drivers/index.html#c.device" title="(in Zephyr Project v3.6.99)"><span class="n"><span class="pre">device</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">dev</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.currsmp_stop" title="Link to this definition"></a><br /></dt>
+<dd><p>Stop sampling currents. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dev</strong> – <strong>[in]</strong> Current sampling device. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.currsmp_pause">
+<span class="target" id="group__spinner__drivers__currsmp_1ga8dad1c15188dec6dcbfacead9798b434"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">currsmp_pause</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference external" href="https://docs.zephyrproject.org/latest/kernel/drivers/index.html#c.device" title="(in Zephyr Project v3.6.99)"><span class="n"><span class="pre">device</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">dev</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.currsmp_pause" title="Link to this definition"></a><br /></dt>
+<dd><p>Pause current sampling. </p>
+<p><div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="#group__spinner__drivers__currsmp_1ga69e68b8277e8609a32dd769a315dfbb5"><span class="std std-ref">currsmp_resume()</span></a></p>
+</div>
+</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This function can be used to prevent current sampling to call the regulation callback, thus allowing to adjust shared context.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dev</strong> – Current sampling device.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.currsmp_resume">
+<span class="target" id="group__spinner__drivers__currsmp_1ga69e68b8277e8609a32dd769a315dfbb5"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">currsmp_resume</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference external" href="https://docs.zephyrproject.org/latest/kernel/drivers/index.html#c.device" title="(in Zephyr Project v3.6.99)"><span class="n"><span class="pre">device</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">dev</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.currsmp_resume" title="Link to this definition"></a><br /></dt>
+<dd><p>Resume current sampling. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dev</strong> – Current sampling device. </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<dl class="c struct">
+<dt class="sig sig-object c" id="c.currsmp_curr">
+<span class="target" id="structcurrsmp__curr"></span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">currsmp_curr</span></span></span><a class="headerlink" href="#c.currsmp_curr" title="Link to this definition"></a><br /></dt>
+<dd><div class="docutils container">
+<em>#include &lt;currsmp.h&gt;</em></div>
+<p>Current sampling currents. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-members">Public Members</p>
+<dl class="c var">
+<dt class="sig sig-object c" id="c.currsmp_curr.i_a">
+<span class="target" id="structcurrsmp__curr_1aba0ca36b18f05fce33c7d785f899578e"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">i_a</span></span></span><a class="headerlink" href="#c.currsmp_curr.i_a" title="Link to this definition"></a><br /></dt>
+<dd><p>Phase a current. </p>
+</dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.currsmp_curr.i_b">
+<span class="target" id="structcurrsmp__curr_1a8bdd1d6af6ff716be969dbbe56306cc0"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">i_b</span></span></span><a class="headerlink" href="#c.currsmp_curr.i_b" title="Link to this definition"></a><br /></dt>
+<dd><p>Phase b current. </p>
+</dd></dl>
+
+<dl class="c var">
+<dt class="sig sig-object c" id="c.currsmp_curr.i_c">
+<span class="target" id="structcurrsmp__curr_1ad78ecbd3ce06bbe93fa12c7d080ab94a"></span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">i_c</span></span></span><a class="headerlink" href="#c.currsmp_curr.i_c" title="Link to this definition"></a><br /></dt>
+<dd><p>Phase c current. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="implementations">
+<h2>Implementations<a class="headerlink" href="#implementations" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="impl/stm32.html">STM32</a></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../cloop/index.html" class="btn btn-neutral float-left" title="Current Loop" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="impl/stm32.html" class="btn btn-neutral float-right" title="STM32" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Teslabs Engineering S.L..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

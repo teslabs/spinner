@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="group__spinner__control__svm" kind="group">
+    <compoundname>spinner_control_svm</compoundname>
+    <title>Space Vector Modulation (SVM) API</title>
+    <innerclass refid="structsvm__duties__t" prot="public">svm_duties_t</innerclass>
+    <innerclass refid="structsvm" prot="public">svm</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__spinner__control__svm_1gae0cebddbf83ace81601de41b67453c79" prot="public" static="no">
+        <type>struct <ref refid="structsvm" kindref="compound">svm</ref></type>
+        <definition>typedef struct svm svm_t</definition>
+        <argsstring></argsstring>
+        <name>svm_t</name>
+        <briefdescription>
+<para>SVM state. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="spinner/svm/svm.h" line="40" column="7"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__spinner__control__svm_1gad356bbcabf5e5cd7c97926e646c85803" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void svm_init</definition>
+        <argsstring>(svm_t *svm)</argsstring>
+        <name>svm_init</name>
+        <param>
+          <type><ref refid="group__spinner__control__svm_1gae0cebddbf83ace81601de41b67453c79" kindref="member">svm_t</ref> *</type>
+          <declname>svm</declname>
+        </param>
+        <briefdescription>
+<para>Initialize SVM. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">svm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>SVM instance. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="spinner/svm/svm.h" line="47" column="6" declfile="spinner/svm/svm.h" declline="47" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__spinner__control__svm_1ga86b9df0f88d4fb34cdb113e8a8e6664b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void svm_set</definition>
+        <argsstring>(svm_t *svm, float va, float vb)</argsstring>
+        <name>svm_set</name>
+        <param>
+          <type><ref refid="group__spinner__control__svm_1gae0cebddbf83ace81601de41b67453c79" kindref="member">svm_t</ref> *</type>
+          <declname>svm</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>va</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>vb</declname>
+        </param>
+        <briefdescription>
+<para>Set v_alpha and v_beta. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">svm</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>SVM instance. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">va</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>v_alpha value. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">vb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>v_beta value. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="spinner/svm/svm.h" line="56" column="6" declfile="spinner/svm/svm.h" declline="56" declcolumn="6"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

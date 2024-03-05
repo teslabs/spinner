@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STM32 &mdash; Spinner  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/plot_directive.css" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/custom.css?v=86bd4ea3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/light.css?v=a0baf2e0" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Bibliography" href="../../../zbibliography.html" />
+    <link rel="prev" title="SV-PWM" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html">
+            
+              <img src="../../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Theory</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../theory/currsmp.html">Current sampling</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../theory/currsmp.html#shunt-resistors">Shunt resistors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../theory/currsmp.html#sv-pwm">SV-PWM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../theory/currsmp.html#sampling-strategy">Sampling strategy</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../theory/foc.html">Field Oriented Control</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../theory/foc.html#space-vector">Space Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../theory/foc.html#clarke-transform">Clarke transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../theory/foc.html#park-transform">Park transform</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../theory/svpwm.html">SV-PWM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../theory/svpwm.html#sector-determination">Sector determination</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../theory/svpwm.html#amplitude-limitation">Amplitude limitation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../theory/svpwm.html#duty-cycles-calculation">Duty cycles calculation</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Components</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../cloop/index.html">Current Loop</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cloop/index.html#api">API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../currsmp/index.html">Current Sampling</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../currsmp/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../currsmp/index.html#api">API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../currsmp/index.html#implementations">Implementations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../currsmp/impl/stm32.html">STM32</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../feedback/index.html">Feedback</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../feedback/index.html#introduction">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../feedback/index.html#halls">Halls</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../feedback/index.html#api">API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../feedback/index.html#implementations">Implementations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../feedback/impl/stm32-halls.html">STM32 Halls</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">SV-PWM</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#api">API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#implementations">Implementations</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">STM32</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pwm-generation">PWM generation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adc-synchronization">ADC synchronization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#break-function">Break function</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://teslabs.github.io/spinner/doxygen/html/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../zbibliography.html">Bibliography</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Spinner</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">SV-PWM</a></li>
+      <li class="breadcrumb-item active">STM32</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/components/svpwm/impl/stm32.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="stm32">
+<h1>STM32<a class="headerlink" href="#stm32" title="Link to this heading"></a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<p>The timer peripheral is the core part of the SV-PWM driver. It generates the PWM
+signals that drive the inverter circuit and it also takes care of synchronizing
+ADC measurements made by the current sampling driver.</p>
+<p>The driver is designed to work using one of the <em>advanced control timers</em>,
+usually <code class="docutils literal notranslate"><span class="pre">TIM1</span></code> and <code class="docutils literal notranslate"><span class="pre">TIM8</span></code>. They include specific functionalities that are
+crucial to have a performant and safe system <span id="id1">[<a class="reference internal" href="../../../zbibliography.html#id3" title="STMicroelectronics. AN4013 STM32 cross-series timer overview. 8th edition, 2019. [Online; accessed 4-May-2021]. URL: https://www.st.com/resource/en/application_note/dm00042534-stm32-crossseries-timer-overview-stmicroelectronics.pdf.">STM19</a>]</span>.
+<a class="reference internal" href="#stm32-timer-diagram"><span class="std std-numref">Fig. 17</span></a> shows the diagram of an advanced control timer.</p>
+<figure class="align-default" id="id8">
+<span id="stm32-timer-diagram"></span><img alt="../../../_images/stm32-timer-diagram.png" src="../../../_images/stm32-timer-diagram.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Advanced control timer diagram <span id="id2">[<a class="reference internal" href="../../../zbibliography.html#id2" title="STMicroelectronics. RM0365 STM32F302xB/C/D/E and STM32F302x6/8 advanced ARM®-based 32-bit MCUs. 8th edition, 2020. [Online; accessed 4-May-2021]. URL: https://www.st.com/resource/en/reference_manual/dm00094349-stm32f302xb-c-d-e-and-stm32f302x6-8-advanced-arm-based-32-bit-mcus-stmicroelectronics.pdf.">STM20</a>]</span>.</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="pwm-generation">
+<h2>PWM generation<a class="headerlink" href="#pwm-generation" title="Link to this heading"></a></h2>
+<p>The timer peripheral clock, <span class="math notranslate nohighlight">\(\mathrm{f_{TIM}}\)</span>, is as fundamental variable
+as it controls the timer counting rate. The timer clock is divided by the
+prescaler, which is controlled by the <code class="docutils literal notranslate"><span class="pre">PSC</span></code> register (16-bit). The counting
+rate, <span class="math notranslate nohighlight">\(\mathrm{f_{CNT}}\)</span>, is defined as:</p>
+<div class="math notranslate nohighlight">
+\[\mathrm{f_{CNT} = \frac{f_{TIM}}{PSC + 1}}\]</div>
+<p>STM32 timers have multiple PWM modes. The most interesting mode when doing motor
+control is the <strong>center-aligned PWM mode</strong>
+(<a class="reference internal" href="#stm32-timer-centeraligned"><span class="std std-numref">Fig. 18</span></a>). In this mode the counting direction
+(up/down) is automatically alternated by the timer. This mode provides an
+interesting feature when multiple PWM waveforms are generated such as in a
+3-phase inverter. Contrary to edge-aligned modes, in this mode the rising and
+falling edges of the PWM signals are not synchronized with the counter
+roll-over. Therefore, switching time varies with the duty cycle value and
+switching noise is spread. This is a key feature for electric motor drives,
+since it allows to double the frequency of the current ripple for a given
+switching frequency. For instance, a 10 kHz PWM will generate inaudible 20 kHz
+current ripple. This feature also minimizes the switching losses due to the PWM
+frequency while guaranteeing a silent operation.</p>
+<figure class="align-default" id="id9">
+<span id="stm32-timer-centeraligned"></span><img alt="../../../_images/stm32-timer-centeraligned.svg" src="../../../_images/stm32-timer-centeraligned.svg" /><figcaption>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">Timing diagram for a timer in center-aligned PWM mode.</span><a class="headerlink" href="#id9" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Using the above diagram, we can see that the PWM frequency
+(<span class="math notranslate nohighlight">\(\mathrm{f_{PWM}}\)</span>) is given by:</p>
+<div class="math notranslate nohighlight">
+\[\mathrm{f_{PWM} = \frac{f_{TIM}}{2 \cdot (ARR + 1) \cdot (PSC + 1)}}\]</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">ARR</span></code> is the auto-reload register, a 16-bit value. In order to maximize
+PWM resolution <code class="docutils literal notranslate"><span class="pre">PSC</span></code> should be chosen so that <code class="docutils literal notranslate"><span class="pre">ARR</span></code> is maximized while
+fitting into its 16-bit register.</p>
+<aside class="topic">
+<p class="topic-title">ARR calculation example</p>
+<p>Given <span class="math notranslate nohighlight">\(\mathrm{f_{TIM} = 72~MHz}\)</span> and <span class="math notranslate nohighlight">\(\mathrm{f_{PWM} = 30~KHz}\)</span>,
+we start with <span class="math notranslate nohighlight">\(\mathrm{PSC = 0}\)</span>, which leads to:</p>
+<div class="math notranslate nohighlight">
+\[\mathrm{ARR = \frac{72~MHz}{2 \cdot 30~KHz \cdot (0 + 1)} - 1 = 1199}.\]</div>
+<p>As 1199 fits into a 16-bit register, we stick to <span class="math notranslate nohighlight">\(\mathrm{PSC = 0}\)</span>.</p>
+</aside>
+<p>The PWM duty cycle is controlled via the <code class="docutils literal notranslate"><span class="pre">CCRx</span></code> registers (<code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">...</span></code>).
+<code class="docutils literal notranslate"><span class="pre">CCRx</span></code> value is compared against <code class="docutils literal notranslate"><span class="pre">CNT</span></code> so that the PWM signal is active when
+<code class="docutils literal notranslate"><span class="pre">CNT</span> <span class="pre">&lt;</span> <span class="pre">CCRx</span></code>. In case <code class="docutils literal notranslate"><span class="pre">CCRx</span></code> is set to zero, the PWM signal is always kept
+inactive.</p>
+<p>There is an important feature that has to be enabled for <code class="docutils literal notranslate"><span class="pre">CCRx</span></code> registers:
+pre-load. When pre-load is enabled, the register value is only updated when the
+timer update event occurs. This is particular useful for real-time control, as
+the new register values are applied synchronously. However in center aligned
+mode, we have two update events: overflow (at the end of up cycle) and underflow
+(at the end of down cycle). Update event happening on overflow should be avoided
+since it is the time when current sampling is likely going to occur, and so the
+regulation loop. Repetition counter feature comes to the rescue to solve this
+problem. In center-aligned mode, odd values of the repetition counter generate
+the update event either on overfow or underflow depending on when the repetition
+counter register <code class="docutils literal notranslate"><span class="pre">RCR</span></code> was written and the counter launched. If <code class="docutils literal notranslate"><span class="pre">RCR</span></code> was
+written before starting the counter, the update event will occur on underflow
+and on overflow if <code class="docutils literal notranslate"><span class="pre">RCR</span></code> was written after starting the counter.</p>
+<figure class="align-default" id="id10">
+<img alt="../../../_images/stm32-timer-repcnt.png" src="../../../_images/stm32-timer-repcnt.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Example of repetition counter update event generation <span id="id3">[<a class="reference internal" href="../../../zbibliography.html#id2" title="STMicroelectronics. RM0365 STM32F302xB/C/D/E and STM32F302x6/8 advanced ARM®-based 32-bit MCUs. 8th edition, 2020. [Online; accessed 4-May-2021]. URL: https://www.st.com/resource/en/reference_manual/dm00094349-stm32f302xb-c-d-e-and-stm32f302x6-8-advanced-arm-based-32-bit-mcus-stmicroelectronics.pdf.">STM20</a>]</span>.</span><a class="headerlink" href="#id10" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Up to now all the details on the signal generation have been given. The only
+missing part is now how to expose these signals to the outside via the <code class="docutils literal notranslate"><span class="pre">OCx</span></code>
+pins. This is controlled by the output stage of the capture/compare channel as
+seen on <a class="reference internal" href="#stm32-cc-output"><span class="std std-numref">Fig. 20</span></a>. In general it is necessary to control both
+high and low sides of each inverter leg. For this purpose complementary outputs
+can be enabled (<code class="docutils literal notranslate"><span class="pre">OCxN</span></code>). As described in the following section, it is also
+possible to insert dead-time when using complementary outputs. Some integrated
+drivers do not require complementary signals since they internally take care of
+their generation including dead-time insertion.</p>
+<figure class="align-default" id="id11">
+<span id="stm32-cc-output"></span><img alt="../../../_images/stm32-cc-output.png" src="../../../_images/stm32-cc-output.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Output stage of capture/compare channel <span id="id4">[<a class="reference internal" href="../../../zbibliography.html#id2" title="STMicroelectronics. RM0365 STM32F302xB/C/D/E and STM32F302x6/8 advanced ARM®-based 32-bit MCUs. 8th edition, 2020. [Online; accessed 4-May-2021]. URL: https://www.st.com/resource/en/reference_manual/dm00094349-stm32f302xb-c-d-e-and-stm32f302x6-8-advanced-arm-based-32-bit-mcus-stmicroelectronics.pdf.">STM20</a>]</span>.</span><a class="headerlink" href="#id11" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="adc-synchronization">
+<h2>ADC synchronization<a class="headerlink" href="#adc-synchronization" title="Link to this heading"></a></h2>
+<p>As detailed in the <a class="reference internal" href="../../../theory/currsmp.html"><span class="doc">Current sampling</span></a> page, it is crucial to synchronize the
+current measurements with the PWM generation. For this purpose, the driver uses
+its fourth channel compare unit (<code class="docutils literal notranslate"><span class="pre">OC4</span></code>) to trigger the ADC.  The value of the
+<code class="docutils literal notranslate"><span class="pre">CCR4</span></code> register controlling the signal duty cycle is updated every time phase
+voltages are set so that currents are always sampled at an optimal point. The
+<code class="docutils literal notranslate"><span class="pre">OC4</span></code> output is connected to the <code class="docutils literal notranslate"><span class="pre">TRGO</span></code> output signal.  The ADC device
+managed by the current sampling driver is responsible to connect to this signal
+as a trigger source.</p>
+</section>
+<section id="break-function">
+<h2>Break function<a class="headerlink" href="#break-function" title="Link to this heading"></a></h2>
+<p>The break function is used to protect the power stage driven by the PWM signals.
+There are two break inputs which are usually connected to fault signals
+generated by the power stage circuit (e.g. over-current). When any of the input
+is activated a hardware protection mechanism is triggered so that the PWM
+outputs are disabled, leaving them in a pre-programmed state. The break
+circuitry works asynchronously, that is, it does not depend on any system clock.
+This feature makes sure that the circuitry does not suffer from any clock
+propagation delay or system clock failures.</p>
+<figure class="align-default" id="id12">
+<span id="stm32-timer-brk"></span><img alt="../../../_images/stm32-timer-brk.png" src="../../../_images/stm32-timer-brk.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Break circuitry <span id="id5">[<a class="reference internal" href="../../../zbibliography.html#id2" title="STMicroelectronics. RM0365 STM32F302xB/C/D/E and STM32F302x6/8 advanced ARM®-based 32-bit MCUs. 8th edition, 2020. [Online; accessed 4-May-2021]. URL: https://www.st.com/resource/en/reference_manual/dm00094349-stm32f302xb-c-d-e-and-stm32f302x6-8-advanced-arm-based-32-bit-mcus-stmicroelectronics.pdf.">STM20</a>]</span>.</span><a class="headerlink" href="#id12" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>As shown in <a class="reference internal" href="#stm32-timer-brk"><span class="std std-numref">Fig. 21</span></a> <code class="docutils literal notranslate"><span class="pre">BRK</span></code> is the result of either an
+external event (<code class="docutils literal notranslate"><span class="pre">BKIN</span></code>) or an internal event (<code class="docutils literal notranslate"><span class="pre">BRK_ACTH</span></code>) such as a clock
+failure event (refer to <span id="id6">[<a class="reference internal" href="../../../zbibliography.html#id2" title="STMicroelectronics. RM0365 STM32F302xB/C/D/E and STM32F302x6/8 advanced ARM®-based 32-bit MCUs. 8th edition, 2020. [Online; accessed 4-May-2021]. URL: https://www.st.com/resource/en/reference_manual/dm00094349-stm32f302xb-c-d-e-and-stm32f302x6-8-advanced-arm-based-32-bit-mcus-stmicroelectronics.pdf.">STM20</a>]</span> for more details). The first channel,
+<code class="docutils literal notranslate"><span class="pre">BRK</span></code>, has priority over <code class="docutils literal notranslate"><span class="pre">BRK2</span></code>. <code class="docutils literal notranslate"><span class="pre">BRK</span></code> can also be configured to either
+disable (inactive) or force PWM outputs to a predefined safe state. Furthermore,
+a dead-time can be programmed to avoid potential shoot-through when activating
+the break functionality. This provides a dual-level protection scheme, where for
+instance a low priority protection with all switches off can be overridden by a
+higher priority protection with low-side switches active. Let’s consider for
+instance that the fault occurs when the high-side PWM is ON, while the safe
+state is programmed to have high-side switched OFF and low-side switched ON. At
+the time the fault occurs the system will first disable the high-side PWM, and
+insert a dead time before switching ON the low side.</p>
+<figure class="align-default" id="id13">
+<img alt="../../../_images/stm32-timer-brkconf.png" src="../../../_images/stm32-timer-brkconf.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">Typical break use case <span id="id7">[<a class="reference internal" href="../../../zbibliography.html#id2" title="STMicroelectronics. RM0365 STM32F302xB/C/D/E and STM32F302x6/8 advanced ARM®-based 32-bit MCUs. 8th edition, 2020. [Online; accessed 4-May-2021]. URL: https://www.st.com/resource/en/reference_manual/dm00094349-stm32f302xb-c-d-e-and-stm32f302x6-8-advanced-arm-based-32-bit-mcus-stmicroelectronics.pdf.">STM20</a>]</span>.</span><a class="headerlink" href="#id13" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="SV-PWM" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../../zbibliography.html" class="btn btn-neutral float-right" title="Bibliography" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Teslabs Engineering S.L..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

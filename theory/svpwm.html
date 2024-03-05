@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SV-PWM &mdash; Spinner  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=86bd4ea3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/light.css?v=a0baf2e0" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Current Loop" href="../components/cloop/index.html" />
+    <link rel="prev" title="Field Oriented Control" href="foc.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Theory</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="currsmp.html">Current sampling</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="currsmp.html#shunt-resistors">Shunt resistors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="currsmp.html#sv-pwm">SV-PWM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="currsmp.html#sampling-strategy">Sampling strategy</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="foc.html">Field Oriented Control</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="foc.html#space-vector">Space Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="foc.html#clarke-transform">Clarke transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="foc.html#park-transform">Park transform</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SV-PWM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#sector-determination">Sector determination</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#amplitude-limitation">Amplitude limitation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#duty-cycles-calculation">Duty cycles calculation</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Components</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../components/cloop/index.html">Current Loop</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../components/cloop/index.html#api">API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../components/currsmp/index.html">Current Sampling</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../components/currsmp/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components/currsmp/index.html#api">API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components/currsmp/index.html#implementations">Implementations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../components/currsmp/impl/stm32.html">STM32</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../components/feedback/index.html">Feedback</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../components/feedback/index.html#introduction">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../components/feedback/index.html#halls">Halls</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../components/feedback/index.html#api">API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components/feedback/index.html#implementations">Implementations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../components/feedback/impl/stm32-halls.html">STM32 Halls</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../components/svpwm/index.html">SV-PWM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../components/svpwm/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components/svpwm/index.html#api">API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components/svpwm/index.html#implementations">Implementations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../components/svpwm/impl/stm32.html">STM32</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../components/svpwm/impl/stm32.html#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../components/svpwm/impl/stm32.html#pwm-generation">PWM generation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../components/svpwm/impl/stm32.html#adc-synchronization">ADC synchronization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../components/svpwm/impl/stm32.html#break-function">Break function</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://teslabs.github.io/spinner/doxygen/html/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zbibliography.html">Bibliography</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Spinner</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">SV-PWM</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/theory/svpwm.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="sv-pwm">
+<span id="theory-svpwm"></span><h1>SV-PWM<a class="headerlink" href="#sv-pwm" title="Link to this heading"></a></h1>
+<p>In a FOC based system we usually synthesize the voltage Space Vector
+<span class="math notranslate nohighlight">\(\vec{v_s}\)</span> using an inverter. When using an inverter we can not generate
+all the voltage levels we want but only a discrete set. With a 2-level 3-phase
+inverter, the most common one, we can generate <span class="math notranslate nohighlight">\(2^3 = 8\)</span> voltage levels,
+given by:</p>
+<div class="math notranslate nohighlight">
+\[\vec{v_s} = V_d (q_a e^{j0} + q_b e^{j \frac{2\pi}{3}} + q_c e^{j \frac{4\pi}{3}})\]</div>
+<p>where <span class="math notranslate nohighlight">\(V_d\)</span> is the line voltage and <span class="math notranslate nohighlight">\(q_a, q_b, q_c \in (0 =
+\text{OFF}, 1 = \text{ON})\)</span> correspond to the the <em>switch</em> state of each phase.</p>
+<span id="table-space-vectors"></span><table class="docutils align-center" id="id1">
+<caption><span class="caption-number">Table 2 </span><span class="caption-text">Synthesizable space vectors with a 2-level 3-phase inverter.</span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Space Vector</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(q_c\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(q_b\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(q_a\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\vec{v_0} = 0\)</span></p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\vec{v_1} = V_d\)</span></p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\vec{v_2} = V_d e^{j \frac{2 \pi}{3}}\)</span></p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\vec{v_3} = V_d e^{j \frac{\pi}{3}}\)</span></p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\vec{v_4} = V_d e^{-j \frac{2 \pi}{3}}\)</span></p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\vec{v_5} = V_d e^{-j \frac{\pi}{3}}\)</span></p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\vec{v_6} = -V_d\)</span></p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\vec{v_7} = 0\)</span></p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+<p>If we draw lines that go from one vector edge to the other we can observe that
+these lines form an hexagon as shown below.</p>
+<p id="svpwm-hexagon">(<a class="reference download internal" download="" href="../_downloads/62ecec6192c3a06daba7d44be8e622aa/svpwm-hexagon.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/2f5e8ceeb4f2a652c90ab14958d85bcf/svpwm-hexagon.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/6525ba8303e5b2df530fcc38f8d51b21/svpwm-hexagon.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/e81e9dc59a15c36d775439d5909c1f51/svpwm-hexagon.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default" id="id2">
+<img alt="../_images/svpwm-hexagon.png" class="plot-directive" src="../_images/svpwm-hexagon.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">SV-PWM synthesizable state vectors.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>In order to synthesize an arbitrary voltage, there is a rather simple technique:
+given the sector in which the vector to be synthesized falls, we can quickly
+alternate between the two adjacent vectors. Taking a voltage falling in the
+first sector, i.e. <span class="math notranslate nohighlight">\(\theta \in \left( 0, \frac{\pi}{3} \right)\)</span>, we have
+that the average space-vector <span class="math notranslate nohighlight">\(\vec{v^a_s}\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[\left.\vec{v^a_s}\right|_{\text{sector} = 1}
+= \frac{1}{T} \left( x T \vec{v_1} + y T \vec{v_3} + z T \vec{0} \right)
+= x \vec{v_1} + y \vec{v_3}\]</div>
+<p>where <span class="math notranslate nohighlight">\(T\)</span> is the averaging period and <span class="math notranslate nohighlight">\(x + y + z = 1\)</span>. Note that
+<span class="math notranslate nohighlight">\(z\)</span> is the fraction of time where the actual voltage is zero (this happens
+for <span class="math notranslate nohighlight">\(\vec{v_0}\)</span> and <span class="math notranslate nohighlight">\(\vec{v_7}\)</span>). Replacing with values from
+<a class="reference internal" href="#table-space-vectors"><span class="std std-numref">Table 2</span></a> we have:</p>
+<div class="math notranslate nohighlight">
+\[\hat{V_s} e^{j \theta_s} = x V_d e^{j 0}  + y V_d e^{j \frac{\pi}{3}}\]</div>
+<p>and by equaling both real and imaginary components, we obtain:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}x &amp;= \frac{\hat{V_s}}{V_d} \left( \cos(\theta_s) - \frac{1}{\sqrt{3}} \sin(\theta_s) \right) \\
+y &amp;= \frac{\hat{V_s}}{V_d} \frac{2}{\sqrt{3}} \sin(\theta_s).\end{split}\]</div>
+<p>In terms of the <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(\beta\)</span> components, we have:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}x &amp;= \frac{1}{V_d} \left( \hat{v_{\alpha}} - \frac{1}{\sqrt{3}} \hat{v_{\beta}} \right) \\
+y &amp;= \frac{1}{V_d} \frac{2}{\sqrt{3}} \hat{v_{\beta}}.\end{split}\]</div>
+<p>If we repeat the previous calculation for each sector we get similar results. If
+we take:</p>
+<div class="math notranslate nohighlight" id="equation-eq-abc">
+<span class="eqno">(1)<a class="headerlink" href="#equation-eq-abc" title="Link to this equation"></a></span>\[\begin{split}a &amp;= x \\
+b &amp;= y \\
+c &amp;= -(x + y)\end{split}\]</div>
+<p>being <span class="math notranslate nohighlight">\(x, y\)</span> the values obtained for the first sector, we can express the
+other values as a function of <span class="math notranslate nohighlight">\(a, b, c\)</span>.</p>
+<span id="table-svpwm-xy"></span><table class="docutils align-center" id="id4">
+<caption><span class="caption-number">Table 3 </span><span class="caption-text">SV-PWM X-Y</span><a class="headerlink" href="#id4" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Sector</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(x\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(y\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>a</p></td>
+<td><p>b</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>-c</p></td>
+<td><p>-a</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>b</p></td>
+<td><p>c</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>-a</p></td>
+<td><p>-b</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>c</p></td>
+<td><p>a</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>-b</p></td>
+<td><p>-c</p></td>
+</tr>
+</tbody>
+</table>
+<section id="sector-determination">
+<h2>Sector determination<a class="headerlink" href="#sector-determination" title="Link to this heading"></a></h2>
+<p>As we have already seen, knowledge of the sector is essential to compute the
+<span class="math notranslate nohighlight">\(x, y\)</span> values. If we are given the space vector in cartesian form, that
+is, <span class="math notranslate nohighlight">\(v_{\alpha}\)</span> and <span class="math notranslate nohighlight">\(v_{\beta}\)</span>, we can easily determine its angle
+by performing <span class="math notranslate nohighlight">\(\arctan\left(\frac{v_{\beta}}{v_{\alpha}}\right)\)</span> and hence
+the sector. However, <span class="math notranslate nohighlight">\(\arctan\)</span> is an expensive trigonometric computation.
+It turns out there is a faster way to determine the sector.</p>
+<p>If we take a look at the plot of Eq. <a class="reference internal" href="#equation-eq-abc">(1)</a> for all sectors, we have that
+each sector has a unique combination of signs:</p>
+<p>(<a class="reference download internal" download="" href="../_downloads/49fe4ad795e6476b1fa48bb332d2fc24/svpwm-abc-signs.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/ae2482253d47a01bef0b7c561f0933e1/svpwm-abc-signs.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/89a7121dc748a281759f1cb349a4d69f/svpwm-abc-signs.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/5c77f41bdab13570a286ce0704d5bb4c/svpwm-abc-signs.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default" id="id5">
+<img alt="../_images/svpwm-abc-signs.png" class="plot-directive" src="../_images/svpwm-abc-signs.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Eq. <a class="reference internal" href="#equation-eq-abc">(1)</a> signs.</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<table class="docutils align-center">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sector</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(\text{sign}(a)\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(\text{sign}(b)\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(\text{sign}(c)\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="amplitude-limitation">
+<h2>Amplitude limitation<a class="headerlink" href="#amplitude-limitation" title="Link to this heading"></a></h2>
+<p>By looking at the hexagon we can quickly observe that vectors falling in the
+middle of a sector will not have the same average amplitude as the ones that can
+be perfectly generated <span class="math notranslate nohighlight">\(\vec{v_i}, i \in (0, ..., 7)\)</span>. The worst case
+happens for the space vectors falling just in the middle of the sector as shown
+on the figure below.</p>
+<figure class="align-default" id="id7">
+<img alt="../_images/svpwm-limit.svg" src="../_images/svpwm-limit.svg" /><figcaption>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Maximum synthesizable amplitude without distortion.</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Therefore, in order to avoid distortions the maximum average amplitude should be
+limited to:</p>
+<div class="math notranslate nohighlight">
+\[\hat{V_s}_{MAX} = V_d \cos(30^{\circ}) = V_d \frac{\sqrt{3}}{2}.\]</div>
+<p>The previous value is actually the maximum line voltage we will be able to use
+when using SV-PWM.</p>
+</section>
+<section id="duty-cycles-calculation">
+<h2>Duty cycles calculation<a class="headerlink" href="#duty-cycles-calculation" title="Link to this heading"></a></h2>
+<p>Finally, we need to compute the PWM duty cycles using the values calculated in
+<a class="reference internal" href="#table-svpwm-xy"><span class="std std-numref">Table 3</span></a>. When using a center-aligned PWM we have that the
+actual PWM output is “ON” when the control variable is over the trigger signal
+(a saw-tooth) and “OFF” otherwise.</p>
+<p>There is still one thing left: the zero or null vector. Right at the beginning
+of this section we saw that in the formation of the space vector there is a
+fraction of time, <span class="math notranslate nohighlight">\(z\)</span>, where a <em>zero</em> vector is active. There are actually
+a couple of zero vectors, <span class="math notranslate nohighlight">\(\vec{v_0}\)</span> and <span class="math notranslate nohighlight">\(\vec{v_7}\)</span>. Both vectors
+are valid in order to produce the space vector, however, it is common to use the
+null-vector that only requires a single switch state change with respect to the
+previous or future state. This choice is also known as the <strong>reverse-alternating
+sequence</strong>. For example, if the next state is <span class="math notranslate nohighlight">\(\vec{v_1}\)</span> (001), then the
+null-vector choice would be <span class="math notranslate nohighlight">\(\vec{v_0}\)</span>. Below the waveforms on the first
+sector are shown when using such sequence.</p>
+<figure class="align-default" id="id8">
+<span id="svpwm-pwm-timing"></span><img alt="../_images/svpwm-pwm-timing.svg" src="../_images/svpwm-pwm-timing.svg" /><figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">PWM waveforms in sector 1 (<span class="math notranslate nohighlight">\(z = z_0 + z_7\)</span>).</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>By looking at the timing diagram in <a class="reference internal" href="#svpwm-pwm-timing"><span class="std std-numref">Fig. 11</span></a>, we have that the
+duty cycles are for the first sector:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}d_a &amp;= x + y + \frac{z}{2} \\
+d_b &amp;= y + \frac{z}{2} \\
+d_c &amp;= \frac{z}{2}\end{split}\]</div>
+<p>We can do a similar calculation for each sector, leading to the duty cycles
+listed in <a class="reference internal" href="#table-svpwm-duties"><span class="std std-numref">Table 4</span></a>.</p>
+<span id="table-svpwm-duties"></span><table class="docutils align-center" id="id9">
+<caption><span class="caption-number">Table 4 </span><span class="caption-text">SV-PWM duty cycle equations</span><a class="headerlink" href="#id9" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Sector</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(d_a\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(d_b\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(d_c\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p><span class="math notranslate nohighlight">\(x + y + \frac{z}{2}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(y + \frac{z}{2}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{z}{2}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p><span class="math notranslate nohighlight">\(x + \frac{z}{2}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(x + y + \frac{z}{2}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{z}{2}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{z}{2}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(x + y + \frac{z}{2}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(y + \frac{z}{2}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{z}{2}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(x + \frac{z}{2}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(x + y + \frac{z}{2}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p><span class="math notranslate nohighlight">\(y + \frac{z}{2}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{z}{2}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(x + y + \frac{z}{2}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p><span class="math notranslate nohighlight">\(x + y + \frac{z}{2}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(\frac{z}{2}\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(x + \frac{z}{2}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<p>Using equations from <a class="reference internal" href="#table-svpwm-xy"><span class="std std-numref">Table 3</span></a> and <a class="reference internal" href="#table-svpwm-duties"><span class="std std-numref">Table 4</span></a>
+we can plot the duty cycle waveforms:</p>
+<p id="svpwm-modulation">(<a class="reference download internal" download="" href="../_downloads/8f23aed83555a43cc1198424b2515e87/svpwm-modulation.py"><code class="xref download docutils literal notranslate"><span class="pre">Source</span> <span class="pre">code</span></code></a>, <a class="reference download internal" download="" href="../_downloads/6b48e5ae189f244bfd807e2de1f46db9/svpwm-modulation.png"><code class="xref download docutils literal notranslate"><span class="pre">png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/2d388d67d3e10beb21dcf3b5481bbdfa/svpwm-modulation.hires.png"><code class="xref download docutils literal notranslate"><span class="pre">hires.png</span></code></a>, <a class="reference download internal" download="" href="../_downloads/ca549546d39848a0d7936d6397c959d6/svpwm-modulation.pdf"><code class="xref download docutils literal notranslate"><span class="pre">pdf</span></code></a>)</p>
+<figure class="align-default" id="id10">
+<img alt="../_images/svpwm-modulation.png" class="plot-directive" src="../_images/svpwm-modulation.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">SV-PWM duty cycle waveforms.</span><a class="headerlink" href="#id10" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="foc.html" class="btn btn-neutral float-left" title="Field Oriented Control" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../components/cloop/index.html" class="btn btn-neutral float-right" title="Current Loop" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Teslabs Engineering S.L..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,195 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="group__spinner__utils__stm32__adc" kind="group">
+    <compoundname>spinner_utils_stm32_adc</compoundname>
+    <title>STM32 ADC Utilities</title>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__spinner__utils__stm32__adc_1ga7dd77f079f6bb34e52be2eb9190887bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int stm32_adc_res_get</definition>
+        <argsstring>(uint8_t res_bits, uint32_t *res)</argsstring>
+        <name>stm32_adc_res_get</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>res_bits</declname>
+        </param>
+        <param>
+          <type>uint32_t *</type>
+          <declname>res</declname>
+        </param>
+        <briefdescription>
+<para>Obtain the RES fields in the ADC CFGR register given the sampling resolution in bits. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">res_bits</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sampling resolution in bits. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">res</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Obtained RES register value. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int 0 on success, -ENOTSUP if fiven bit resolution is not supported. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="spinner/utils/stm32_adc.h" line="31" column="5" declfile="spinner/utils/stm32_adc.h" declline="31" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__spinner__utils__stm32__adc_1ga22d087c8ccc57a6489d0d442aacc51c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int stm32_adc_smp_get</definition>
+        <argsstring>(uint32_t smp_time, uint32_t *smp)</argsstring>
+        <name>stm32_adc_smp_get</name>
+        <param>
+          <type>uint32_t</type>
+          <declname>smp_time</declname>
+        </param>
+        <param>
+          <type>uint32_t *</type>
+          <declname>smp</declname>
+        </param>
+        <briefdescription>
+<para>Obtain the value of the SMP fields in the ADC SMPR register given sampling time in cycles. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>For decimal sampling times, <computeroutput>smp_time</computeroutput> must be rounded up, e.g. 19.5 cycles should be provided as 20.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">smp_time</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC sampling time in cycles </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">smp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Obtained SMP register value. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int 0 on success, -ENOTSUP if given sampling time is not supported. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="spinner/utils/stm32_adc.h" line="44" column="5" declfile="spinner/utils/stm32_adc.h" declline="44" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__spinner__utils__stm32__adc_1ga74f32eea41d0aaede0d1b4733e14ba32" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int stm32_adc_clk_get</definition>
+        <argsstring>(ADC_TypeDef *adc, const struct stm32_pclken *pclken, uint32_t *clk)</argsstring>
+        <name>stm32_adc_clk_get</name>
+        <param>
+          <type>ADC_TypeDef *</type>
+          <declname>adc</declname>
+        </param>
+        <param>
+          <type>const struct stm32_pclken *</type>
+          <declname>pclken</declname>
+        </param>
+        <param>
+          <type>uint32_t *</type>
+          <declname>clk</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Obtain ADC clock rate.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">adc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC instance. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">pclken</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>ADC clock control subsystem. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">clk</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Where ADC clock (in Hz) will be stored.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0 on success, error code otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="spinner/utils/stm32_adc.h" line="55" column="5" declfile="spinner/utils/stm32_adc.h" declline="55" declcolumn="5"/>
+      </memberdef>
+      <memberdef kind="function" id="group__spinner__utils__stm32__adc_1ga1a354e0df8fe1ab3cd4965dd1c3a2125" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int stm32_adc_t_sar_get</definition>
+        <argsstring>(uint8_t res_bits, float *t_sar)</argsstring>
+        <name>stm32_adc_t_sar_get</name>
+        <param>
+          <type>uint8_t</type>
+          <declname>res_bits</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>t_sar</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Obtain ADC clock SAR time.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">res_bits</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sampling resolution in bits. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">t_sar</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Where computed SAR time (in cycles) time will be stored.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0 on success, error code otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="spinner/utils/stm32_adc.h" line="66" column="5" declfile="spinner/utils/stm32_adc.h" declline="66" declcolumn="5"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

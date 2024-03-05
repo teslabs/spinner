@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="doxygen_8md" kind="file" language="Markdown">
+    <compoundname>doxygen.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline><highlight class="normal">#<sp/>Spinner<sp/>API<sp/>Documentation</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Welcome<sp/>to<sp/>the<sp/>Spinner&apos;s<sp/>API<sp/>documentation!<sp/>Spinner<sp/>is<sp/>a<sp/>motor<sp/>control<sp/>firmware</highlight></codeline>
+<codeline><highlight class="normal">based<sp/>on<sp/>the<sp/>Field<sp/>Oriented<sp/>Control<sp/>(FOC)<sp/>principles.<sp/>The<sp/>firmware<sp/>is<sp/>built<sp/>on</highlight></codeline>
+<codeline><highlight class="normal">top<sp/>of<sp/>the<sp/>[Zephyr<sp/>RTOS](https://zephyrproject.org),<sp/>a<sp/>modern<sp/>multi-platform</highlight></codeline>
+<codeline><highlight class="normal">RTOS.<sp/>Spinner<sp/>is<sp/>still<sp/>a<sp/>proof<sp/>of<sp/>concept,<sp/>so<sp/>do<sp/>not<sp/>expect<sp/>production<sp/>grade</highlight></codeline>
+<codeline><highlight class="normal">stability<sp/>or<sp/>features.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Some<sp/>of<sp/>the<sp/>offered<sp/>features<sp/>are:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>FOC<sp/>based<sp/>current<sp/>control<sp/>loop</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Driver<sp/>APIs<sp/>for:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>Current<sp/>sampling</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>SV-PWM</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>Feedbacks<sp/>(e.g.<sp/>Halls)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">These<sp/>pages<sp/>contain<sp/>documentation<sp/>for<sp/>all<sp/>the<sp/>APIs<sp/>used<sp/>in<sp/>the<sp/>Spinner</highlight></codeline>
+<codeline><highlight class="normal">firmware.<sp/>For<sp/>more<sp/>details<sp/>on<sp/>the<sp/>Spinner<sp/>architecture,<sp/>refer<sp/>to<sp/>the<sp/>contextual</highlight></codeline>
+<codeline><highlight class="normal">documentation<sp/>pages.</highlight></codeline>
+    </programlisting>
+    <location file="/home/runner/work/spinner/spinner/docs/doxygen.md"/>
+  </compounddef>
+</doxygen>

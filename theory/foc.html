@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Field Oriented Control &mdash; Spinner  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/plot_directive.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=86bd4ea3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/light.css?v=a0baf2e0" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="SV-PWM" href="svpwm.html" />
+    <link rel="prev" title="Current sampling" href="currsmp.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Theory</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="currsmp.html">Current sampling</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="currsmp.html#shunt-resistors">Shunt resistors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="currsmp.html#sv-pwm">SV-PWM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="currsmp.html#sampling-strategy">Sampling strategy</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Field Oriented Control</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#space-vector">Space Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#clarke-transform">Clarke transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#park-transform">Park transform</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="svpwm.html">SV-PWM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="svpwm.html#sector-determination">Sector determination</a></li>
+<li class="toctree-l2"><a class="reference internal" href="svpwm.html#amplitude-limitation">Amplitude limitation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="svpwm.html#duty-cycles-calculation">Duty cycles calculation</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Components</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../components/cloop/index.html">Current Loop</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../components/cloop/index.html#api">API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../components/currsmp/index.html">Current Sampling</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../components/currsmp/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components/currsmp/index.html#api">API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components/currsmp/index.html#implementations">Implementations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../components/currsmp/impl/stm32.html">STM32</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../components/feedback/index.html">Feedback</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../components/feedback/index.html#introduction">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../components/feedback/index.html#halls">Halls</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../components/feedback/index.html#api">API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components/feedback/index.html#implementations">Implementations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../components/feedback/impl/stm32-halls.html">STM32 Halls</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../components/svpwm/index.html">SV-PWM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../components/svpwm/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components/svpwm/index.html#api">API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components/svpwm/index.html#implementations">Implementations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../components/svpwm/impl/stm32.html">STM32</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../components/svpwm/impl/stm32.html#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../components/svpwm/impl/stm32.html#pwm-generation">PWM generation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../components/svpwm/impl/stm32.html#adc-synchronization">ADC synchronization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../components/svpwm/impl/stm32.html#break-function">Break function</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://teslabs.github.io/spinner/doxygen/html/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zbibliography.html">Bibliography</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Spinner</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Field Oriented Control</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/theory/foc.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="field-oriented-control">
+<h1>Field Oriented Control<a class="headerlink" href="#field-oriented-control" title="Link to this heading"></a></h1>
+<p>Field Oriented Control (FOC) consists on controlling the stator currents
+represented by a vector in a 2-D time-invariant space <span class="math notranslate nohighlight">\(dq\)</span>. The <span class="math notranslate nohighlight">\(dq\)</span>
+space is an orthogonal space aligned with the rotor: flux is aligned with
+<span class="math notranslate nohighlight">\(d\)</span> and torque is aligned with <span class="math notranslate nohighlight">\(q\)</span>. A set of projections is used to
+transform from a three-phase speed and time dependent system to <span class="math notranslate nohighlight">\(dq\)</span>. As
+the transformations are just projections the controlled magnitudes are
+instantaneous quantities, making the control structure valid for transient and
+steady state.</p>
+<p>It can be shown that in the <span class="math notranslate nohighlight">\(dq\)</span> space we have:</p>
+<div class="math notranslate nohighlight">
+\[T \propto \psi_R i_q\]</div>
+<p>that is, by maintaining the rotor flux constant <span class="math notranslate nohighlight">\(\psi_R\)</span> we have that the
+generated torque <span class="math notranslate nohighlight">\(T\)</span> is directly proportional to the <span class="math notranslate nohighlight">\(i_q\)</span> stator
+current. We can then perform torque control by changing the <span class="math notranslate nohighlight">\(i_q\)</span> current
+reference. Because the speed and time dependency is removed from the <span class="math notranslate nohighlight">\(dq\)</span>
+space, the control strategy is also simplified as constant references are being
+controlled.</p>
+<section id="space-vector">
+<h2>Space Vector<a class="headerlink" href="#space-vector" title="Link to this heading"></a></h2>
+<p>We have that for three-phase AC motors, voltages, currents and fluxes can be
+analyzed in terms of complex space vectors. First we define the <span class="math notranslate nohighlight">\(abc\)</span>
+space, given by the following three unit vectors in the complex space:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\hat{a} &amp;= e^{j0} \\
+\hat{b} &amp;= e^{j \frac{2 \pi}{3}} \\
+\hat{c} &amp;= e^{j \frac{4 \pi}{3}}. \\\end{split}\]</div>
+<p>Then, the space vector for currents (same applies to other magnitudes) is
+defined as:</p>
+<div class="math notranslate nohighlight">
+\[\vec{i_s} = i_a \hat{a} + i_b \hat{b} + i_c \hat{c}
+          = \vec{i_a} + \vec{i_b} + \vec{i_c}.\]</div>
+<p>The definition above may sound abstract, but with some more context it can be
+better understood. Let us start by looking at the currents shape. Given a
+three-phase balanced AC system, we have that phase currents are sinusoidal in
+steady state, i.e.:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}i_a(t) &amp;= I \cos(\omega t + \phi_0) \\
+i_b(t) &amp;= I \cos(\omega t - \frac{2 \pi}{3} + \phi_0) \\
+i_c(t) &amp;= I \cos(\omega t - \frac{4 \pi}{3} + \phi_0) \\\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(I\)</span> is the current magnitude, <span class="math notranslate nohighlight">\(\omega\)</span> is the rotation speed
+in rad/s and <span class="math notranslate nohighlight">\(\phi_0\)</span> is an arbitrary initial phase. <span class="math notranslate nohighlight">\(\omega t\)</span> is
+the instantaneous position, <span class="math notranslate nohighlight">\(\theta\)</span>. Note that both rotation speed and
+instantaneous position are always in electrical terms. We can read from the
+equations that <span class="math notranslate nohighlight">\(i_b\)</span> lags <span class="math notranslate nohighlight">\(i_a\)</span> by <span class="math notranslate nohighlight">\(\frac{2 \pi}{3}\)</span> rad, and
+<span class="math notranslate nohighlight">\(i_c\)</span> lags <span class="math notranslate nohighlight">\(i_b\)</span> by the same amount. We can also observe that the
+following equality holds as the system is balanced:</p>
+<div class="math notranslate nohighlight">
+\[i_a(t) + i_b(t) + i_c(t) = 0.\]</div>
+<p>Using the above equations we can plot the space vector and its components as a
+function of the rotor position (<a class="reference internal" href="#foc-abcs-anim"><span class="std std-numref">Fig. 5</span></a>). The space vector can
+be seen as a CCW rotating vector with rotation speed <span class="math notranslate nohighlight">\(\omega\)</span> in the
+complex space.</p>
+<figure class="align-default" id="id1">
+<span id="foc-abcs-anim"></span><img alt="../_images/foc-abcs-anim.gif" src="../_images/foc-abcs-anim.gif" />
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Animated visualization of the space vector.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="clarke-transform">
+<h2>Clarke transform<a class="headerlink" href="#clarke-transform" title="Link to this heading"></a></h2>
+<p>Any non-orthogonal space indicates a redundancy in its axes. This is the case of
+the <span class="math notranslate nohighlight">\(abc\)</span> space, which can be reduced to the complex space. The complex
+space is usually referred in the motor control literature as the <span class="math notranslate nohighlight">\(\alpha
+\beta\)</span> space.  In order to derive the transform from the <span class="math notranslate nohighlight">\(abc\)</span> space to
+the <span class="math notranslate nohighlight">\(\alpha \beta\)</span> space, we can take the projection of the space vector
+components into the <span class="math notranslate nohighlight">\(\alpha \beta\)</span> axes, that is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}i_{\alpha} &amp;= \Re(\vec{i_a} + \vec{i_b} + \vec{i_c})
+            = i_a + i_b \cos \left(\frac{2 \pi}{3}\right) + i_c \cos\left(\frac{4 \pi}{3}\right)
+            = i_a - \frac{1}{2} (i_b + i_c), \\
+i_{\beta}  &amp;= \Im(\vec{i_a} + \vec{i_b} + \vec{i_c})
+            = i_b + \sin\left(\frac{2 \pi}{3}\right) + i_c \sin\left(\frac{4 \pi}{3}\right)
+            = \frac{\sqrt{3}}{2} (i_b - i_c).\end{split}\]</div>
+<p>Using the equality <span class="math notranslate nohighlight">\(i_a + i_b + i_c = 0\)</span>, we can further simplify the
+expressions:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}i_{\alpha} &amp;= i_a \\
+i_{\beta}  &amp;= \left( \frac{1}{\sqrt{3}} i_a + \frac{2}{\sqrt{3}} i_b \right).\end{split}\]</div>
+<p>This transform is known as the <strong>Clarke transform</strong>, which in matrix form is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}(a, b) \rightarrow (\alpha, \beta): \mathbf{C} =
+\begin{bmatrix}
+  1 &amp;&amp; 0 \\
+  \frac{1}{\sqrt{3}} &amp;&amp; \frac{2}{\sqrt{3}}
+\end{bmatrix}.\end{split}\]</div>
+<p>It is important to note that <span class="math notranslate nohighlight">\(\det{\mathbf{C}} \neq 1\)</span>, so the transform
+is not power-invariant. Its inverse is defined as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}(\alpha, \beta) \rightarrow (a, b): \mathbf{C^{-1}} =
+\begin{bmatrix}
+  1 &amp;&amp; 0 \\
+  -\frac{1}{2} &amp;&amp; \frac{\sqrt{3}}{2}
+\end{bmatrix}.\end{split}\]</div>
+</section>
+<section id="park-transform">
+<h2>Park transform<a class="headerlink" href="#park-transform" title="Link to this heading"></a></h2>
+<p>After the application of the Clarke transformation, we still have quantities
+that are speed and time dependent. Assuming we have knowledge of the rotor
+position, <span class="math notranslate nohighlight">\(\theta = \omega t\)</span>, we can de-rotate the <span class="math notranslate nohighlight">\(\alpha\beta\)</span>
+space, therefore removing the speed and time dependency. The new frame will
+actually be a <strong>rotating frame</strong> and it is known as the <span class="math notranslate nohighlight">\(dq\)</span> space, the
+space mentioned at the beginning.</p>
+<p>In order to derive the transformation we need to again project the
+<span class="math notranslate nohighlight">\(\alpha\beta\)</span> components to the rotating frame. The transform is known as
+the <strong>Park transform</strong> and it is actually the well-known 2-D rotation matrix
+in its inverse form as we are de-rotating or moving clock-wise.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}(\alpha, \beta) \rightarrow (d, q): \mathbf{P} =
+\begin{bmatrix}
+  \cos(\theta) &amp;&amp; \sin(\theta) \\
+  -\sin(\theta) &amp;&amp; \cos(\theta)
+\end{bmatrix}.\end{split}\]</div>
+<p>In its inverse form it is given by:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}(\alpha, \beta) \rightarrow (d, q): \mathbf{P^{-1}} =
+\begin{bmatrix}
+  \cos(\theta) &amp;&amp; -\sin(\theta) \\
+  \sin(\theta) &amp;&amp; \cos(\theta)
+\end{bmatrix}.\end{split}\]</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="currsmp.html" class="btn btn-neutral float-left" title="Current sampling" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="svpwm.html" class="btn btn-neutral float-right" title="SV-PWM" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Teslabs Engineering S.L..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

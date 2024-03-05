@@ -1,0 +1,312 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="group__spinner__drivers__currsmp" kind="group">
+    <compoundname>spinner_drivers_currsmp</compoundname>
+    <title>Current Sampling API</title>
+    <innerclass refid="structcurrsmp__curr" prot="public">currsmp_curr</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__spinner__drivers__currsmp_1gabe5c1c07679b93d4efbb88f30a7f20f4" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* currsmp_regulation_cb_t) (void *ctx)</definition>
+        <argsstring>)(void *ctx)</argsstring>
+        <name>currsmp_regulation_cb_t</name>
+        <briefdescription>
+<para>Current sampling regulation callback. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="spinner/drivers/currsmp.h" line="23" column="9" bodyfile="spinner/drivers/currsmp.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__spinner__drivers__currsmp_1gaf2f85d962769a3ddb170cec20f1db99f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void currsmp_configure</definition>
+        <argsstring>(const struct device *dev, currsmp_regulation_cb_t regulation_cb, void *ctx)</argsstring>
+        <name>currsmp_configure</name>
+        <param>
+          <type>const struct device *</type>
+          <declname>dev</declname>
+        </param>
+        <param>
+          <type><ref refid="group__spinner__drivers__currsmp_1gabe5c1c07679b93d4efbb88f30a7f20f4" kindref="member">currsmp_regulation_cb_t</ref></type>
+          <declname>regulation_cb</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+<para>Configure current sampling device. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>This function needs to be called before calling <ref refid="group__spinner__drivers__currsmp_1ga6cbf8b1465a0876924ba505590f61a74" kindref="member">currsmp_start()</ref>.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">dev</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Current sampling device. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">regulation_cb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Callback called on each regulation cycle. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ctx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Callback context. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="spinner/drivers/currsmp.h" line="61" column="20" bodyfile="spinner/drivers/currsmp.h" bodystart="61" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="group__spinner__drivers__currsmp_1ga47e66494ce09fe36570899995b8b9ec1" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void currsmp_get_currents</definition>
+        <argsstring>(const struct device *dev, struct currsmp_curr *curr)</argsstring>
+        <name>currsmp_get_currents</name>
+        <param>
+          <type>const struct device *</type>
+          <declname>dev</declname>
+        </param>
+        <param>
+          <type>struct <ref refid="structcurrsmp__curr" kindref="compound">currsmp_curr</ref> *</type>
+          <declname>curr</declname>
+        </param>
+        <briefdescription>
+<para>Get phase currents. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">dev</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Current sampling device. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">curr</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer where phase currents will be stored. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="spinner/drivers/currsmp.h" line="76" column="20" bodyfile="spinner/drivers/currsmp.h" bodystart="76" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="group__spinner__drivers__currsmp_1ga7229cb4cb5fd5cc8d427924a0dd50d81" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void currsmp_set_sector</definition>
+        <argsstring>(const struct device *dev, uint8_t sector)</argsstring>
+        <name>currsmp_set_sector</name>
+        <param>
+          <type>const struct device *</type>
+          <declname>dev</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>sector</declname>
+        </param>
+        <briefdescription>
+<para>Set SV-PWM sector. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">dev</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Current sampling device. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">sector</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>SV-PWM sector. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="spinner/drivers/currsmp.h" line="90" column="20" bodyfile="spinner/drivers/currsmp.h" bodystart="90" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="group__spinner__drivers__currsmp_1gadaf81f071fa59c5d707eee28a2e14a03" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>static uint32_t currsmp_get_smp_time</definition>
+        <argsstring>(const struct device *dev)</argsstring>
+        <name>currsmp_get_smp_time</name>
+        <param>
+          <type>const struct device *</type>
+          <declname>dev</declname>
+        </param>
+        <briefdescription>
+<para>Obtain currents sampling time in nanoseconds. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">dev</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Current sampling device.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Sampling time in nanoseconds (zero indicates error). </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="spinner/drivers/currsmp.h" line="104" column="24" bodyfile="spinner/drivers/currsmp.h" bodystart="104" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="group__spinner__drivers__currsmp_1ga6cbf8b1465a0876924ba505590f61a74" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void currsmp_start</definition>
+        <argsstring>(const struct device *dev)</argsstring>
+        <name>currsmp_start</name>
+        <param>
+          <type>const struct device *</type>
+          <declname>dev</declname>
+        </param>
+        <briefdescription>
+<para>Start sampling currents. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">dev</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Current sampling device.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="group__spinner__drivers__currsmp_1ga52e2a7e19789e8d9b4733fc12246860b" kindref="member">currsmp_stop()</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="spinner/drivers/currsmp.h" line="118" column="20" bodyfile="spinner/drivers/currsmp.h" bodystart="118" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="group__spinner__drivers__currsmp_1ga52e2a7e19789e8d9b4733fc12246860b" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void currsmp_stop</definition>
+        <argsstring>(const struct device *dev)</argsstring>
+        <name>currsmp_stop</name>
+        <param>
+          <type>const struct device *</type>
+          <declname>dev</declname>
+        </param>
+        <briefdescription>
+<para>Stop sampling currents. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">dev</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Current sampling device. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="spinner/drivers/currsmp.h" line="130" column="20" bodyfile="spinner/drivers/currsmp.h" bodystart="130" bodyend="135"/>
+      </memberdef>
+      <memberdef kind="function" id="group__spinner__drivers__currsmp_1ga8dad1c15188dec6dcbfacead9798b434" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void currsmp_pause</definition>
+        <argsstring>(const struct device *dev)</argsstring>
+        <name>currsmp_pause</name>
+        <param>
+          <type>const struct device *</type>
+          <declname>dev</declname>
+        </param>
+        <briefdescription>
+<para>Pause current sampling. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>This function can be used to prevent current sampling to call the regulation callback, thus allowing to adjust shared context.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dev</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Current sampling device.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ref refid="group__spinner__drivers__currsmp_1ga69e68b8277e8609a32dd769a315dfbb5" kindref="member">currsmp_resume()</ref> </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="spinner/drivers/currsmp.h" line="148" column="20" bodyfile="spinner/drivers/currsmp.h" bodystart="148" bodyend="153"/>
+      </memberdef>
+      <memberdef kind="function" id="group__spinner__drivers__currsmp_1ga69e68b8277e8609a32dd769a315dfbb5" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void currsmp_resume</definition>
+        <argsstring>(const struct device *dev)</argsstring>
+        <name>currsmp_resume</name>
+        <param>
+          <type>const struct device *</type>
+          <declname>dev</declname>
+        </param>
+        <briefdescription>
+<para>Resume current sampling. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dev</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Current sampling device. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="spinner/drivers/currsmp.h" line="160" column="20" bodyfile="spinner/drivers/currsmp.h" bodystart="160" bodyend="165"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

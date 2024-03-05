@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="md__home_runner_work_spinner_spinner_docs_doxygen" kind="page">
+    <compoundname>md__home_runner_work_spinner_spinner_docs_doxygen</compoundname>
+    <title>Spinner API Documentation</title>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Welcome to the Spinner&apos;s API documentation! Spinner is a motor control firmware based on the Field Oriented Control (FOC) principles. The firmware is built on top of the <ulink url="https://zephyrproject.org">Zephyr RTOS</ulink>, a modern multi-platform RTOS. Spinner is still a proof of concept, so do not expect production grade stability or features.</para>
+<para>Some of the offered features are:</para>
+<para><itemizedlist>
+<listitem><para>FOC based current control loop</para>
+</listitem><listitem><para>Driver APIs for:<itemizedlist>
+<listitem><para>Current sampling</para>
+</listitem><listitem><para>SV-PWM</para>
+</listitem><listitem><para>Feedbacks (e.g. Halls)</para>
+</listitem></itemizedlist>
+</para>
+</listitem></itemizedlist>
+</para>
+<para>These pages contain documentation for all the APIs used in the Spinner firmware. For more details on the Spinner architecture, refer to the contextual documentation pages. </para>
+    </detaileddescription>
+    <location file="/home/runner/work/spinner/spinner/docs/doxygen.md"/>
+  </compounddef>
+</doxygen>

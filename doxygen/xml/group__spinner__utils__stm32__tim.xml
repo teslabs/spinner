@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="group__spinner__utils__stm32__tim" kind="group">
+    <compoundname>spinner_utils_stm32_tim</compoundname>
+    <title>STM32 Timer Utilities</title>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__spinner__utils__stm32__tim_1ga41cd7bc83910151988e42b2778306790" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int stm32_tim_clk_get</definition>
+        <argsstring>(const struct stm32_pclken *pclken, uint32_t *tim_clk)</argsstring>
+        <name>stm32_tim_clk_get</name>
+        <param>
+          <type>const struct stm32_pclken *</type>
+          <declname>pclken</declname>
+        </param>
+        <param>
+          <type>uint32_t *</type>
+          <declname>tim_clk</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Obtain timer clock speed.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">pclken</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Timer clock control subsystem. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="out">tim_clk</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Where computed timer clock will be stored.</para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>0 on success, error code otherwise. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="spinner/utils/stm32_tim.h" line="29" column="5" declfile="spinner/utils/stm32_tim.h" declline="29" declcolumn="5"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

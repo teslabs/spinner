@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="cloop_8h" kind="file" language="C++">
+    <compoundname>cloop.h</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__spinner__lib__control__cloop_1ga9324f68ef942c4679f0c5370a73dd8dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void cloop_start</definition>
+        <argsstring>(void)</argsstring>
+        <name>cloop_start</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Start current loop. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="spinner/control/cloop.h" line="22" column="6" declfile="spinner/control/cloop.h" declline="22" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__spinner__lib__control__cloop_1gac58a532292ecf9bb866b96dadfca0815" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void cloop_stop</definition>
+        <argsstring>(void)</argsstring>
+        <name>cloop_stop</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Stop current loop. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="spinner/control/cloop.h" line="27" column="6" declfile="spinner/control/cloop.h" declline="27" declcolumn="6"/>
+      </memberdef>
+      <memberdef kind="function" id="group__spinner__lib__control__cloop_1ga7bc7955c80443a08b1dedfcd4906cb3e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void cloop_set_ref</definition>
+        <argsstring>(float i_d, float i_q)</argsstring>
+        <name>cloop_set_ref</name>
+        <param>
+          <type>float</type>
+          <declname>i_d</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>i_q</declname>
+        </param>
+        <briefdescription>
+<para>Set current loop working point. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">i_d</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>i_d current value. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">i_q</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>i_q current value. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="spinner/control/cloop.h" line="35" column="6" declfile="spinner/control/cloop.h" declline="35" declcolumn="6"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Current loop API.</para>
+<para>Copyright (c) 2021 Teslabs Engineering S.L. SPDX-License-Identifier: Apache-2.0 </para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>_SPINNER_LIB_CONTROL_CLOOP_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>_SPINNER_LIB_CONTROL_CLOOP_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="group__spinner__lib__control__cloop_1ga9324f68ef942c4679f0c5370a73dd8dc" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__spinner__lib__control__cloop_1ga9324f68ef942c4679f0c5370a73dd8dc" kindref="member">cloop_start</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="group__spinner__lib__control__cloop_1gac58a532292ecf9bb866b96dadfca0815" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__spinner__lib__control__cloop_1gac58a532292ecf9bb866b96dadfca0815" kindref="member">cloop_stop</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="group__spinner__lib__control__cloop_1ga7bc7955c80443a08b1dedfcd4906cb3e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="group__spinner__lib__control__cloop_1ga7bc7955c80443a08b1dedfcd4906cb3e" kindref="member">cloop_set_ref</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>i_d,<sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>i_q);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>_SPINNER_LIB_CONTROL_CLOOP_H_<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="spinner/control/cloop.h"/>
+  </compounddef>
+</doxygen>

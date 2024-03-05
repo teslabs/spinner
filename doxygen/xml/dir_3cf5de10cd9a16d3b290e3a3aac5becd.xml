@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_3cf5de10cd9a16d3b290e3a3aac5becd" kind="dir">
+    <compoundname>spinner</compoundname>
+    <innerdir refid="dir_20a1c328a8beef4f72efc5fbb326f0b2">spinner/control</innerdir>
+    <innerdir refid="dir_95a961dfd6a88937b1f63a51d28beaa3">spinner/drivers</innerdir>
+    <innerdir refid="dir_fd2ae0e78e2654445c66e55b0c72d968">spinner/svm</innerdir>
+    <innerdir refid="dir_1b1fd431dabac3a41823316fd42fd2f8">spinner/utils</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="spinner/"/>
+  </compounddef>
+</doxygen>

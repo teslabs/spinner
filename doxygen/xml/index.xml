@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.9.1" xml:lang="en-US">
+  <compound refid="structcurrsmp__curr" kind="struct"><name>currsmp_curr</name>
+    <member refid="structcurrsmp__curr_1aba0ca36b18f05fce33c7d785f899578e" kind="variable"><name>i_a</name></member>
+    <member refid="structcurrsmp__curr_1a8bdd1d6af6ff716be969dbbe56306cc0" kind="variable"><name>i_b</name></member>
+    <member refid="structcurrsmp__curr_1ad78ecbd3ce06bbe93fa12c7d080ab94a" kind="variable"><name>i_c</name></member>
+  </compound>
+  <compound refid="structsvm" kind="struct"><name>svm</name>
+    <member refid="structsvm_1a395f9f27ffb2e280286036ab0443d39f" kind="variable"><name>sector</name></member>
+    <member refid="structsvm_1a413513e3035950250966dff33f366752" kind="variable"><name>duties</name></member>
+    <member refid="structsvm_1a22fe7a79b7b8fc4a86528efc4df616f0" kind="variable"><name>d_min</name></member>
+    <member refid="structsvm_1a517c40a3c6afd33c1275eada463bfa6f" kind="variable"><name>d_max</name></member>
+  </compound>
+  <compound refid="structsvm__duties__t" kind="struct"><name>svm_duties_t</name>
+    <member refid="structsvm__duties__t_1a5b6f80fce085281df90e259d4c2af330" kind="variable"><name>a</name></member>
+    <member refid="structsvm__duties__t_1aabfd83f71ad886d8329a4c7406e28ed4" kind="variable"><name>b</name></member>
+    <member refid="structsvm__duties__t_1a105eaded8f185094f3bd294265f8ad88" kind="variable"><name>c</name></member>
+  </compound>
+  <compound refid="groups_8dox" kind="file"><name>groups.dox</name>
+  </compound>
+  <compound refid="doxygen_8md" kind="file"><name>doxygen.md</name>
+  </compound>
+  <compound refid="cloop_8h" kind="file"><name>cloop.h</name>
+    <member refid="group__spinner__lib__control__cloop_1ga9324f68ef942c4679f0c5370a73dd8dc" kind="function"><name>cloop_start</name></member>
+    <member refid="group__spinner__lib__control__cloop_1gac58a532292ecf9bb866b96dadfca0815" kind="function"><name>cloop_stop</name></member>
+    <member refid="group__spinner__lib__control__cloop_1ga7bc7955c80443a08b1dedfcd4906cb3e" kind="function"><name>cloop_set_ref</name></member>
+  </compound>
+  <compound refid="currsmp_8h" kind="file"><name>currsmp.h</name>
+    <member refid="group__spinner__drivers__currsmp_1gabe5c1c07679b93d4efbb88f30a7f20f4" kind="typedef"><name>currsmp_regulation_cb_t</name></member>
+    <member refid="group__spinner__drivers__currsmp_1gaf2f85d962769a3ddb170cec20f1db99f" kind="function"><name>currsmp_configure</name></member>
+    <member refid="group__spinner__drivers__currsmp_1ga47e66494ce09fe36570899995b8b9ec1" kind="function"><name>currsmp_get_currents</name></member>
+    <member refid="group__spinner__drivers__currsmp_1ga7229cb4cb5fd5cc8d427924a0dd50d81" kind="function"><name>currsmp_set_sector</name></member>
+    <member refid="group__spinner__drivers__currsmp_1gadaf81f071fa59c5d707eee28a2e14a03" kind="function"><name>currsmp_get_smp_time</name></member>
+    <member refid="group__spinner__drivers__currsmp_1ga6cbf8b1465a0876924ba505590f61a74" kind="function"><name>currsmp_start</name></member>
+    <member refid="group__spinner__drivers__currsmp_1ga52e2a7e19789e8d9b4733fc12246860b" kind="function"><name>currsmp_stop</name></member>
+    <member refid="group__spinner__drivers__currsmp_1ga8dad1c15188dec6dcbfacead9798b434" kind="function"><name>currsmp_pause</name></member>
+    <member refid="group__spinner__drivers__currsmp_1ga69e68b8277e8609a32dd769a315dfbb5" kind="function"><name>currsmp_resume</name></member>
+  </compound>
+  <compound refid="feedback_8h" kind="file"><name>feedback.h</name>
+    <member refid="group__spinner__drivers__feedback_1ga05b128df6fe4cefc599ccbf4eb4e0faa" kind="function"><name>feedback_get_eangle</name></member>
+    <member refid="group__spinner__drivers__feedback_1gafef00ca0bacfd375a129e56f892b2dd1" kind="function"><name>feedback_get_speed</name></member>
+  </compound>
+  <compound refid="svpwm_8h" kind="file"><name>svpwm.h</name>
+    <member refid="group__spinner__drivers__svpwm_1gafd9c70d9e5a84b0b4cae4a5d3fc67c7f" kind="function"><name>svpwm_start</name></member>
+    <member refid="group__spinner__drivers__svpwm_1ga06fb422b6ba78b1d76d995fcc4636d88" kind="function"><name>svpwm_stop</name></member>
+    <member refid="group__spinner__drivers__svpwm_1ga7a24661d18884a93b4566ab50d5231fb" kind="function"><name>svpwm_set_phase_voltages</name></member>
+  </compound>
+  <compound refid="svm_8h" kind="file"><name>svm.h</name>
+    <member refid="group__spinner__control__svm_1gae0cebddbf83ace81601de41b67453c79" kind="typedef"><name>svm_t</name></member>
+    <member refid="group__spinner__control__svm_1gad356bbcabf5e5cd7c97926e646c85803" kind="function"><name>svm_init</name></member>
+    <member refid="group__spinner__control__svm_1ga86b9df0f88d4fb34cdb113e8a8e6664b" kind="function"><name>svm_set</name></member>
+  </compound>
+  <compound refid="stm32__adc_8h" kind="file"><name>stm32_adc.h</name>
+    <member refid="group__spinner__utils__stm32__adc_1ga7dd77f079f6bb34e52be2eb9190887bc" kind="function"><name>stm32_adc_res_get</name></member>
+    <member refid="group__spinner__utils__stm32__adc_1ga22d087c8ccc57a6489d0d442aacc51c6" kind="function"><name>stm32_adc_smp_get</name></member>
+    <member refid="group__spinner__utils__stm32__adc_1ga74f32eea41d0aaede0d1b4733e14ba32" kind="function"><name>stm32_adc_clk_get</name></member>
+    <member refid="group__spinner__utils__stm32__adc_1ga1a354e0df8fe1ab3cd4965dd1c3a2125" kind="function"><name>stm32_adc_t_sar_get</name></member>
+  </compound>
+  <compound refid="stm32__tim_8h" kind="file"><name>stm32_tim.h</name>
+    <member refid="group__spinner__utils__stm32__tim_1ga41cd7bc83910151988e42b2778306790" kind="function"><name>stm32_tim_clk_get</name></member>
+  </compound>
+  <compound refid="group__spinner__drivers" kind="group"><name>spinner_drivers</name>
+  </compound>
+  <compound refid="group__spinner__lib__control" kind="group"><name>spinner_lib_control</name>
+  </compound>
+  <compound refid="group__spinner__lib__utils" kind="group"><name>spinner_lib_utils</name>
+  </compound>
+  <compound refid="group__spinner__lib__control__cloop" kind="group"><name>spinner_lib_control_cloop</name>
+    <member refid="group__spinner__lib__control__cloop_1ga9324f68ef942c4679f0c5370a73dd8dc" kind="function"><name>cloop_start</name></member>
+    <member refid="group__spinner__lib__control__cloop_1gac58a532292ecf9bb866b96dadfca0815" kind="function"><name>cloop_stop</name></member>
+    <member refid="group__spinner__lib__control__cloop_1ga7bc7955c80443a08b1dedfcd4906cb3e" kind="function"><name>cloop_set_ref</name></member>
+  </compound>
+  <compound refid="group__spinner__drivers__currsmp" kind="group"><name>spinner_drivers_currsmp</name>
+    <member refid="group__spinner__drivers__currsmp_1gabe5c1c07679b93d4efbb88f30a7f20f4" kind="typedef"><name>currsmp_regulation_cb_t</name></member>
+    <member refid="group__spinner__drivers__currsmp_1gaf2f85d962769a3ddb170cec20f1db99f" kind="function"><name>currsmp_configure</name></member>
+    <member refid="group__spinner__drivers__currsmp_1ga47e66494ce09fe36570899995b8b9ec1" kind="function"><name>currsmp_get_currents</name></member>
+    <member refid="group__spinner__drivers__currsmp_1ga7229cb4cb5fd5cc8d427924a0dd50d81" kind="function"><name>currsmp_set_sector</name></member>
+    <member refid="group__spinner__drivers__currsmp_1gadaf81f071fa59c5d707eee28a2e14a03" kind="function"><name>currsmp_get_smp_time</name></member>
+    <member refid="group__spinner__drivers__currsmp_1ga6cbf8b1465a0876924ba505590f61a74" kind="function"><name>currsmp_start</name></member>
+    <member refid="group__spinner__drivers__currsmp_1ga52e2a7e19789e8d9b4733fc12246860b" kind="function"><name>currsmp_stop</name></member>
+    <member refid="group__spinner__drivers__currsmp_1ga8dad1c15188dec6dcbfacead9798b434" kind="function"><name>currsmp_pause</name></member>
+    <member refid="group__spinner__drivers__currsmp_1ga69e68b8277e8609a32dd769a315dfbb5" kind="function"><name>currsmp_resume</name></member>
+  </compound>
+  <compound refid="group__spinner__drivers__feedback" kind="group"><name>spinner_drivers_feedback</name>
+    <member refid="group__spinner__drivers__feedback_1ga05b128df6fe4cefc599ccbf4eb4e0faa" kind="function"><name>feedback_get_eangle</name></member>
+    <member refid="group__spinner__drivers__feedback_1gafef00ca0bacfd375a129e56f892b2dd1" kind="function"><name>feedback_get_speed</name></member>
+  </compound>
+  <compound refid="group__spinner__drivers__svpwm" kind="group"><name>spinner_drivers_svpwm</name>
+    <member refid="group__spinner__drivers__svpwm_1gafd9c70d9e5a84b0b4cae4a5d3fc67c7f" kind="function"><name>svpwm_start</name></member>
+    <member refid="group__spinner__drivers__svpwm_1ga06fb422b6ba78b1d76d995fcc4636d88" kind="function"><name>svpwm_stop</name></member>
+    <member refid="group__spinner__drivers__svpwm_1ga7a24661d18884a93b4566ab50d5231fb" kind="function"><name>svpwm_set_phase_voltages</name></member>
+  </compound>
+  <compound refid="group__spinner__control__svm" kind="group"><name>spinner_control_svm</name>
+    <member refid="group__spinner__control__svm_1gae0cebddbf83ace81601de41b67453c79" kind="typedef"><name>svm_t</name></member>
+    <member refid="group__spinner__control__svm_1gad356bbcabf5e5cd7c97926e646c85803" kind="function"><name>svm_init</name></member>
+    <member refid="group__spinner__control__svm_1ga86b9df0f88d4fb34cdb113e8a8e6664b" kind="function"><name>svm_set</name></member>
+  </compound>
+  <compound refid="group__spinner__utils__stm32__adc" kind="group"><name>spinner_utils_stm32_adc</name>
+    <member refid="group__spinner__utils__stm32__adc_1ga7dd77f079f6bb34e52be2eb9190887bc" kind="function"><name>stm32_adc_res_get</name></member>
+    <member refid="group__spinner__utils__stm32__adc_1ga22d087c8ccc57a6489d0d442aacc51c6" kind="function"><name>stm32_adc_smp_get</name></member>
+    <member refid="group__spinner__utils__stm32__adc_1ga74f32eea41d0aaede0d1b4733e14ba32" kind="function"><name>stm32_adc_clk_get</name></member>
+    <member refid="group__spinner__utils__stm32__adc_1ga1a354e0df8fe1ab3cd4965dd1c3a2125" kind="function"><name>stm32_adc_t_sar_get</name></member>
+  </compound>
+  <compound refid="group__spinner__utils__stm32__tim" kind="group"><name>spinner_utils_stm32_tim</name>
+    <member refid="group__spinner__utils__stm32__tim_1ga41cd7bc83910151988e42b2778306790" kind="function"><name>stm32_tim_clk_get</name></member>
+  </compound>
+  <compound refid="md__home_runner_work_spinner_spinner_docs_doxygen" kind="page"><name>md__home_runner_work_spinner_spinner_docs_doxygen</name>
+  </compound>
+  <compound refid="dir_2fab1df6832ac5fd5ad2dca443afcb3d" kind="dir"><name>/home/runner/work/spinner/spinner/docs/_doxygen</name>
+  </compound>
+  <compound refid="dir_20a1c328a8beef4f72efc5fbb326f0b2" kind="dir"><name>spinner/control</name>
+  </compound>
+  <compound refid="dir_49e56c817e5e54854c35e136979f97ca" kind="dir"><name>/home/runner/work/spinner/spinner/docs</name>
+  </compound>
+  <compound refid="dir_95a961dfd6a88937b1f63a51d28beaa3" kind="dir"><name>spinner/drivers</name>
+  </compound>
+  <compound refid="dir_3cf5de10cd9a16d3b290e3a3aac5becd" kind="dir"><name>spinner</name>
+  </compound>
+  <compound refid="dir_fd2ae0e78e2654445c66e55b0c72d968" kind="dir"><name>spinner/svm</name>
+  </compound>
+  <compound refid="dir_1b1fd431dabac3a41823316fd42fd2f8" kind="dir"><name>spinner/utils</name>
+  </compound>
+</doxygenindex>

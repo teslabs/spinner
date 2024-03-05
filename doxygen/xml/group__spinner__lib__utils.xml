@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="group__spinner__lib__utils" kind="group">
+    <compoundname>spinner_lib_utils</compoundname>
+    <title>Utility APIs</title>
+    <innergroup refid="group__spinner__utils__stm32__adc">STM32 ADC Utilities</innergroup>
+    <innergroup refid="group__spinner__utils__stm32__tim">STM32 Timer Utilities</innergroup>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

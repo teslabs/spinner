@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structsvm" kind="struct" language="C++" prot="public">
+    <compoundname>svm</compoundname>
+    <includes refid="svm_8h" local="no">svm.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structsvm_1a395f9f27ffb2e280286036ab0443d39f" prot="public" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t svm::sector</definition>
+        <argsstring></argsstring>
+        <name>sector</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>SVM sector. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="spinner/svm/svm.h" line="33" column="9" bodyfile="spinner/svm/svm.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structsvm_1a413513e3035950250966dff33f366752" prot="public" static="no" mutable="no">
+        <type><ref refid="structsvm__duties__t" kindref="compound">svm_duties_t</ref></type>
+        <definition>svm_duties_t svm::duties</definition>
+        <argsstring></argsstring>
+        <name>duties</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Duty cycles. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="spinner/svm/svm.h" line="35" column="14" bodyfile="spinner/svm/svm.h" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structsvm_1a22fe7a79b7b8fc4a86528efc4df616f0" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float svm::d_min</definition>
+        <argsstring></argsstring>
+        <name>d_min</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Minimum allowed duty cycle. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="spinner/svm/svm.h" line="37" column="7" bodyfile="spinner/svm/svm.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structsvm_1a517c40a3c6afd33c1275eada463bfa6f" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float svm::d_max</definition>
+        <argsstring></argsstring>
+        <name>d_max</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Maximum allowed duty cycle. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="spinner/svm/svm.h" line="39" column="7" bodyfile="spinner/svm/svm.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>SVM state. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1">
+        <label>svm</label>
+        <link refid="structsvm"/>
+        <childnode refid="2" relation="usage">
+          <edgelabel>duties</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>svm_duties_t</label>
+        <link refid="structsvm__duties__t"/>
+      </node>
+    </collaborationgraph>
+    <location file="spinner/svm/svm.h" line="31" column="1" bodyfile="spinner/svm/svm.h" bodystart="31" bodyend="40"/>
+    <listofallmembers>
+      <member refid="structsvm_1a517c40a3c6afd33c1275eada463bfa6f" prot="public" virt="non-virtual"><scope>svm</scope><name>d_max</name></member>
+      <member refid="structsvm_1a22fe7a79b7b8fc4a86528efc4df616f0" prot="public" virt="non-virtual"><scope>svm</scope><name>d_min</name></member>
+      <member refid="structsvm_1a413513e3035950250966dff33f366752" prot="public" virt="non-virtual"><scope>svm</scope><name>duties</name></member>
+      <member refid="structsvm_1a395f9f27ffb2e280286036ab0443d39f" prot="public" virt="non-virtual"><scope>svm</scope><name>sector</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

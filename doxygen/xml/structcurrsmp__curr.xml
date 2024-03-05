@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structcurrsmp__curr" kind="struct" language="C++" prot="public">
+    <compoundname>currsmp_curr</compoundname>
+    <includes refid="currsmp_8h" local="no">currsmp.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structcurrsmp__curr_1aba0ca36b18f05fce33c7d785f899578e" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float currsmp_curr::i_a</definition>
+        <argsstring></argsstring>
+        <name>i_a</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Phase a current. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="spinner/drivers/currsmp.h" line="28" column="7" bodyfile="spinner/drivers/currsmp.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structcurrsmp__curr_1a8bdd1d6af6ff716be969dbbe56306cc0" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float currsmp_curr::i_b</definition>
+        <argsstring></argsstring>
+        <name>i_b</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Phase b current. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="spinner/drivers/currsmp.h" line="30" column="7" bodyfile="spinner/drivers/currsmp.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structcurrsmp__curr_1ad78ecbd3ce06bbe93fa12c7d080ab94a" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float currsmp_curr::i_c</definition>
+        <argsstring></argsstring>
+        <name>i_c</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Phase c current. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="spinner/drivers/currsmp.h" line="32" column="7" bodyfile="spinner/drivers/currsmp.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Current sampling currents. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="spinner/drivers/currsmp.h" line="26" column="1" bodyfile="spinner/drivers/currsmp.h" bodystart="26" bodyend="33"/>
+    <listofallmembers>
+      <member refid="structcurrsmp__curr_1aba0ca36b18f05fce33c7d785f899578e" prot="public" virt="non-virtual"><scope>currsmp_curr</scope><name>i_a</name></member>
+      <member refid="structcurrsmp__curr_1a8bdd1d6af6ff716be969dbbe56306cc0" prot="public" virt="non-virtual"><scope>currsmp_curr</scope><name>i_b</name></member>
+      <member refid="structcurrsmp__curr_1ad78ecbd3ce06bbe93fa12c7d080ab94a" prot="public" virt="non-virtual"><scope>currsmp_curr</scope><name>i_c</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

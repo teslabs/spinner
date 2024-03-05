@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="group__spinner__drivers__feedback" kind="group">
+    <compoundname>spinner_drivers_feedback</compoundname>
+    <title>Feedback API</title>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__spinner__drivers__feedback_1ga05b128df6fe4cefc599ccbf4eb4e0faa" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>static float feedback_get_eangle</definition>
+        <argsstring>(const struct device *dev)</argsstring>
+        <name>feedback_get_eangle</name>
+        <param>
+          <type>const struct device *</type>
+          <declname>dev</declname>
+        </param>
+        <briefdescription>
+<para>Get electrical angle. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dev</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Feedback instance. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Electrical angle. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="spinner/drivers/feedback.h" line="37" column="21" bodyfile="spinner/drivers/feedback.h" bodystart="37" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="group__spinner__drivers__feedback_1gafef00ca0bacfd375a129e56f892b2dd1" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>static float feedback_get_speed</definition>
+        <argsstring>(const struct device *dev)</argsstring>
+        <name>feedback_get_speed</name>
+        <param>
+          <type>const struct device *</type>
+          <declname>dev</declname>
+        </param>
+        <briefdescription>
+<para>Get speed. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dev</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Feedback instance. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Speed. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="spinner/drivers/feedback.h" line="50" column="21" bodyfile="spinner/drivers/feedback.h" bodystart="50" bodyend="55"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

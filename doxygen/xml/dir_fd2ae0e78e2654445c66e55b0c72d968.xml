@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_fd2ae0e78e2654445c66e55b0c72d968" kind="dir">
+    <compoundname>spinner/svm</compoundname>
+    <innerfile refid="svm_8h">svm.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="spinner/svm/"/>
+  </compounddef>
+</doxygen>

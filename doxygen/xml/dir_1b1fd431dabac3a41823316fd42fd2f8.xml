@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_1b1fd431dabac3a41823316fd42fd2f8" kind="dir">
+    <compoundname>spinner/utils</compoundname>
+    <innerfile refid="stm32__adc_8h">stm32_adc.h</innerfile>
+    <innerfile refid="stm32__tim_8h">stm32_tim.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="spinner/utils/"/>
+  </compounddef>
+</doxygen>

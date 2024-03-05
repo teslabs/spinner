@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feedback &mdash; Spinner  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/plot_directive.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/custom.css?v=86bd4ea3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/light.css?v=a0baf2e0" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="STM32 Halls" href="impl/stm32-halls.html" />
+    <link rel="prev" title="STM32" href="../currsmp/impl/stm32.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo.svg" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                1.0.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Theory</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../theory/currsmp.html">Current sampling</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../theory/currsmp.html#shunt-resistors">Shunt resistors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../theory/currsmp.html#sv-pwm">SV-PWM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../theory/currsmp.html#sampling-strategy">Sampling strategy</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../theory/foc.html">Field Oriented Control</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../theory/foc.html#space-vector">Space Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../theory/foc.html#clarke-transform">Clarke transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../theory/foc.html#park-transform">Park transform</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../theory/svpwm.html">SV-PWM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../theory/svpwm.html#sector-determination">Sector determination</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../theory/svpwm.html#amplitude-limitation">Amplitude limitation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../theory/svpwm.html#duty-cycles-calculation">Duty cycles calculation</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Components</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../cloop/index.html">Current Loop</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cloop/index.html#api">API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../currsmp/index.html">Current Sampling</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../currsmp/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../currsmp/index.html#api">API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../currsmp/index.html#implementations">Implementations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../currsmp/impl/stm32.html">STM32</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Feedback</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#halls">Halls</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#api">API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#implementations">Implementations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="impl/stm32-halls.html">STM32 Halls</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../svpwm/index.html">SV-PWM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../svpwm/index.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../svpwm/index.html#api">API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../svpwm/index.html#implementations">Implementations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../svpwm/impl/stm32.html">STM32</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../svpwm/impl/stm32.html#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../svpwm/impl/stm32.html#pwm-generation">PWM generation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../svpwm/impl/stm32.html#adc-synchronization">ADC synchronization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../svpwm/impl/stm32.html#break-function">Break function</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://teslabs.github.io/spinner/doxygen/html/index.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../zbibliography.html">Bibliography</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Spinner</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Feedback</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/components/feedback/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="feedback">
+<h1>Feedback<a class="headerlink" href="#feedback" title="Link to this heading"></a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<p>Feedback drivers are responsible of providing information of the rotor position
+or speed. One of the core principles of FOC is the knowledge of the rotor
+position, therefore, it is one of the core devices of the system. To be precise,
+FOC depends on the knowledge of the electrical angle of the motor, which is
+directly related to the rotor position via the number of pair poles.</p>
+<p>There is a wide variety of feedback sensors. Their choice depends on the end
+application or required control. For example, Halls may be a good choice for
+speed control as detailed above. However, for accurate position control digital
+encoders may be a better candidate.</p>
+<section id="halls">
+<h3>Halls<a class="headerlink" href="#halls" title="Link to this heading"></a></h3>
+<p>Hall sensors are a common type of feedback based on the <a class="reference external" href="https://en.wikipedia.org/wiki/Hall_effect_sensor">Hall effect</a>. The
+sensor is actually composed by three individual hall sensors equally distributed
+in the distance of one electrical revolution. The combination of the three
+output signals using the XOR function results in a square wave that provides an
+electrical angle resolution of 60 degress (<a class="reference internal" href="#feedback-halls"><span class="std std-numref">Fig. 15</span></a>). Because of
+their low resolution Hall sensors are frequently used for speed control. An
+important characteristic of Hall sensors is that their position feedback is
+absolute.</p>
+<figure class="align-default" id="id1">
+<span id="feedback-halls"></span><img alt="../../_images/halls.svg" src="../../_images/halls.svg" /><figcaption>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Hall sensors signals versus the motor electrical angle.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="api">
+<h2>API<a class="headerlink" href="#api" title="Link to this heading"></a></h2>
+<dl>
+<dt class="sig sig-object cpp">
+<span class="target" id="group__spinner__drivers__feedback"></span><em><span class="pre">group</span></em> <span class="sig-name descname"><span class="pre">spinner_drivers_feedback</span></span></dt>
+<dd><div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.feedback_get_eangle">
+<span class="target" id="group__spinner__drivers__feedback_1ga05b128df6fe4cefc599ccbf4eb4e0faa"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">feedback_get_eangle</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference external" href="https://docs.zephyrproject.org/latest/kernel/drivers/index.html#c.device" title="(in Zephyr Project v3.6.99)"><span class="n"><span class="pre">device</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">dev</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.feedback_get_eangle" title="Link to this definition"></a><br /></dt>
+<dd><p>Get electrical angle. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dev</strong> – Feedback instance. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Electrical angle. </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.feedback_get_speed">
+<span class="target" id="group__spinner__drivers__feedback_1gafef00ca0bacfd375a129e56f892b2dd1"></span><span class="k"><span class="pre">static</span></span><span class="w"> </span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">feedback_get_speed</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="k"><span class="pre">struct</span></span><span class="w"> </span><a class="reference external" href="https://docs.zephyrproject.org/latest/kernel/drivers/index.html#c.device" title="(in Zephyr Project v3.6.99)"><span class="n"><span class="pre">device</span></span></a><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="n"><span class="pre">dev</span></span><span class="sig-paren">)</span><a class="headerlink" href="#c.feedback_get_speed" title="Link to this definition"></a><br /></dt>
+<dd><p>Get speed. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dev</strong> – Feedback instance. </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Speed. </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+<section id="implementations">
+<h2>Implementations<a class="headerlink" href="#implementations" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="impl/stm32-halls.html">STM32 Halls</a></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../currsmp/impl/stm32.html" class="btn btn-neutral float-left" title="STM32" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="impl/stm32-halls.html" class="btn btn-neutral float-right" title="STM32 Halls" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Teslabs Engineering S.L..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

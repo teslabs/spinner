@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_95a961dfd6a88937b1f63a51d28beaa3" kind="dir">
+    <compoundname>spinner/drivers</compoundname>
+    <innerfile refid="currsmp_8h">currsmp.h</innerfile>
+    <innerfile refid="feedback_8h">feedback.h</innerfile>
+    <innerfile refid="svpwm_8h">svpwm.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="spinner/drivers/"/>
+  </compounddef>
+</doxygen>

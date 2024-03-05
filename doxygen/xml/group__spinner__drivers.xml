@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="group__spinner__drivers" kind="group">
+    <compoundname>spinner_drivers</compoundname>
+    <title>Driver APIs</title>
+    <innergroup refid="group__spinner__drivers__currsmp">Current Sampling API</innergroup>
+    <innergroup refid="group__spinner__drivers__feedback">Feedback API</innergroup>
+    <innergroup refid="group__spinner__drivers__svpwm">SV-PWM API</innergroup>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>

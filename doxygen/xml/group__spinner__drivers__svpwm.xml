@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="group__spinner__drivers__svpwm" kind="group">
+    <compoundname>spinner_drivers_svpwm</compoundname>
+    <title>SV-PWM API</title>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="group__spinner__drivers__svpwm_1gafd9c70d9e5a84b0b4cae4a5d3fc67c7f" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void svpwm_start</definition>
+        <argsstring>(const struct device *dev)</argsstring>
+        <name>svpwm_start</name>
+        <param>
+          <type>const struct device *</type>
+          <declname>dev</declname>
+        </param>
+        <briefdescription>
+<para>Start the SV-PWM controller. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Current sampling device must be started prior to SV-PWM, since SV-PWM is the responsible to trigger current sampling measurements.</para>
+</simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">dev</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>SV-PWM device. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="spinner/drivers/svpwm.h" line="41" column="20" bodyfile="spinner/drivers/svpwm.h" bodystart="41" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="group__spinner__drivers__svpwm_1ga06fb422b6ba78b1d76d995fcc4636d88" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void svpwm_stop</definition>
+        <argsstring>(const struct device *dev)</argsstring>
+        <name>svpwm_stop</name>
+        <param>
+          <type>const struct device *</type>
+          <declname>dev</declname>
+        </param>
+        <briefdescription>
+<para>Stop the SV-PWM controller. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">dev</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>SV-PWM device. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="spinner/drivers/svpwm.h" line="53" column="20" bodyfile="spinner/drivers/svpwm.h" bodystart="53" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="group__spinner__drivers__svpwm_1ga7a24661d18884a93b4566ab50d5231fb" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void svpwm_set_phase_voltages</definition>
+        <argsstring>(const struct device *dev, float v_alpha, float v_beta)</argsstring>
+        <name>svpwm_set_phase_voltages</name>
+        <param>
+          <type>const struct device *</type>
+          <declname>dev</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>v_alpha</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>v_beta</declname>
+        </param>
+        <briefdescription>
+<para>Set phase voltages. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">dev</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>SV-PWM device. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">v_alpha</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Alpha voltage. </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">v_beta</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Beta voltage. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="spinner/drivers/svpwm.h" line="67" column="20" bodyfile="spinner/drivers/svpwm.h" bodystart="67" bodyend="73"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+  </compounddef>
+</doxygen>
