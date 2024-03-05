@@ -1,0 +1,24 @@
+# Copyright (c) 2024 Teslabs Engineering S.L.
+# SPDX-License-Identifier: Apache-2.0
+
+sample:
+  description: Spinner
+  name: spinner
+
+common:
+  build_only: true
+
+tests:
+  spinner.ihm07m1:
+    integration_platforms:
+      - nucleo_f302r8
+      - nucleo_g431rb
+    extra_args:
+      SHIELD=ihm07m1
+
+  spinner.ihm16m1:
+    integration_platforms:
+      - nucleo_f302r8
+      - nucleo_g431rb
+    extra_args:
+      SHIELD=ihm16m1
