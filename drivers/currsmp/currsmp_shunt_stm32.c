@@ -197,7 +197,7 @@ static int adc_configure(const struct device *dev)
 		return ret;
 	}
 
-	k_busy_wait(MAX(1U, (uint32_t)((1e6 / (float)adc_clk) *
+	k_busy_wait(MAX(1U, (uint32_t)((1.0e6f / (float)adc_clk) *
 				       LL_ADC_DELAY_CALIB_ENABLE_ADC_CYCLES)));
 
 	/* enable ADC */
@@ -342,7 +342,7 @@ static uint32_t currsmp_shunt_stm32_get_smp_time(const struct device *dev)
 		return 0U;
 	}
 
-	return (uint32_t)((1.0e9 / (float)clk) *
+	return (uint32_t)((1.0e9f / (float)clk) *
 			  (t_sar + 2.0f * (float)config->adc_tsample));
 }
 
