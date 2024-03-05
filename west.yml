@@ -17,5 +17,6 @@ manifest:
       import:
         name-allowlist:
           - cmsis
+          - cmsis-dsp
           - hal_stm32
 
